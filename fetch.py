@@ -61,7 +61,7 @@ def get_orders(uid, d_from, d_to, fields=None):
               ['date_order','<=',f'{d_to} 23:59:59'],
               ['state','in',['done','invoiced','paid']]]
     fields = fields or ['config_id','partner_id','amount_total',
-                        'amount_discount','date_order']
+                                                'date_order']
     return rpc(uid,'pos.order','search_read',[domain],
                fields=fields, limit=10000)
 
@@ -78,7 +78,7 @@ def detect_channel(partner_name):
 
 def agg(orders):
     rev = sum(o['amount_total'] for o in orders)
-    disc = sum(o.get('amount_discount',0) or 0 for o in orders)
+            disc = 0
     cnt = len(orders)
     return {
         'revenue': round(rev,2),
