@@ -1,1 +1,366 @@
-{"meta":{"last_updated":"pending","report_date":"pending","currency":"SAR","company":"شركة بوصلة التميز التجارية","franchise":"Munch Bakery"},"yesterday":{"revenue":0,"orders":0,"avg_order":0,"discount":0,"discount_pct":0},"day_before":{"revenue":0,"orders":0,"avg_order":0,"discount":0,"discount_pct":0},"mtd":{"revenue":0,"orders":0,"avg_order":0,"discount":0,"discount_pct":0},"comparisons":{"dod":{"label":"يوم/يوم","current":0,"previous":0,"change_pct":null},"wow":{"label":"أسبوع/أسبوع","current":0,"previous":0,"change_pct":null},"mom":{"label":"شهر/شهر","current":0,"previous":0,"change_pct":null},"yoy":{"label":"سنة/سنة","current":0,"previous":0,"change_pct":null}},"branches":[],"top_products":[],"bottom_products":[],"day_pattern":[]}
+{
+  "meta": {
+    "last_updated": "2026-05-12 10:59",
+    "yesterday": "2026-05-11",
+    "mtd_start": "2026-05-01",
+    "week_start": "2026-05-05"
+  },
+  "summary": {
+    "yesterday": {
+      "revenue": 27366.2,
+      "orders": 372,
+      "avg": 73.6,
+      "discount": 0,
+      "vs_dob_pct": 4.0
+    },
+    "mtd": {
+      "revenue": 335166.83,
+      "orders": 4152,
+      "avg": 80.7,
+      "discount": 0,
+      "vs_prev_pct": 6.7,
+      "prev_mtd_revenue": 314241.36
+    },
+    "week": {
+      "revenue": 219239.41,
+      "orders": 2700,
+      "avg": 81.2,
+      "discount": 0,
+      "vs_prev_pct": -3.5
+    }
+  },
+  "branches": {
+    "yesterday": {
+      "Safa": {
+        "revenue": 5337.4,
+        "orders": 65,
+        "avg": 82.1,
+        "discount": 0
+      },
+      "Ajaweed": {
+        "revenue": 5201.2,
+        "orders": 77,
+        "avg": 67.5,
+        "discount": 0
+      },
+      "Hamadaniyah": {
+        "revenue": 5086.5,
+        "orders": 67,
+        "avg": 75.9,
+        "discount": 0
+      },
+      "Marwah": {
+        "revenue": 4931.0,
+        "orders": 67,
+        "avg": 73.6,
+        "discount": 0
+      },
+      "Waziriyah": {
+        "revenue": 3702.3,
+        "orders": 44,
+        "avg": 84.1,
+        "discount": 0
+      },
+      "Defaa": {
+        "revenue": 3107.8,
+        "orders": 52,
+        "avg": 59.8,
+        "discount": 0
+      }
+    },
+    "mtd": {
+      "Marwah": {
+        "revenue": 67085.29,
+        "orders": 804,
+        "avg": 83.4,
+        "discount": 0
+      },
+      "Ajaweed": {
+        "revenue": 66597.43,
+        "orders": 855,
+        "avg": 77.9,
+        "discount": 0
+      },
+      "Hamadaniyah": {
+        "revenue": 60939.9,
+        "orders": 741,
+        "avg": 82.2,
+        "discount": 0
+      },
+      "Safa": {
+        "revenue": 58102.6,
+        "orders": 655,
+        "avg": 88.7,
+        "discount": 0
+      },
+      "Defaa": {
+        "revenue": 45580.56,
+        "orders": 600,
+        "avg": 76.0,
+        "discount": 0
+      },
+      "Waziriyah": {
+        "revenue": 36861.05,
+        "orders": 497,
+        "avg": 74.2,
+        "discount": 0
+      }
+    },
+    "week": {
+      "Marwah": {
+        "revenue": 45252.86,
+        "orders": 531,
+        "avg": 85.2,
+        "discount": 0
+      },
+      "Ajaweed": {
+        "revenue": 43924.57,
+        "orders": 567,
+        "avg": 77.5,
+        "discount": 0
+      },
+      "Safa": {
+        "revenue": 42638.13,
+        "orders": 464,
+        "avg": 91.9,
+        "discount": 0
+      },
+      "Hamadaniyah": {
+        "revenue": 38346.25,
+        "orders": 471,
+        "avg": 81.4,
+        "discount": 0
+      },
+      "Defaa": {
+        "revenue": 26681.3,
+        "orders": 367,
+        "avg": 72.7,
+        "discount": 0
+      },
+      "Waziriyah": {
+        "revenue": 22396.3,
+        "orders": 300,
+        "avg": 74.7,
+        "discount": 0
+      }
+    }
+  },
+  "channels": {
+    "yesterday": {
+      "Direct": {
+        "revenue": 15838.7,
+        "orders": 248,
+        "avg": 63.9,
+        "discount": 0
+      },
+      "HungerStation": {
+        "revenue": 5979.5,
+        "orders": 61,
+        "avg": 98.0,
+        "discount": 0
+      },
+      "Keeta": {
+        "revenue": 2700.9,
+        "orders": 33,
+        "avg": 81.8,
+        "discount": 0
+      },
+      "Ninja": {
+        "revenue": 1690.1,
+        "orders": 16,
+        "avg": 105.6,
+        "discount": 0
+      },
+      "Taker": {
+        "revenue": 696.0,
+        "orders": 9,
+        "avg": 77.3,
+        "discount": 0
+      },
+      "Jahez": {
+        "revenue": 274.0,
+        "orders": 3,
+        "avg": 91.3,
+        "discount": 0
+      },
+      "Marsool": {
+        "revenue": 187.0,
+        "orders": 2,
+        "avg": 93.5,
+        "discount": 0
+      }
+    },
+    "mtd": {
+      "Direct": {
+        "revenue": 191649.61,
+        "orders": 2590,
+        "avg": 74.0,
+        "discount": 0
+      },
+      "HungerStation": {
+        "revenue": 70773.97,
+        "orders": 770,
+        "avg": 91.9,
+        "discount": 0
+      },
+      "Keeta": {
+        "revenue": 33013.85,
+        "orders": 375,
+        "avg": 88.0,
+        "discount": 0
+      },
+      "Ninja": {
+        "revenue": 21036.0,
+        "orders": 239,
+        "avg": 88.0,
+        "discount": 0
+      },
+      "Taker": {
+        "revenue": 9819.5,
+        "orders": 83,
+        "avg": 118.3,
+        "discount": 0
+      },
+      "Jahez": {
+        "revenue": 6046.0,
+        "orders": 70,
+        "avg": 86.4,
+        "discount": 0
+      },
+      "Marsool": {
+        "revenue": 2818.9,
+        "orders": 24,
+        "avg": 117.5,
+        "discount": 0
+      },
+      "Mr.Mandoob": {
+        "revenue": 9.0,
+        "orders": 1,
+        "avg": 9.0,
+        "discount": 0
+      }
+    }
+  },
+  "dow": [
+    {
+      "day": "Mon",
+      "day_ar": "الاثنين",
+      "revenue": 98057.84,
+      "orders": 1328,
+      "avg": 73.8,
+      "discount": 0
+    },
+    {
+      "day": "Tue",
+      "day_ar": "الثلاثاء",
+      "revenue": 84274.19,
+      "orders": 1133,
+      "avg": 74.4,
+      "discount": 0
+    },
+    {
+      "day": "Wed",
+      "day_ar": "الأربعاء",
+      "revenue": 107867.02,
+      "orders": 1429,
+      "avg": 75.5,
+      "discount": 0
+    },
+    {
+      "day": "Thu",
+      "day_ar": "الخميس",
+      "revenue": 151373.33,
+      "orders": 1742,
+      "avg": 86.9,
+      "discount": 0
+    },
+    {
+      "day": "Fri",
+      "day_ar": "الجمعة",
+      "revenue": 153530.99,
+      "orders": 1732,
+      "avg": 88.6,
+      "discount": 0
+    },
+    {
+      "day": "Sat",
+      "day_ar": "السبت",
+      "revenue": 103441.71,
+      "orders": 1295,
+      "avg": 79.9,
+      "discount": 0
+    },
+    {
+      "day": "Sun",
+      "day_ar": "الأحد",
+      "revenue": 103706.99,
+      "orders": 1341,
+      "avg": 77.3,
+      "discount": 0
+    }
+  ],
+  "top_products": [
+    {
+      "name": "[110219] ردفلفت كيك/ Red Velvet Cake - Medium",
+      "qty": 153.0,
+      "revenue": 17545.0,
+      "orders": 157
+    },
+    {
+      "name": "[111101] Occasion/ كيك مناسبات",
+      "qty": 16356.5,
+      "revenue": 16356.5,
+      "orders": 41
+    },
+    {
+      "name": "[110218] ردفلفت كيك/Red Velvet Cake - Large",
+      "qty": 87.0,
+      "revenue": 14105.0,
+      "orders": 89
+    },
+    {
+      "name": "[110223] تشوكليت كيك/Chocolate Cake - Medium",
+      "qty": 78.0,
+      "revenue": 9050.0,
+      "orders": 78
+    },
+    {
+      "name": "[110280] كيكة دريم/Dream Cake-  Medium",
+      "qty": 71.0,
+      "revenue": 8135.0,
+      "orders": 70
+    }
+  ],
+  "bot_products": [
+    {
+      "name": "[110691] Hazelnut Truffle Mini Cupcake  |ميني كب كيك ترافل بالبندق ",
+      "qty": 0.0,
+      "revenue": 0.0,
+      "orders": 2
+    },
+    {
+      "name": "[122161] حلوى كوب كاندي/Paw Patrol Candy Cup w/Candy 21g",
+      "qty": 0.0,
+      "revenue": 0.0,
+      "orders": 2
+    },
+    {
+      "name": "[121274] حلوى شوكوليت/SAI Paw Patrol Chiko Surprise 20g",
+      "qty": 0.0,
+      "revenue": 0.0,
+      "orders": 1
+    },
+    {
+      "name": "[121226] تغريسة بيرثداي/Happy birthday Black 2022",
+      "qty": 1.0,
+      "revenue": 10.0,
+      "orders": 1
+    },
+    {
+      "name": "[122169] Hello Kitty Sticker Dispenser w/candy 19g|هيلوكاتي ستيكر ",
+      "qty": 1.0,
+      "revenue": 15.0,
+      "orders": 1
+    }
+  ]
+}
