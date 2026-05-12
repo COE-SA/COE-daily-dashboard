@@ -84,7 +84,7 @@ tr:hover td{background:#f8fafc}
 
 /* ── Bar chart ── */
 .bar-row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
-.bar-lbl{font-size:.8rem;width:90px;flex-shrink:0;text-align:right;font-weight:500}
+.bar-lbl{font-size:.8rem;width:90px;max-width:90px;flex-shrink:0;text-align:right;font-weight:500}
 .bar-track{flex:1;height:8px;background:var(--bg2);border-radius:99px;overflow:hidden}
 .bar-fill{height:100%;border-radius:99px;transition:width .6s ease}
 .bar-val{font-size:.76rem;color:var(--muted);min-width:50px;text-align:left}
@@ -141,7 +141,52 @@ tr:hover td{background:#f8fafc}
 
 /* ── Responsive ── */
 @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}.body{padding:10px}.rec-grid{grid-template-columns:1fr}}
+
+/* ── Tablet 1100px ── */
+@media(max-width:1100px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .channels-grid{grid-template-columns:repeat(3,1fr) !important}
+}
+/* ── Mobile 768px ── */
+@media(max-width:768px){
+  body{padding:10px}
+  .grid-4,.grid-3,.grid-2{grid-template-columns:1fr}
+  .rec-grid{grid-template-columns:1fr}
+  .channels-grid{grid-template-columns:repeat(2,1fr) !important}
+  /* Header mobile */
+  .header{padding:14px 16px;gap:10px}
+  .header img{height:38px !important}
+  .header-logo{font-size:1.1rem}
+  .header-sub{font-size:.72rem}
+  /* KPI */
+  .kpi-value{font-size:1.25rem}
+  /* Tables: horizontal scroll */
+  .card.table-card, .card{overflow-x:auto}
+  table{font-size:.75rem;min-width:420px}
+  th,td{padding:5px 6px}
+  /* DOW: stack */
+  #dow-section > div > div:first-child,
+  #dow-section > div > div:last-child{min-width:0}
+  /* Efficiency bars */
+  .eff-bar,.eff-row div[style*="width:88px"]{font-size:.7rem}
+  /* Section title */
+  .section-title{font-size:.88rem;margin:18px 0 10px}
+  /* Card padding */
+  .card{padding:12px}
+  /* Dual bar labels */
+  .dual-stats{flex-direction:column;gap:2px;font-size:.7rem}
+  .dual-name{font-size:.78rem}
+  /* WoW table */
+  #wow-table{font-size:.72rem;min-width:360px}
+}
+/* ── Small mobile 480px ── */
+@media(max-width:600px){.dow-grid{grid-template-columns:1fr !important}}
+@media(max-width:480px){
+  .channels-grid{grid-template-columns:1fr 1fr !important}
+  .header-logo{font-size:.95rem}
+  .kpi-value{font-size:1.1rem}
+  .grid-4{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
@@ -172,11 +217,11 @@ tr:hover td{background:#f8fafc}
 <!-- ③ BRANCHES -->
 <div class="section-title">🏪 أداء الفروع</div>
 <div class="grid-2">
-  <div class="card">
+  <div class="card" style="overflow-x:auto">
     <div class="card-title">📅 أمس</div>
     <table id="br-yest"></table>
   </div>
-  <div class="card">
+  <div class="card" style="overflow-x:auto">
     <div class="card-title">📆 هذا الشهر MTD</div>
     <table id="br-mtd"></table>
   </div>
@@ -209,7 +254,7 @@ tr:hover td{background:#f8fafc}
 
 <!-- ⑤ CHANNELS -->
 <div class="section-title">📱 قنوات البيع — أمس</div>
-<div id="channels-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px"></div>
+<div id="channels-grid" class="channels-grid"></div>
 
 <!-- ⑥ DOW ANALYSIS -->
 <div class="section-title">📅 تحليل أيام الأسبوع (هذا الأسبوع vs الماضي)</div>
@@ -503,7 +548,7 @@ function renderDOW(dow){
   const weG=weP.revenue?((weT.revenue-weP.revenue)/weP.revenue*100).toFixed(1):0;
 
   document.getElementById('dow-section').innerHTML=`
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" class="dow-grid">
       <div class="dow-group weekday">
         <div class="dow-group-header">
           <div class="dow-group-title">📅 أيام الأسبوع (أحد — أربعاء)</div>
