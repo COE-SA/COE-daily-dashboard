@@ -2,7 +2,7 @@
 """
 شركة بوصلة التميز التجارية | Compass of Excellence Co.
 امتياز Munch Bakery — داشبورد يومي للفروع
-COE Daily Dashboard — fetch.py v1.0
+COE Daily Dashboard — fetch.py v2.0
 """
 import os, json, sys
 from datetime import datetime, timedelta
@@ -61,7 +61,7 @@ def get_orders(uid, d_from, d_to, fields=None):
               ['date_order','<=',f'{d_to} 23:59:59'],
               ['state','in',['done','invoiced','paid']]]
     fields = fields or ['config_id','partner_id','amount_total',
-                                                'date_order']
+                        'date_order']
     return rpc(uid,'pos.order','search_read',[domain],
                fields=fields, limit=10000)
 
@@ -78,13 +78,12 @@ def detect_channel(partner_name):
 
 def agg(orders):
     rev = sum(o['amount_total'] for o in orders)
-    disc = 0
     cnt = len(orders)
     return {
         'revenue': round(rev,2),
         'orders':  cnt,
         'avg':     round(rev/cnt,1) if cnt else 0,
-        'discount':round(disc,2),
+        'discount': 0,
     }
 
 def by_branch(orders):
@@ -100,11 +99,35 @@ def by_channel(orders):
         ch = detect_channel(o['partner_id'][1] if o.get('partner_id') else '')
         d.setdefault(ch,[]).append(o)
     result = {ch: agg(lst) for ch,lst in d.items()}
-    # sort by revenue desc
     return dict(sorted(result.items(), key=lambda x: x[1]['revenue'], reverse=True))
 
+def by_branch_channel(orders):
+    """For each branch: breakdown by channel type (Delivery vs Direct)"""
+    d = {}
+    for o in orders:
+        b = short_branch(o['config_id'][1]) if o.get('config_id') else 'Other'
+        ch = detect_channel(o['partner_id'][1] if o.get('partner_id') else '')
+        channel_type = 'Direct' if ch == 'Direct' else 'Delivery'
+        if b not in d:
+            d[b] = {'Direct': {'revenue': 0, 'orders': 0},
+                    'Delivery': {'revenue': 0, 'orders': 0}}
+        d[b][channel_type]['revenue'] += o['amount_total']
+        d[b][channel_type]['orders'] += 1
+    # Calculate percentages and round
+    result = {}
+    for b, channels in d.items():
+        total_rev = channels['Direct']['revenue'] + channels['Delivery']['revenue']
+        total_ord = channels['Direct']['orders'] + channels['Delivery']['orders']
+        result[b] = {
+            'direct_rev':   round(channels['Direct']['revenue'], 2),
+            'direct_ord':   channels['Direct']['orders'],
+            'delivery_rev': round(channels['Delivery']['revenue'], 2),
+            'delivery_ord': channels['Delivery']['orders'],
+            'delivery_pct': round(channels['Delivery']['revenue'] / total_rev * 100, 1) if total_rev else 0,
+        }
+    return result
+
 def by_dow(orders):
-    """توزيع حسب يوم الأسبوع (0=Mon)"""
     DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
     d = {i:[] for i in range(7)}
     for o in orders:
@@ -143,15 +166,12 @@ def pct(a, b):
 
 def main():
     now_ksa   = datetime.utcnow() + KSA_OFFSET
-    today     = now_ksa.strftime('%Y-%m-%d')
     yest      = (now_ksa - timedelta(days=1)).strftime('%Y-%m-%d')
     dob       = (now_ksa - timedelta(days=2)).strftime('%Y-%m-%d')
     mtd_start = now_ksa.replace(day=1).strftime('%Y-%m-%d')
     prev_m_end= (now_ksa.replace(day=1) - timedelta(days=1)).strftime('%Y-%m-%d')
     prev_m_st = datetime.strptime(prev_m_end,'%Y-%m-%d').replace(day=1).strftime('%Y-%m-%d')
-    # Same-day-count last month for fair MTD comparison
-    prev_mtd_end_day = min(now_ksa.day-1,
-                           int(prev_m_end.split('-')[2]))
+    prev_mtd_end_day = min(now_ksa.day-1, int(prev_m_end.split('-')[2]))
     prev_mtd_end = f"{prev_m_st[:7]}-{prev_mtd_end_day:02d}" if prev_mtd_end_day>0 else prev_m_st
     w_start   = (now_ksa - timedelta(days=7)).strftime('%Y-%m-%d')
     pw_start  = (now_ksa - timedelta(days=14)).strftime('%Y-%m-%d')
@@ -163,13 +183,13 @@ def main():
     print(f'✅ Authenticated uid={uid}')
 
     print('📦 Fetching orders...')
-    o_yest  = get_orders(uid, yest, yest)
-    o_dob   = get_orders(uid, dob, dob)
-    o_mtd   = get_orders(uid, mtd_start, yest)
+    o_yest    = get_orders(uid, yest, yest)
+    o_dob     = get_orders(uid, dob, dob)
+    o_mtd     = get_orders(uid, mtd_start, yest)
     o_prevmtd = get_orders(uid, prev_m_st, prev_mtd_end)
-    o_week  = get_orders(uid, w_start, yest)
-    o_pweek = get_orders(uid, pw_start, pw_end)
-    o_dow   = get_orders(uid, dow_start, yest)
+    o_week    = get_orders(uid, w_start, yest)
+    o_pweek   = get_orders(uid, pw_start, pw_end)
+    o_dow     = get_orders(uid, dow_start, yest)
 
     print('🏆 Fetching top products...')
     top5, bot5 = get_top_products(uid, w_start, yest)
@@ -180,6 +200,23 @@ def main():
     pmtd_agg  = agg(o_prevmtd)
     week_agg  = agg(o_week)
     pweek_agg = agg(o_pweek)
+
+    # Branch detailed analytics
+    br_week  = by_branch(o_week)
+    br_pweek = by_branch(o_pweek)
+    
+    # Branch WoW growth
+    branch_wow = {}
+    for b, stats in br_week.items():
+        prev = br_pweek.get(b, {}).get('revenue', 0)
+        branch_wow[b] = {
+            'this_week': stats['revenue'],
+            'prev_week': prev,
+            'growth_pct': pct(stats['revenue'], prev),
+            'orders_this': stats['orders'],
+            'avg_this': stats['avg'],
+        }
+    branch_wow = dict(sorted(branch_wow.items(), key=lambda x: x[1]['this_week'], reverse=True))
 
     data = {
         'meta': {
@@ -209,6 +246,13 @@ def main():
             'yesterday': by_channel(o_yest),
             'mtd':       by_channel(o_mtd),
         },
+        # === NEW: Advanced Branch Analytics ===
+        'branch_channels': {
+            'week': by_branch_channel(o_week),
+            'mtd':  by_branch_channel(o_mtd),
+        },
+        'branch_wow': branch_wow,
+        # ======================================
         'dow':          by_dow(o_dow),
         'top_products': top5,
         'bot_products': bot5,
