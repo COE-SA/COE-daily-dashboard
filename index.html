@@ -3,506 +3,567 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>داشبورد المبيعات اليومي | بوصلة التميز</title>
+<title>داشبورد المبيعات | بوصلة التميز</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy:   #0f2044;
-  --navy2:  #162a56;
-  --gold:   #c9943a;
-  --gold2:  #e8b04a;
-  --green:  #22c55e;
-  --red:    #ef4444;
-  --blue:   #3b82f6;
-  --purple: #8b5cf6;
-  --teal:   #14b8a6;
-  --orange: #f97316;
-  --text:   #e2e8f0;
-  --muted:  #94a3b8;
-  --card:   rgba(255,255,255,0.05);
-  --border: rgba(255,255,255,0.08);
+:root{
+  --bg:#f1f5f9; --bg2:#e8edf5;
+  --card:#ffffff; --card2:#f8fafc;
+  --navy:#0f2044; --navy2:#1e3a5f;
+  --gold:#b8730a; --gold2:#d4880e;
+  --green:#15803d; --red:#b91c1c;
+  --blue:#1d4ed8; --purple:#7c3aed;
+  --orange:#c2410c; --teal:#0f766e;
+  --text:#0f172a; --muted:#64748b;
+  --border:#e2e8f0; --border2:#cbd5e1;
+  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,.1);
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  background: linear-gradient(135deg, #0a1628 0%, #0f2044 50%, #0a1628 100%);
-  font-family: 'Tajawal', sans-serif;
-  color: var(--text);
-  min-height: 100vh;
-  padding: 20px;
-}
-.header {
-  text-align: center;
-  padding: 24px 0 32px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 32px;
-}
-.header h1 { font-size: 2rem; font-weight: 900; color: var(--gold); letter-spacing: -0.5px; }
-.header p  { color: var(--muted); margin-top: 6px; font-size: 0.9rem; }
-.badge     { display: inline-block; background: var(--gold); color: var(--navy); border-radius: 20px; padding: 2px 12px; font-size: 0.75rem; font-weight: 700; margin-top: 8px; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);font-family:'Tajawal',sans-serif;color:var(--text);min-height:100vh;padding:16px}
 
-/* ── Section Headers ─────────────────────────── */
-.section-title {
-  font-size: 1.1rem; font-weight: 700; color: var(--gold2);
-  margin: 32px 0 16px;
-  display: flex; align-items: center; gap: 8px;
-}
-.section-title::after {
-  content: ''; flex: 1; height: 1px; background: var(--border);
-}
+/* ── Header ── */
+.header{background:var(--navy);color:#fff;border-radius:16px;padding:20px 28px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.header-logo{font-size:1.5rem;font-weight:900;color:#e8b860}
+.header-sub{font-size:.85rem;color:#94a3b8;margin-top:2px}
+.header-badge{background:rgba(232,184,96,.15);color:#e8b860;border:1px solid rgba(232,184,96,.3);border-radius:20px;padding:4px 14px;font-size:.78rem;font-weight:700}
 
-/* ── Grid Layouts ────────────────────────────── */
-.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
-.grid-1 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+/* ── Section ── */
+.section-title{font-size:1rem;font-weight:700;color:var(--navy2);margin:24px 0 12px;display:flex;align-items:center;gap:8px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
 
-/* ── Base Card ───────────────────────────────── */
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  backdrop-filter: blur(10px);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+/* ── Grid ── */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 
-/* ── KPI Cards ───────────────────────────────── */
-.kpi-card { position: relative; overflow: hidden; }
-.kpi-card::before {
-  content: ''; position: absolute; top: 0; right: 0;
-  width: 4px; height: 100%; border-radius: 0 16px 16px 0;
-}
-.kpi-card.gold::before  { background: var(--gold); }
-.kpi-card.green::before { background: var(--green); }
-.kpi-card.blue::before  { background: var(--blue); }
-.kpi-card.purple::before{ background: var(--purple); }
-.kpi-label  { font-size: 0.8rem; color: var(--muted); font-weight: 500; margin-bottom: 6px; }
-.kpi-value  { font-size: 1.6rem; font-weight: 900; color: #fff; line-height: 1; }
-.kpi-sub    { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
-.kpi-badge  { display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; font-weight: 700; padding: 3px 8px; border-radius: 20px; margin-top: 8px; }
-.kpi-badge.up   { background: rgba(34,197,94,0.15); color: var(--green); }
-.kpi-badge.down { background: rgba(239,68,68,0.15); color: var(--red); }
-.kpi-badge.flat { background: rgba(148,163,184,0.15); color: var(--muted); }
-.kpi-icon { font-size: 2rem; position: absolute; left: 16px; top: 16px; opacity: 0.12; }
+/* ── Card ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+.card-title{font-size:.88rem;font-weight:700;color:var(--navy2);margin-bottom:12px}
 
-/* ── Tables ──────────────────────────────────── */
-.table-card .card-title {
-  font-size: 0.9rem; font-weight: 700; color: var(--gold2); margin-bottom: 14px;
-  display: flex; align-items: center; gap: 8px;
-}
-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-th { color: var(--muted); font-weight: 600; padding: 6px 8px; text-align: right; border-bottom: 1px solid var(--border); }
-td { padding: 8px 8px; border-bottom: 1px solid rgba(255,255,255,0.04); }
-tr:last-child td { border-bottom: none; }
-tr:hover td { background: rgba(255,255,255,0.03); }
-.rank-badge {
-  width: 22px; height: 22px; border-radius: 50%;
-  display: inline-flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; font-weight: 700;
-}
-.rank-1 { background: var(--gold); color: var(--navy); }
-.rank-2 { background: #94a3b8; color: var(--navy); }
-.rank-3 { background: #a0522d; color: #fff; }
-.rank-other { background: rgba(255,255,255,0.1); color: var(--muted); }
+/* ── KPI Card ── */
+.kpi{position:relative;overflow:hidden;padding:18px}
+.kpi::after{content:'';position:absolute;top:0;right:0;width:3px;height:100%;border-radius:0 12px 12px 0}
+.kpi.gold::after{background:var(--gold)}
+.kpi.green::after{background:var(--green)}
+.kpi.blue::after{background:var(--blue)}
+.kpi.purple::after{background:var(--purple)}
+.kpi-label{font-size:.78rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.kpi-value{font-size:1.6rem;font-weight:900;color:var(--text);margin:4px 0;line-height:1}
+.kpi-compare{font-size:.78rem;color:var(--muted);margin-top:2px}
+.kpi-compare b{color:var(--text)}
+.badge{display:inline-flex;align-items:center;gap:3px;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-top:6px}
+.badge.up{background:#dcfce7;color:var(--green)}
+.badge.down{background:#fee2e2;color:var(--red)}
+.badge.flat{background:#f1f5f9;color:var(--muted)}
 
-/* ── Bar Charts ──────────────────────────────── */
-.bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.bar-label { font-size: 0.82rem; width: 100px; text-align: right; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.bar-track { flex: 1; height: 8px; background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden; }
-.bar-fill  { height: 100%; border-radius: 99px; transition: width 0.8s ease; }
-.bar-value { font-size: 0.78rem; color: var(--muted); width: 55px; flex-shrink: 0; }
+/* ── Recommendations ── */
+.rec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.rec-card{border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.rec-card.strength{background:#f0fdf4;border:1px solid #86efac}
+.rec-card.warning{background:#fffbeb;border:1px solid #fde047}
+.rec-card.pain{background:#fff1f2;border:1px solid #fca5a5}
+.rec-card.opp{background:#eff6ff;border:1px solid #93c5fd}
+.rec-icon{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.rec-title{font-size:.85rem;font-weight:700;margin-bottom:3px}
+.rec-card.strength .rec-title{color:var(--green)}
+.rec-card.warning  .rec-title{color:#92400e}
+.rec-card.pain     .rec-title{color:var(--red)}
+.rec-card.opp      .rec-title{color:var(--blue)}
+.rec-body{font-size:.78rem;color:var(--muted);line-height:1.5}
 
-/* ── Dual Bar (Delivery vs Direct) ──────────── */
-.dual-bar { display: flex; height: 10px; border-radius: 99px; overflow: hidden; gap: 1px; }
-.dual-delivery { background: var(--orange); border-radius: 99px 0 0 99px; transition: width 0.8s; }
-.dual-direct   { background: var(--teal);  border-radius: 0 99px 99px 0; transition: width 0.8s; }
+/* ── Table ── */
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{color:var(--muted);font-weight:600;padding:6px 8px;text-align:right;border-bottom:1px solid var(--border);font-size:.76rem;text-transform:uppercase}
+td{padding:7px 8px;border-bottom:1px solid var(--bg2)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#f8fafc}
+.rank{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
+.r1{background:#b8730a;color:#fff} .r2{background:#94a3b8;color:#fff}
+.r3{background:#92400e;color:#fff} .r-{background:#f1f5f9;color:var(--muted)}
 
-/* ── Growth Table ────────────────────────────── */
-.growth-badge {
-  display: inline-flex; align-items: center; gap: 3px;
-  font-size: 0.78rem; font-weight: 700; padding: 2px 7px; border-radius: 12px;
-}
-.growth-badge.up   { background: rgba(34,197,94,0.15); color: var(--green); }
-.growth-badge.down { background: rgba(239,68,68,0.15); color: var(--red); }
-.growth-badge.flat { background: rgba(148,163,184,0.1); color: var(--muted); }
+/* ── Bar chart ── */
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.bar-lbl{font-size:.8rem;width:90px;flex-shrink:0;text-align:right;font-weight:500}
+.bar-track{flex:1;height:8px;background:var(--bg2);border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;border-radius:99px;transition:width .6s ease}
+.bar-val{font-size:.76rem;color:var(--muted);min-width:50px;text-align:left}
 
-/* ── Efficiency Bars ─────────────────────────── */
-.eff-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-.eff-name { font-size: 0.82rem; width: 96px; flex-shrink: 0; text-align: right; }
-.eff-bar-wrap { flex: 1; position: relative; height: 24px; }
-.eff-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding: 0 8px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; transition: width 0.8s; }
-.eff-bar.above { background: linear-gradient(90deg, rgba(34,197,94,0.3), rgba(34,197,94,0.15)); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
-.eff-bar.below { background: linear-gradient(90deg, rgba(239,68,68,0.3), rgba(239,68,68,0.15)); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
-.eff-avg-line { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--gold); border-radius: 2px; }
+/* ── Dual bar (delivery/direct) ── */
+.dual-wrap{margin-bottom:12px}
+.dual-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.dual-name{font-size:.82rem;font-weight:600}
+.dual-stats{display:flex;gap:10px;font-size:.74rem}
+.dual-bar{display:flex;height:12px;border-radius:99px;overflow:hidden;gap:1px}
+.dual-del{background:#c2410c;transition:width .6s}
+.dual-dir{background:var(--teal);transition:width .6s}
+.dual-vals{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-top:3px}
 
-/* ── Market Share Donut Label ────────────────── */
-.share-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.share-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.share-name { font-size: 0.82rem; flex: 1; }
-.share-pct  { font-size: 0.85rem; font-weight: 700; color: #fff; }
-.share-rev  { font-size: 0.72rem; color: var(--muted); }
+/* ── Channel Cards ── */
+.ch-card{border-radius:10px;padding:12px 14px;border:1px solid var(--border)}
+.ch-name{font-size:.78rem;font-weight:700;color:var(--muted);margin-bottom:4px}
+.ch-value{font-size:1.1rem;font-weight:900;color:var(--text)}
+.ch-sub{font-size:.72rem;color:var(--muted);margin-top:2px}
+.ch-fee{font-size:.7rem;color:var(--orange);margin-top:3px}
+.ch-bar{height:3px;border-radius:99px;margin-top:6px;background:var(--bg2)}
+.ch-bar-fill{height:100%;border-radius:99px}
 
-/* ── Channel Legend ──────────────────────────── */
-.legend { display: flex; gap: 16px; margin-bottom: 14px; font-size: 0.78rem; }
-.legend-item { display: flex; align-items: center; gap: 5px; color: var(--muted); }
-.legend-dot  { width: 10px; height: 10px; border-radius: 2px; }
+/* ── DOW Section ── */
+.dow-group{border-radius:10px;padding:14px;margin-bottom:14px}
+.dow-group.weekday{background:#f0f9ff;border:1px solid #bae6fd}
+.dow-group.weekend{background:#fff7ed;border:1px solid #fed7aa}
+.dow-group-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dow-group-title{font-size:.88rem;font-weight:700}
+.dow-group.weekday .dow-group-title{color:#0369a1}
+.dow-group.weekend .dow-group-title{color:#c2410c}
+.dow-total{font-size:.82rem}
+.dow-day-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.dow-day-name{font-size:.78rem;width:55px;flex-shrink:0;font-weight:600}
+.dow-day-bar{flex:1;height:22px;background:rgba(255,255,255,.7);border-radius:6px;overflow:hidden;position:relative}
+.dow-day-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding:0 8px;font-size:.72rem;font-weight:700;color:#fff;transition:width .6s;white-space:nowrap}
+.dow-day-prev{height:6px;border-radius:99px;margin-top:2px;opacity:.4}
+.dow-comparison{display:flex;gap:8px;margin-top:3px;font-size:.7rem;color:var(--muted)}
 
-/* ── Loading ─────────────────────────────────── */
-#loading { text-align: center; padding: 80px; color: var(--muted); font-size: 1rem; }
-#app { display: none; }
+/* ── Product Cards ── */
+.prod-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--bg2)}
+.prod-row:last-child{border-bottom:none}
+.prod-rank{width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;flex-shrink:0}
+.prod-name{flex:1;min-width:0}
+.prod-name-en{font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prod-code{font-size:.68rem;color:var(--muted);font-family:monospace}
+.prod-stats{text-align:left;flex-shrink:0}
+.prod-rev{font-size:.85rem;font-weight:700}
+.prod-qty{font-size:.7rem;color:var(--muted)}
 
-/* ── Responsive ──────────────────────────────── */
-@media (max-width: 1200px) { .grid-4 { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 768px)  {
-  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  body { padding: 12px; }
-  .kpi-value { font-size: 1.3rem; }
-}
+/* ── Legend ── */
+.legend{display:flex;gap:14px;font-size:.76rem;color:var(--muted);margin-bottom:10px}
+.leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+/* ── Responsive ── */
+@media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}.body{padding:10px}.rec-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div id="loading">⏳ جاري تحميل البيانات...</div>
-<div id="app">
-  <!-- HEADER -->
-  <div class="header">
-    <h1>🥐 داشبورد المبيعات اليومي</h1>
-    <p>شركة بوصلة التميز التجارية | فروع مانش بيكري</p>
-    <div class="badge" id="last-updated">جاري التحديث...</div>
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="header-logo">🥐 منش بيكري</div>
+    <div class="header-sub">شركة بوصلة التميز التجارية | 6 فروع</div>
   </div>
+  <div class="header-badge" id="last-updated">⏳ جاري التحميل...</div>
+</div>
 
-  <!-- ═══ KPI SUMMARY ═══════════════════════════════════════════ -->
-  <div class="section-title">📊 ملخص الأداء</div>
-  <div class="grid-4" id="kpi-cards"></div>
+<div id="loading" style="text-align:center;padding:60px;color:var(--muted)">⏳ جاري تحميل البيانات...</div>
+<div id="app" style="display:none">
 
-  <!-- ═══ BRANCH TABLES ══════════════════════════════════════════ -->
-  <div class="section-title">🏪 أداء الفروع</div>
-  <div class="grid-2">
-    <div class="card table-card">
-      <div class="card-title">📅 أمس</div>
-      <table id="branch-yest-table"></table>
-    </div>
-    <div class="card table-card">
-      <div class="card-title">📆 هذا الشهر (MTD)</div>
-      <table id="branch-mtd-table"></table>
-    </div>
+<!-- ① RECOMMENDATIONS -->
+<div class="section-title">🧠 تحليل ذكي — فرص ونقاط الألم</div>
+<div class="rec-grid" id="rec-grid"></div>
+
+<!-- ② KPI SUMMARY -->
+<div class="section-title">📊 ملخص الأداء</div>
+<div class="grid-4" id="kpi-cards"></div>
+
+<!-- ③ BRANCHES -->
+<div class="section-title">🏪 أداء الفروع</div>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">📅 أمس</div>
+    <table id="br-yest"></table>
   </div>
-
-  <!-- ═══ ADVANCED BRANCH ANALYTICS ═════════════════════════════ -->
-  <div class="section-title">🔬 تحليل الفروع المتقدم</div>
-  <div class="grid-2">
-
-    <!-- Card 1: Market Share -->
-    <div class="card">
-      <div class="card-title" style="font-size:0.9rem;font-weight:700;color:var(--gold2);margin-bottom:16px;">
-        📊 حصة إيراد كل فرع (MTD)
-      </div>
-      <div id="market-share-bars"></div>
-    </div>
-
-    <!-- Card 2: Delivery App Dependency -->
-    <div class="card">
-      <div class="card-title" style="font-size:0.9rem;font-weight:700;color:var(--gold2);margin-bottom:12px;">
-        🚚 نسبة اعتماد التطبيقات لكل فرع (الأسبوع)
-      </div>
-      <div class="legend">
-        <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div> توصيل التطبيقات</div>
-        <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div> زيارة مباشرة</div>
-      </div>
-      <div id="delivery-dependency"></div>
-    </div>
-
-    <!-- Card 3: WoW Branch Growth -->
-    <div class="card table-card">
-      <div class="card-title" style="font-size:0.9rem;font-weight:700;color:var(--gold2);margin-bottom:14px;">
-        📈 نمو الفروع — هذا الأسبوع vs الأسبوع الماضي
-      </div>
-      <table id="wow-table"></table>
-    </div>
-
-    <!-- Card 4: Branch Efficiency -->
-    <div class="card">
-      <div class="card-title" style="font-size:0.9rem;font-weight:700;color:var(--gold2);margin-bottom:14px;">
-        ⚡ كفاءة الفروع — متوسط الطلب مقارنة بالمتوسط العام (الأسبوع)
-      </div>
-      <div id="efficiency-chart"></div>
-      <div style="font-size:0.72rem;color:var(--muted);margin-top:8px;text-align:center">
-        الخط الذهبي = المتوسط العام للشبكة
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ CHANNELS ════════════════════════════════════════════════ -->
-  <div class="section-title">📱 قنوات البيع (أمس)</div>
-  <div class="grid-3" id="channel-cards"></div>
-
-  <!-- ═══ DOW CHART ══════════════════════════════════════════════ -->
-  <div class="section-title">📅 أداء أيام الأسبوع (آخر 30 يوم)</div>
-  <div class="card" id="dow-chart"></div>
-
-  <!-- ═══ PRODUCTS ════════════════════════════════════════════════ -->
-  <div class="section-title">🏆 المنتجات (آخر 7 أيام)</div>
-  <div class="grid-2">
-    <div class="card table-card">
-      <div class="card-title">⭐ الأعلى إيراداً</div>
-      <table id="top-products-table"></table>
-    </div>
-    <div class="card table-card">
-      <div class="card-title">⚠️ الأقل إيراداً</div>
-      <table id="bot-products-table"></table>
-    </div>
+  <div class="card">
+    <div class="card-title">📆 هذا الشهر MTD</div>
+    <table id="br-mtd"></table>
   </div>
 </div>
 
-<script>
-const SAR = n => 'SAR ' + Number(n).toLocaleString('en-SA', {maximumFractionDigits:0});
-const N   = n => Number(n).toLocaleString('en-SA');
-const PCT = v => {
-  if (v === null || v === undefined) return '';
-  const cls = v > 0 ? 'up' : v < 0 ? 'down' : 'flat';
-  const arrow = v > 0 ? '▲' : v < 0 ? '▼' : '—';
-  return `<span class="kpi-badge ${cls}">${arrow} ${Math.abs(v)}%</span>`;
-};
-const BRANCH_COLORS = ['#c9943a','#3b82f6','#22c55e','#8b5cf6','#f97316','#14b8a6'];
+<!-- ④ ADVANCED BRANCH ANALYTICS -->
+<div class="section-title">🔬 تحليل الفروع المتقدم</div>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">📊 حصة الإيراد MTD</div>
+    <div id="mkt-share"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">🚚 اعتماد التطبيقات — أمس (نسبة + ريال)</div>
+    <div class="legend">
+      <div style="display:flex;align-items:center;gap:4px"><div class="leg-dot" style="background:#c2410c"></div>توصيل</div>
+      <div style="display:flex;align-items:center;gap:4px"><div class="leg-dot" style="background:var(--teal)"></div>ووك إن</div>
+    </div>
+    <div id="delivery-dep"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">📈 نمو الفروع — هذا الأسبوع vs الماضي</div>
+    <table id="wow-table"></table>
+  </div>
+  <div class="card">
+    <div class="card-title">⚡ كفاءة الفروع — متوسط الطلب (أسبوعي)</div>
+    <div id="eff-chart"></div>
+  </div>
+</div>
 
-async function load() {
-  try {
-    const res = await fetch('data.json?t=' + Date.now());
-    const d = await res.json();
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
+<!-- ⑤ CHANNELS -->
+<div class="section-title">📱 قنوات البيع — أمس</div>
+<div id="channels-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px"></div>
+
+<!-- ⑥ DOW ANALYSIS -->
+<div class="section-title">📅 تحليل أيام الأسبوع (هذا الأسبوع vs الماضي)</div>
+<div id="dow-section"></div>
+
+<!-- ⑦ PRODUCTS DAILY -->
+<div class="section-title">🏆 المنتجات اليومية (أمس)</div>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">⭐ الأعلى إيراداً</div>
+    <div id="top-prod"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">⚠️ الأقل إيراداً</div>
+    <div id="bot-prod"></div>
+  </div>
+</div>
+
+</div><!-- #app -->
+
+<script>
+const SAR  = n => 'SAR ' + Number(n||0).toLocaleString('en',{maximumFractionDigits:0});
+const N    = n => Number(n||0).toLocaleString('en');
+const PCT  = (v,cls) => { if(v==null) return '';
+  const c=v>0?'up':v<0?'down':'flat', a=v>0?'▲':v<0?'▼':'—';
+  return `<span class="badge ${c}">${a} ${Math.abs(v)}%</span>`; };
+const COLORS = ['#b8730a','#1d4ed8','#15803d','#7c3aed','#c2410c','#0f766e'];
+
+async function load(){
+  try{
+    const r = await fetch('data.json?t='+Date.now());
+    const d = await r.json();
+    document.getElementById('loading').style.display='none';
+    document.getElementById('app').style.display='block';
     render(d);
-  } catch(e) {
-    document.getElementById('loading').innerHTML = '❌ خطأ في تحميل البيانات';
+  } catch(e){
+    document.getElementById('loading').innerHTML='❌ خطأ في تحميل البيانات';
   }
 }
 
-function render(d) {
-  const m = d.meta || {};
-  document.getElementById('last-updated').textContent = 'آخر تحديث: ' + (m.last_updated || '');
-
-  renderKPIs(d.summary, m);
-  renderBranchTable('branch-yest-table', d.branches?.yesterday || {});
-  renderBranchTable('branch-mtd-table',  d.branches?.mtd || {});
-  renderMarketShare(d.branches?.mtd || {});
-  renderDeliveryDependency(d.branch_channels?.week || {});
-  renderWoWTable(d.branch_wow || {});
-  renderEfficiency(d.branches?.week || {});
-  renderChannels(d.channels?.yesterday || {});
-  renderDOW(d.dow || []);
-  renderProducts('top-products-table', d.top_products || [], true);
-  renderProducts('bot-products-table', d.bot_products || [], false);
+function render(d){
+  const m=d.meta||{};
+  document.getElementById('last-updated').textContent='آخر تحديث: '+(m.last_updated||'');
+  renderRecs(d);
+  renderKPIs(d.summary||{});
+  renderBranchTable('br-yest',d.branches?.yesterday||{},d.branches?.yesterday||{});
+  renderBranchTable('br-mtd',d.branches?.mtd||{},d.branches?.mtd||{});
+  renderMarketShare(d.branches?.mtd||{});
+  renderDeliveryDep(d.branch_channels?.yesterday||{});
+  renderWoW(d.branch_wow||{});
+  renderEfficiency(d.branches?.week||{});
+  renderChannels(d.channels?.yesterday||{}, d.meta?.app_fees||{});
+  renderDOW(d.dow_analysis||{});
+  renderProducts('top-prod', d.products_daily?.top||[], true);
+  renderProducts('bot-prod', d.products_daily?.bot||[], false);
 }
 
-function renderKPIs(summary, meta) {
-  const y = summary?.yesterday || {};
-  const mtd = summary?.mtd || {};
-  const w = summary?.week || {};
-  const cards = [
-    { label:'إيراد أمس', value: SAR(y.revenue||0), sub: N(y.orders||0)+' طلب | متوسط '+SAR(y.avg||0),
-      badge: PCT(y.vs_dob_pct), cls:'gold', icon:'💰' },
-    { label:'MTD هذا الشهر', value: SAR(mtd.revenue||0), sub: 'الشهر الماضي: '+SAR(mtd.prev_mtd_revenue||0),
-      badge: PCT(mtd.vs_prev_pct), cls:'green', icon:'📆' },
-    { label:'هذا الأسبوع', value: SAR(w.revenue||0), sub: N(w.orders||0)+' طلب',
-      badge: PCT(w.vs_prev_pct), cls:'blue', icon:'📈' },
-    { label:'متوسط طلب الأسبوع', value: SAR(w.avg||0), sub: 'متوسط طلب أمس: '+SAR(y.avg||0),
-      badge: '', cls:'purple', icon:'🎯' },
+/* ─── Recommendations ─────────────────────────────── */
+function renderRecs(d){
+  const recs=[];
+  const s=d.summary||{}, bw=d.branch_wow||{}, bc=d.branch_channels?.yesterday||{};
+  const mtd=s.mtd||{}, yest=s.yesterday||{}, week=s.week||{};
+  const tops=d.products_daily?.top||[], bots=d.products_daily?.bot||[];
+
+  // MTD growth
+  if(mtd.vs_prev_pct!=null){
+    if(mtd.vs_prev_pct>=5)
+      recs.push({t:'strength',icon:'📈',title:'نمو شهري قوي',body:`إيراد هذا الشهر نما ${mtd.vs_prev_pct}% عن الشهر الماضي (${SAR(mtd.prev_mtd_revenue)} → ${SAR(mtd.revenue)})`});
+    else if(mtd.vs_prev_pct<0)
+      recs.push({t:'pain',icon:'📉',title:'تراجع في المبيعات الشهرية',body:`المبيعات انخفضت ${Math.abs(mtd.vs_prev_pct)}% مقارنة بالشهر الماضي. يحتاج مراجعة فورية.`});
+  }
+  // WoW
+  if(week.vs_prev_pct!=null){
+    if(week.vs_prev_pct<-5)
+      recs.push({t:'warning',icon:'⚠️',title:'تراجع أسبوعي',body:`مبيعات هذا الأسبوع (${SAR(week.revenue)}) أقل ${Math.abs(week.vs_prev_pct)}% من الأسبوع الماضي (${SAR(week.prev_week_revenue||0)})`});
+    else if(week.vs_prev_pct>=10)
+      recs.push({t:'strength',icon:'🚀',title:'أداء أسبوعي استثنائي',body:`ارتفاع ${week.vs_prev_pct}% عن الأسبوع الماضي — تحقق من السبب وكرره!`});
+  }
+  // Best branch
+  const bwEntries=Object.entries(bw);
+  if(bwEntries.length){
+    const best=bwEntries.find(([,v])=>v.growth_pct===Math.max(...bwEntries.map(([,v])=>v.growth_pct)));
+    const worst=bwEntries.find(([,v])=>v.growth_pct===Math.min(...bwEntries.map(([,v])=>v.growth_pct)));
+    if(best&&best[1].growth_pct>5) recs.push({t:'strength',icon:'🏆',title:`فرع ${best[0]} الأفضل أداءً`,body:`نما ${best[1].growth_pct}% هذا الأسبوع. إيراد ${SAR(best[1].this_week)} vs ${SAR(best[1].prev_week)} الأسبوع الماضي.`});
+    if(worst&&worst[1].growth_pct<-5) recs.push({t:'pain',icon:'🔴',title:`فرع ${worst[0]} يحتاج تدخل`,body:`تراجع ${Math.abs(worst[1].growth_pct)}% هذا الأسبوع. إيراد ${SAR(worst[1].this_week)} vs ${SAR(worst[1].prev_week)}.`});
+  }
+  // Delivery dependency
+  const highDep=Object.entries(bc).filter(([,v])=>v.delivery_pct>70);
+  if(highDep.length>0){
+    const b=highDep[0];
+    recs.push({t:'warning',icon:'📱',title:`اعتماد عالٍ على التطبيقات — ${b[0]}`,body:`${b[1].delivery_pct}% من إيراد ${b[0]} أمس جاء من التطبيقات (${SAR(b[1].delivery_rev)}). زيادة العملاء المباشرين تقلل العمولات.`});
+  }
+  // Top product
+  if(tops[0]) recs.push({t:'opp',icon:'💡',title:`أفضل منتج: ${tops[0].name_en||tops[0].name}`,body:`حقق ${SAR(tops[0].revenue)} أمس بكمية ${N(tops[0].qty)} وحدة. يمكن تعزيز عرضه في التطبيقات.`});
+  // Low performer
+  if(bots[0]) recs.push({t:'opp',icon:'🔍',title:`منتج ضعيف الأداء: ${bots[0].name_en||bots[0].name}`,body:`إيراد ${SAR(bots[0].revenue)} فقط أمس. راجع الكمية المتاحة أو السعر.`});
+
+  const typeClass={strength:'strength',warning:'warning',pain:'pain',opp:'opp'};
+  document.getElementById('rec-grid').innerHTML=recs.slice(0,6).map(r=>`
+    <div class="rec-card ${typeClass[r.t]}">
+      <div class="rec-icon">${r.icon}</div>
+      <div>
+        <div class="rec-title">${r.title}</div>
+        <div class="rec-body">${r.body}</div>
+      </div>
+    </div>`).join('');
+}
+
+/* ─── KPI Cards ───────────────────────────────────── */
+function renderKPIs(s){
+  const y=s.yesterday||{}, m=s.mtd||{}, w=s.week||{};
+  const cards=[
+    {label:'إيراد أمس',value:SAR(y.revenue),
+     compare:`أول أمس: <b>${SAR(y.dob_revenue)}</b> (${N(y.orders)} طلب)`,
+     badge:PCT(y.vs_dob_pct), cls:'gold'},
+    {label:'هذا الشهر MTD',value:SAR(m.revenue),
+     compare:`الشهر الماضي: <b>${SAR(m.prev_mtd_revenue)}</b>`,
+     badge:PCT(m.vs_prev_pct), cls:'green'},
+    {label:'هذا الأسبوع',value:SAR(w.revenue),
+     compare:`الأسبوع الماضي: <b>${SAR(w.prev_week_revenue)}</b>`,
+     badge:PCT(w.vs_prev_pct), cls:'blue'},
+    {label:'متوسط الطلب (أسبوعي)',value:SAR(w.avg),
+     compare:`متوسط أمس: <b>${SAR(y.avg)}</b>  |  ${N(w.orders)} طلب`,
+     badge:'', cls:'purple'},
   ];
-  document.getElementById('kpi-cards').innerHTML = cards.map(c => `
-    <div class="card kpi-card ${c.cls}">
-      <div class="kpi-icon">${c.icon}</div>
+  document.getElementById('kpi-cards').innerHTML=cards.map(c=>`
+    <div class="card kpi ${c.cls}">
       <div class="kpi-label">${c.label}</div>
       <div class="kpi-value">${c.value}</div>
-      <div class="kpi-sub">${c.sub}</div>
+      <div class="kpi-compare">${c.compare}</div>
       ${c.badge}
     </div>`).join('');
 }
 
-function renderBranchTable(id, branches) {
-  const rows = Object.entries(branches);
-  const total = rows.reduce((s,[,v]) => s + v.revenue, 0);
-  document.getElementById(id).innerHTML = `
-    <thead><tr>
-      <th>#</th><th>الفرع</th><th>الإيراد</th><th>الطلبات</th><th>متوسط</th><th>حصة</th>
-    </tr></thead>
-    <tbody>
-    ${rows.map(([b,v],i) => {
-      const share = total ? Math.round(v.revenue/total*100) : 0;
-      const rankCls = i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-other';
+/* ─── Branch Table ────────────────────────────────── */
+function renderBranchTable(id, branches){
+  const rows=Object.entries(branches);
+  const total=rows.reduce((s,[,v])=>s+v.revenue,0);
+  document.getElementById(id).innerHTML=`
+    <thead><tr><th>#</th><th>الفرع</th><th>الإيراد</th><th>طلبات</th><th>متوسط</th><th>حصة</th></tr></thead>
+    <tbody>${rows.map(([b,v],i)=>{
+      const sh=total?Math.round(v.revenue/total*100):0, rc=i===0?'r1':i===1?'r2':i===2?'r3':'r-';
       return `<tr>
-        <td><span class="rank-badge ${rankCls}">${i+1}</span></td>
-        <td style="font-weight:600">${b}</td>
-        <td style="color:#fff;font-weight:700">${SAR(v.revenue)}</td>
+        <td><span class="rank ${rc}">${i+1}</span></td>
+        <td style="font-weight:600;color:${COLORS[i%6]}">${b}</td>
+        <td style="font-weight:700">${SAR(v.revenue)}</td>
         <td>${N(v.orders)}</td>
-        <td style="color:var(--gold2)">${SAR(v.avg)}</td>
+        <td style="color:var(--gold)">${SAR(v.avg)}</td>
         <td>
-          <div style="display:flex;align-items:center;gap:6px">
-            <div style="flex:1;height:4px;background:rgba(255,255,255,0.1);border-radius:9px">
-              <div style="width:${share}%;height:100%;background:${BRANCH_COLORS[i%6]};border-radius:9px"></div>
+          <div style="display:flex;align-items:center;gap:5px">
+            <div style="flex:1;height:4px;background:var(--bg2);border-radius:9px">
+              <div style="width:${sh}%;height:100%;background:${COLORS[i%6]};border-radius:9px"></div>
             </div>
-            <span style="font-size:0.72rem;color:var(--muted)">${share}%</span>
+            <span style="font-size:.7rem;color:var(--muted)">${sh}%</span>
           </div>
         </td>
       </tr>`;
-    }).join('')}
-    </tbody>`;
+    }).join('')}</tbody>`;
 }
 
-function renderMarketShare(branches) {
-  const rows = Object.entries(branches);
-  const total = rows.reduce((s,[,v]) => s+v.revenue, 0);
-  document.getElementById('market-share-bars').innerHTML = rows.map(([b,v],i) => {
-    const pct = total ? (v.revenue/total*100).toFixed(1) : 0;
-    const color = BRANCH_COLORS[i % 6];
-    return `
-      <div class="bar-row">
-        <div class="bar-label" style="color:${color};font-weight:600">${b}</div>
-        <div class="bar-track">
-          <div class="bar-fill" style="width:${pct}%;background:${color}"></div>
-        </div>
-        <div style="text-align:left;min-width:80px">
-          <div style="font-size:0.82rem;font-weight:700;color:#fff">${pct}%</div>
-          <div style="font-size:0.7rem;color:var(--muted)">${SAR(v.revenue)}</div>
-        </div>
-      </div>`;
+/* ─── Market Share ────────────────────────────────── */
+function renderMarketShare(branches){
+  const rows=Object.entries(branches), total=rows.reduce((s,[,v])=>s+v.revenue,0);
+  document.getElementById('mkt-share').innerHTML=rows.map(([b,v],i)=>{
+    const p=total?(v.revenue/total*100).toFixed(1):0, c=COLORS[i%6];
+    return `<div class="bar-row">
+      <div class="bar-lbl" style="color:${c};font-weight:600">${b}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${p}%;background:${c}"></div></div>
+      <div class="bar-val"><b>${p}%</b><br><span style="font-size:.7rem">${SAR(v.revenue)}</span></div>
+    </div>`;
   }).join('');
 }
 
-function renderDeliveryDependency(branchChannels) {
-  const entries = Object.entries(branchChannels)
-    .sort((a,b) => b[1].delivery_pct - a[1].delivery_pct);
-  document.getElementById('delivery-dependency').innerHTML = entries.map(([b,v]) => {
-    const delPct = v.delivery_pct || 0;
-    const dirPct = 100 - delPct;
-    return `
-      <div style="margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <span style="font-size:0.82rem;font-weight:600">${b}</span>
-          <div style="display:flex;gap:10px;font-size:0.75rem">
-            <span style="color:var(--orange)">🚚 ${delPct}%</span>
-            <span style="color:var(--teal)">🏪 ${dirPct.toFixed(1)}%</span>
-          </div>
+/* ─── Delivery Dependency (daily) ─────────────────── */
+function renderDeliveryDep(bc){
+  const entries=Object.entries(bc).sort((a,b)=>b[1].delivery_pct-a[1].delivery_pct);
+  document.getElementById('delivery-dep').innerHTML=entries.map(([b,v])=>{
+    const dp=v.delivery_pct||0, wp=100-dp;
+    return `<div class="dual-wrap">
+      <div class="dual-header">
+        <span class="dual-name">${b}</span>
+        <div class="dual-stats">
+          <span style="color:#c2410c">🚚 ${dp}% | ${SAR(v.delivery_rev)}</span>
+          <span style="color:var(--teal)">🏪 ${wp.toFixed(1)}% | ${SAR(v.direct_rev)}</span>
         </div>
-        <div class="dual-bar">
-          <div class="dual-delivery" style="width:${delPct}%"></div>
-          <div class="dual-direct" style="width:${dirPct}%"></div>
-        </div>
-      </div>`;
+      </div>
+      <div class="dual-bar">
+        <div class="dual-del" style="width:${dp}%"></div>
+        <div class="dual-dir" style="width:${wp}%"></div>
+      </div>
+    </div>`;
   }).join('');
 }
 
-function renderWoWTable(branchWow) {
-  const rows = Object.entries(branchWow);
-  document.getElementById('wow-table').innerHTML = `
-    <thead><tr>
-      <th>الفرع</th>
-      <th>هذا الأسبوع</th>
-      <th>الأسبوع الماضي</th>
-      <th>النمو</th>
-      <th>متوسط الطلب</th>
-    </tr></thead>
-    <tbody>
-    ${rows.map(([b,v],i) => {
-      const g = v.growth_pct;
-      const gCls = g > 0 ? 'up' : g < 0 ? 'down' : 'flat';
-      const arrow = g > 0 ? '▲' : g < 0 ? '▼' : '—';
-      const color = BRANCH_COLORS[i % 6];
+/* ─── WoW Table ───────────────────────────────────── */
+function renderWoW(bw){
+  const rows=Object.entries(bw);
+  document.getElementById('wow-table').innerHTML=`
+    <thead><tr><th>الفرع</th><th>هذا الأسبوع</th><th>الماضي</th><th>نمو</th><th>متوسط</th></tr></thead>
+    <tbody>${rows.map(([b,v],i)=>{
+      const g=v.growth_pct, gc=g>0?'up':g<0?'down':'flat', a=g>0?'▲':g<0?'▼':'—';
       return `<tr>
-        <td style="font-weight:600;color:${color}">${b}</td>
-        <td style="font-weight:700;color:#fff">${SAR(v.this_week)}</td>
+        <td style="font-weight:600;color:${COLORS[i%6]}">${b}</td>
+        <td style="font-weight:700">${SAR(v.this_week)}</td>
         <td style="color:var(--muted)">${SAR(v.prev_week)}</td>
-        <td><span class="growth-badge ${gCls}">${arrow} ${Math.abs(g)}%</span></td>
-        <td style="color:var(--gold2)">${SAR(v.avg_this)}</td>
+        <td><span class="badge ${gc}">${a} ${Math.abs(g)}%</span></td>
+        <td style="color:var(--gold)">${SAR(v.avg_this)}</td>
       </tr>`;
-    }).join('')}
-    </tbody>`;
+    }).join('')}</tbody>`;
 }
 
-function renderEfficiency(branches) {
-  const rows = Object.entries(branches);
-  if (!rows.length) return;
-  const totalRev = rows.reduce((s,[,v])=>s+v.revenue,0);
-  const totalOrd = rows.reduce((s,[,v])=>s+v.orders,0);
-  const fleetAvg = totalOrd ? totalRev/totalOrd : 0;
-  const maxAvg = Math.max(...rows.map(([,v])=>v.avg), fleetAvg * 1.5);
-  const avgPct = fleetAvg / maxAvg * 100;
-
-  document.getElementById('efficiency-chart').innerHTML = rows.map(([b,v],i) => {
-    const barPct = maxAvg ? (v.avg / maxAvg * 100) : 0;
-    const isAbove = v.avg >= fleetAvg;
-    const diffPct = fleetAvg ? ((v.avg - fleetAvg)/fleetAvg*100).toFixed(1) : 0;
-    const color = BRANCH_COLORS[i % 6];
-    return `
-      <div class="eff-row">
-        <div class="eff-name" style="color:${color};font-weight:600">${b}</div>
-        <div class="eff-bar-wrap">
-          <div class="eff-bar ${isAbove?'above':'below'}" style="width:${barPct}%">
-            ${SAR(v.avg)}
-            <span style="margin-right:6px;font-size:0.68rem;opacity:0.8">
-              ${isAbove?'▲':'▼'} ${Math.abs(diffPct)}%
-            </span>
-          </div>
-          <div class="eff-avg-line" style="right:${100-avgPct}%"></div>
+/* ─── Efficiency ──────────────────────────────────── */
+function renderEfficiency(br){
+  const rows=Object.entries(br);
+  if(!rows.length) return;
+  const totR=rows.reduce((s,[,v])=>s+v.revenue,0);
+  const totO=rows.reduce((s,[,v])=>s+v.orders,0);
+  const fleet=totO?totR/totO:0;
+  const mx=Math.max(...rows.map(([,v])=>v.avg),fleet*1.4);
+  const avgPct=mx?fleet/mx*100:0;
+  document.getElementById('eff-chart').innerHTML=rows.map(([b,v],i)=>{
+    const bp=mx?v.avg/mx*100:0, above=v.avg>=fleet;
+    const diff=fleet?((v.avg-fleet)/fleet*100).toFixed(1):0;
+    return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <div style="width:88px;font-size:.8rem;font-weight:600;color:${COLORS[i%6]};text-align:right">${b}</div>
+      <div style="flex:1;position:relative;height:22px">
+        <div style="width:${bp}%;height:100%;border-radius:5px;background:${above?'#dcfce7':'#fee2e2'};border:1px solid ${above?'#86efac':'#fca5a5'};display:flex;align-items:center;padding:0 6px;font-size:.72rem;font-weight:700;color:${above?'var(--green)':'var(--red)'};white-space:nowrap">
+          ${SAR(v.avg)} ${above?'▲':'▼'}${Math.abs(diff)}%
         </div>
-      </div>`;
-  }).join('') + `
-    <div style="font-size:0.75rem;color:var(--gold2);text-align:center;margin-top:4px">
-      متوسط الشبكة: ${SAR(fleetAvg.toFixed(1))} لكل طلب
+        <div style="position:absolute;top:0;bottom:0;right:${100-avgPct}%;width:2px;background:var(--gold);border-radius:2px"></div>
+      </div>
     </div>`;
+  }).join('') + `<div style="text-align:center;font-size:.74rem;color:var(--gold);margin-top:4px">⬦ متوسط الشبكة: ${SAR(fleet.toFixed(1))} / طلب</div>`;
 }
 
-function renderChannels(channels) {
-  const entries = Object.entries(channels).slice(0,6);
-  const total = entries.reduce((s,[,v])=>s+v.revenue,0);
-  const colors = ['#c9943a','#3b82f6','#22c55e','#8b5cf6','#f97316','#14b8a6'];
-  document.getElementById('channel-cards').innerHTML = entries.map(([ch,v],i) => {
-    const share = total ? (v.revenue/total*100).toFixed(1) : 0;
-    const color = colors[i%colors.length];
-    return `
-      <div class="card" style="border-top:3px solid ${color}">
-        <div style="font-size:0.82rem;color:var(--muted);margin-bottom:6px">${ch}</div>
-        <div style="font-size:1.25rem;font-weight:900;color:#fff">${SAR(v.revenue)}</div>
-        <div style="font-size:0.75rem;color:var(--muted);margin-top:3px">${N(v.orders)} طلب | متوسط ${SAR(v.avg)}</div>
-        <div style="margin-top:8px">
-          <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:9px">
-            <div style="width:${share}%;height:100%;background:${color};border-radius:9px"></div>
-          </div>
-          <div style="font-size:0.7rem;color:${color};margin-top:4px">${share}% من الإيراد</div>
-        </div>
-      </div>`;
+/* ─── Channels (all 9 apps + Walk-In) ────────────── */
+function renderChannels(channels, fees){
+  const WALK='ووك إن';
+  const entries=Object.entries(channels);
+  const total=entries.reduce((s,[,v])=>s+(v.revenue||0),0);
+  const chColors={[WALK]:'#0f766e','HungerStation':'#ef4444','Keeta':'#f97316','Ninja':'#6366f1',
+    'Jahez':'#0ea5e9','Mrsool':'#8b5cf6','Mr.Mandoob':'#ec4899','ToYou':'#22c55e',
+    'Taker':'#a16207','TheChefz':'#64748b'};
+  const feeLabel = k => { const f=fees[k]; return f?`عمولة ${Math.round(f.fee*100)}%`:''; };
+  document.getElementById('channels-grid').innerHTML=entries.map(([ch,v])=>{
+    const color=chColors[ch]||'#64748b', sh=total?(v.revenue/total*100).toFixed(1):0;
+    return `<div class="ch-card" style="border-top:3px solid ${color}">
+      <div class="ch-name" style="color:${color}">${ch}</div>
+      <div class="ch-value">${SAR(v.revenue)}</div>
+      <div class="ch-sub">${N(v.orders)} طلب | متوسط ${SAR(v.avg)}</div>
+      ${ch!==WALK&&fees[ch]?`<div class="ch-fee">عمولة ${Math.round(fees[ch].fee*100)}% + ${Math.round(fees[ch].payment*100)}%</div>`:''}
+      <div class="ch-bar"><div class="ch-bar-fill" style="width:${sh}%;background:${color}"></div></div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:2px">${sh}% من الإيراد</div>
+    </div>`;
   }).join('');
 }
 
-function renderDOW(dow) {
-  if (!dow.length) return;
-  const maxRev = Math.max(...dow.map(d=>d.revenue));
-  document.getElementById('dow-chart').innerHTML = `
-    <div style="display:flex;gap:8px;align-items:flex-end;height:120px;padding:0 8px">
-      ${dow.map(d => {
-        const pct = maxRev ? (d.revenue/maxRev*100) : 0;
-        const isBest = d.revenue === maxRev;
-        return `
-          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
-            <div style="font-size:0.65rem;color:var(--muted)">${SAR(d.revenue)}</div>
-            <div style="width:100%;height:${Math.max(pct,4)}%;background:${isBest?'var(--gold)':'rgba(201,148,58,0.3)'};border-radius:4px 4px 0 0;transition:height 0.5s"></div>
-            <div style="font-size:0.72rem;color:${isBest?'var(--gold2)':'var(--muted)'};font-weight:${isBest?'700':'400'}">${d.day_ar}</div>
-          </div>`;
-      }).join('')}
+/* ─── DOW Analysis ────────────────────────────────── */
+function renderDOW(dow){
+  const tw=dow.this_week||{}, pw=dow.prev_week||{};
+  if(!tw.weekdays) return;
+  const allRev=[...tw.weekdays,...tw.weekends].map(d=>d.revenue);
+  const maxRev=Math.max(...allRev,1);
+
+  function dayRows(days, prevDays){
+    return days.map((d,i)=>{
+      const p=prevDays?.[i]||{}, bp=d.revenue/maxRev*100, pp=p.revenue?p.revenue/maxRev*100:0;
+      const g=p.revenue?((d.revenue-p.revenue)/p.revenue*100).toFixed(1):0;
+      const gc=g>0?'var(--green)':g<0?'var(--red)':'var(--muted)';
+      return `<div class="dow-day-row">
+        <div class="dow-day-name">${d.day_ar}</div>
+        <div style="flex:1">
+          <div class="dow-day-bar">
+            <div class="dow-day-fill" style="width:${bp}%;background:var(--navy)">
+              ${d.revenue>0?SAR(d.revenue):'—'}
+            </div>
+          </div>
+          <div class="dow-day-prev" style="width:${pp}%;background:var(--muted)"></div>
+        </div>
+        <div style="font-size:.72rem;min-width:60px;text-align:left;color:${gc};font-weight:${g!=0?'700':'400'}">
+          ${g>0?'▲':g<0?'▼':'—'}${Math.abs(g)}%
+        </div>
+        <div style="font-size:.72rem;color:var(--muted);min-width:65px;text-align:left">${N(d.orders)} طلب</div>
+      </div>`;
+    }).join('');
+  }
+
+  const wdT=tw.weekday_total||{}, weT=tw.weekend_total||{};
+  const wdP=pw.weekday_total||{}, weP=pw.weekend_total||{};
+  const wdG=wdP.revenue?((wdT.revenue-wdP.revenue)/wdP.revenue*100).toFixed(1):0;
+  const weG=weP.revenue?((weT.revenue-weP.revenue)/weP.revenue*100).toFixed(1):0;
+
+  document.getElementById('dow-section').innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div class="dow-group weekday">
+        <div class="dow-group-header">
+          <div class="dow-group-title">📅 أيام الأسبوع (أحد — أربعاء)</div>
+          <div class="dow-total">
+            <b>${SAR(wdT.revenue)}</b>
+            <span style="font-size:.72rem;color:${wdG>0?'var(--green)':'var(--red)'}"> ${wdG>0?'▲':'▼'}${Math.abs(wdG)}%</span>
+            <div style="font-size:.7rem;color:var(--muted)">الماضي: ${SAR(wdP.revenue)}</div>
+          </div>
+        </div>
+        ${dayRows(tw.weekdays, pw.weekdays)}
+      </div>
+      <div class="dow-group weekend">
+        <div class="dow-group-header">
+          <div class="dow-group-title">🎉 نهاية الأسبوع (خميس — سبت)</div>
+          <div class="dow-total">
+            <b>${SAR(weT.revenue)}</b>
+            <span style="font-size:.72rem;color:${weG>0?'var(--green)':'var(--red)'}"> ${weG>0?'▲':'▼'}${Math.abs(weG)}%</span>
+            <div style="font-size:.7rem;color:var(--muted)">الماضي: ${SAR(weP.revenue)}</div>
+          </div>
+        </div>
+        ${dayRows(tw.weekends, pw.weekends)}
+      </div>
+    </div>
+    <div class="card" style="margin-top:12px;padding:12px 16px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div>
+          <div style="font-size:.76rem;color:var(--muted);margin-bottom:4px">إجمالي أيام الأسبوع</div>
+          <div style="font-size:1.2rem;font-weight:900">${SAR(wdT.revenue)}</div>
+          <div style="font-size:.74rem;color:var(--muted)">${N(wdT.orders)} طلب | متوسط ${SAR(wdT.avg)}</div>
+        </div>
+        <div>
+          <div style="font-size:.76rem;color:var(--muted);margin-bottom:4px">إجمالي نهاية الأسبوع</div>
+          <div style="font-size:1.2rem;font-weight:900">${SAR(weT.revenue)}</div>
+          <div style="font-size:.74rem;color:var(--muted)">${N(weT.orders)} طلب | متوسط ${SAR(weT.avg)}</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;height:6px;border-radius:99px;background:var(--bg2);overflow:hidden">
+        <div style="height:100%;background:var(--blue);width:${((wdT.revenue||0)/((wdT.revenue||0)+(weT.revenue||1))*100).toFixed(1)}%;transition:width .6s"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-top:3px">
+        <span>أيام الأسبوع ${(((wdT.revenue||0)/Math.max((wdT.revenue||0)+(weT.revenue||1),1))*100).toFixed(1)}%</span>
+        <span>نهاية الأسبوع ${(((weT.revenue||0)/Math.max((wdT.revenue||0)+(weT.revenue||1),1))*100).toFixed(1)}%</span>
+      </div>
     </div>`;
 }
 
-function renderProducts(id, products, isTop) {
-  document.getElementById(id).innerHTML = `
-    <thead><tr><th>#</th><th>المنتج</th><th>الكمية</th><th>الإيراد</th></tr></thead>
-    <tbody>
-    ${(products||[]).map((p,i) => `
-      <tr>
-        <td><span class="rank-badge ${i===0&&isTop?'rank-1':i===1&&isTop?'rank-2':i===2&&isTop?'rank-3':'rank-other'}">${i+1}</span></td>
-        <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${p.name}">${p.name}</td>
-        <td>${N(p.qty)}</td>
-        <td style="font-weight:700;color:${isTop?'var(--green)':'var(--red)'}">${SAR(p.revenue)}</td>
-      </tr>`).join('')}
-    </tbody>`;
+/* ─── Products ────────────────────────────────────── */
+function renderProducts(id, products, isTop){
+  const colors=isTop?['#b8730a','#94a3b8','#92400e','#64748b','#64748b']:['#ef4444','#f97316','#64748b','#64748b','#64748b'];
+  document.getElementById(id).innerHTML=products.map((p,i)=>{
+    const name = p.name_en || (p.name||'').split('|')[0].trim() || p.name||'';
+    const bg=isTop?['#fef3c7','#f1f5f9','#fef3c7','#f8fafc','#f8fafc']:['#fee2e2','#fff7ed','#f8fafc','#f8fafc','#f8fafc'];
+    return `<div class="prod-row">
+      <div class="prod-rank" style="background:${bg[i]};color:${colors[i]}">${i+1}</div>
+      <div class="prod-name">
+        <div class="prod-name-en" title="${name}">${name}</div>
+        ${p.code?`<div class="prod-code">#${p.code}</div>`:''}
+      </div>
+      <div class="prod-stats">
+        <div class="prod-rev" style="color:${isTop?'var(--green)':'var(--red)'}">${SAR(p.revenue)}</div>
+        <div class="prod-qty">${N(p.qty)} وحدة</div>
+      </div>
+    </div>`;
+  }).join('')||'<div style="color:var(--muted);font-size:.82rem;padding:10px 0">لا توجد بيانات</div>';
 }
 
 load();
