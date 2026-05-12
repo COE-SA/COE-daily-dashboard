@@ -78,7 +78,7 @@ def detect_channel(partner_name):
 
 def agg(orders):
     rev = sum(o['amount_total'] for o in orders)
-            disc = 0
+    disc = 0
     cnt = len(orders)
     return {
         'revenue': round(rev,2),
