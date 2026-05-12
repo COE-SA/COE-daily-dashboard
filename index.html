@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COE Daily Dashboard | Munch Bakery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:  #0f2044;
+  --blue:  #1a3a6b;
+  --gold:  #c9943a;
+  --gold2: #f0b94a;
+  --bg:    #f0f2f7;
+  --card:  #ffffff;
+  --text:  #1a1a2e;
+  --muted: #6b7280;
+  --up:    #16a34a;
+  --down:  #dc2626;
+  --neu:   #2563eb;
+  --radius:14px;
+  --shadow:0 2px 12px rgba(15,32,68,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── Header ── */
+.hdr{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);
+     padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.hdr-brand{display:flex;align-items:center;gap:.75rem}
+.hdr-logo{width:44px;height:44px;border-radius:50%;background:var(--gold);
+          display:flex;align-items:center;justify-content:center;
+          font-size:20px;font-weight:800;color:#fff;flex-shrink:0}
+.hdr-names{color:#fff}
+.hdr-ar{font-size:15px;font-weight:700;line-height:1.2}
+.hdr-en{font-size:11px;color:rgba(255,255,255,.65);margin-top:1px}
+.hdr-meta{text-align:left;color:rgba(255,255,255,.7);font-size:12px;line-height:1.8}
+.hdr-date{color:var(--gold2);font-weight:700;font-size:14px}
+
+/* ── Layout ── */
+.page{padding:1.25rem 1.5rem;max-width:1400px;margin:0 auto}
+.section-title{font-size:13px;font-weight:700;color:var(--muted);
+               text-transform:uppercase;letter-spacing:.5px;margin:1.5rem 0 .75rem;
+               padding-right:8px;border-right:3px solid var(--gold)}
+.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
+
+/* ── KPI Card ── */
+.kpi{background:var(--card);border-radius:var(--radius);padding:1.1rem 1.25rem;
+     box-shadow:var(--shadow);border-top:3px solid var(--navy)}
+.kpi.gold{border-top-color:var(--gold)}
+.kpi.green{border-top-color:var(--up)}
+.kpi.red{border-top-color:var(--down)}
+.kpi-label{font-size:11px;color:var(--muted);font-weight:500;margin-bottom:.4rem}
+.kpi-value{font-size:24px;font-weight:800;color:var(--navy);line-height:1.1}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:.35rem;display:flex;align-items:center;gap:.35rem}
+.badge{display:inline-flex;align-items:center;gap:2px;padding:2px 7px;
+       border-radius:100px;font-size:11px;font-weight:700}
+.badge.up{background:#dcfce7;color:var(--up)}
+.badge.down{background:#fee2e2;color:var(--down)}
+.badge.neu{background:#dbeafe;color:var(--neu)}
+
+/* ── Data Card ── */
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.card-head{padding:.7rem 1rem;background:var(--navy);display:flex;
+           align-items:center;justify-content:space-between}
+.card-title{color:#fff;font-size:13px;font-weight:700}
+.card-tag{background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);
+          font-size:11px;padding:2px 8px;border-radius:100px;font-weight:600}
+.card-body{padding:.75rem 0}
+
+/* ── Branch Table ── */
+.br-table{width:100%;border-collapse:collapse}
+.br-table th{font-size:11px;color:var(--muted);font-weight:600;padding:5px 1rem;
+             border-bottom:1px solid #e5e7eb;background:#fafafa;text-align:right}
+.br-table td{font-size:12px;padding:8px 1rem;border-bottom:1px solid #f3f4f6;text-align:right}
+.br-table tr:last-child td{border-bottom:none}
+.br-table tr:hover td{background:#fafafa}
+.br-rank{width:24px;height:24px;border-radius:50%;display:inline-flex;
+         align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
+.br-rank.r1{background:var(--gold)}
+.br-rank.r2{background:#9ca3af}
+.br-rank.r3{background:#b45309}
+.br-rank.r4,.br-rank.r5,.br-rank.r6{background:#d1d5db;color:#6b7280}
+.br-bar-bg{height:5px;background:#f3f4f6;border-radius:100px;margin-top:3px;width:100%}
+.br-bar{height:5px;background:var(--navy);border-radius:100px}
+
+/* ── Product rows ── */
+.prod-row{display:flex;align-items:center;justify-content:space-between;
+          padding:8px 1rem;border-bottom:1px solid #f3f4f6;gap:.75rem}
+.prod-row:last-child{border-bottom:none}
+.prod-name{font-size:12px;color:var(--text);flex:1;white-space:nowrap;
+           overflow:hidden;text-overflow:ellipsis}
+.prod-rev{font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap}
+.prod-qty{font-size:11px;color:var(--muted);white-space:nowrap}
+.prod-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;
+          justify-content:center;font-size:11px;font-weight:700;
+          background:var(--navy);color:#fff;flex-shrink:0}
+.prod-num.bot{background:#fecaca;color:var(--down)}
+
+/* ── DOW bars ── */
+.dow-row{display:flex;align-items:center;gap:.6rem;padding:5px 1rem}
+.dow-day{font-size:11px;font-weight:600;color:var(--muted);min-width:38px;text-align:right}
+.dow-bar-bg{flex:1;height:18px;background:#f3f4f6;border-radius:4px;overflow:hidden}
+.dow-bar-fill{height:100%;background:var(--navy);border-radius:4px;
+              display:flex;align-items:center;padding:0 6px;min-width:30px}
+.dow-bar-val{font-size:10px;font-weight:700;color:#fff;white-space:nowrap}
+.dow-orders{font-size:10px;color:var(--muted);min-width:50px;text-align:left}
+
+/* ── Channel rows ── */
+.ch-row{display:flex;align-items:center;justify-content:space-between;
+        padding:7px 1rem;border-bottom:1px solid #f3f4f6;gap:.75rem}
+.ch-row:last-child{border-bottom:none}
+.ch-name{font-size:12px;font-weight:600;color:var(--text)}
+.ch-bar-bg{flex:1;height:6px;background:#f3f4f6;border-radius:100px;overflow:hidden}
+.ch-bar{height:100%;border-radius:100px}
+.ch-pct{font-size:11px;color:var(--muted);min-width:35px;text-align:left}
+.ch-rev{font-size:12px;font-weight:700;color:var(--navy)}
+
+/* ── Loading / error ── */
+.loading{text-align:center;padding:3rem;color:var(--muted);font-size:15px}
+.error{background:#fee2e2;color:var(--down);padding:1rem 1.5rem;
+       border-radius:var(--radius);font-size:13px;margin:1rem 0}
+
+/* ── Footer ── */
+.footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:11px;
+        border-top:1px solid #e5e7eb;margin-top:2rem}
+.footer span{color:var(--navy);font-weight:600}
+
+@media(max-width:900px){
+  .grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .grid-4,.grid-3,.grid-2{grid-template-columns:1fr}
+  .page{padding:.75rem}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-brand">
+    <div class="hdr-logo">ب</div>
+    <div class="hdr-names">
+      <div class="hdr-ar">شركة بوصلة التميز التجارية</div>
+      <div class="hdr-en">Compass of Excellence Co. &nbsp;|&nbsp; Munch Bakery Franchise</div>
+    </div>
+  </div>
+  <div class="hdr-meta">
+    <div class="hdr-date" id="hdr-date">—</div>
+    <div>آخر تحديث: <span id="hdr-updated">—</span></div>
+    <div id="hdr-period">—</div>
+  </div>
+</header>
+
+<main class="page">
+  <div id="app"><div class="loading">جارٍ تحميل البيانات...</div></div>
+</main>
+
+<footer class="footer">
+  <span>COE Daily Dashboard</span> &nbsp;·&nbsp; Munch Bakery &nbsp;·&nbsp;
+  يتجدد تلقائياً كل يوم في 06:00 بتوقيت الرياض
+</footer>
+
+<script>
+const SAR = n => 'SAR ' + Math.round(n).toLocaleString('en');
+const PCT = n => (n > 0 ? '+' : '') + n.toFixed(1) + '%';
+const badge = (pct, label='') => {
+  const cls = pct > 0 ? 'up' : pct < 0 ? 'down' : 'neu';
+  const arrow = pct > 0 ? '↑' : pct < 0 ? '↓' : '→';
+  return `<span class="badge ${cls}">${arrow} ${PCT(pct)}${label}</span>`;
+};
+
+const CH_COLORS = {
+  'Direct':'#1a3a6b','HungerStation':'#f97316','Keeta':'#8b5cf6',
+  'Ninja':'#06b6d4','Taker':'#22c55e','Jahez':'#eab308',
+  'Marsool':'#ec4899','Mrsool':'#ec4899','Mr.Mandoob':'#6366f1',
+  'ToYou':'#14b8a6','Other':'#9ca3af'
+};
+
+function kpiCard(label, value, sub, badgeHtml='', cls='') {
+  return `<div class="kpi ${cls}">
+    <div class="kpi-label">${label}</div>
+    <div class="kpi-value">${value}</div>
+    <div class="kpi-sub">${badgeHtml}${sub ? `<span>${sub}</span>` : ''}</div>
+  </div>`;
+}
+
+function renderBranchTable(branches, label) {
+  const rows = Object.entries(branches);
+  const maxRev = rows[0]?.[1]?.revenue || 1;
+  const rankClass = ['r1','r2','r3','r4','r5','r6'];
+  return `<div class="card">
+    <div class="card-head">
+      <span class="card-title">🏪 ترتيب الفروع — ${label}</span>
+      <span class="card-tag">${rows.length} فروع</span>
+    </div>
+    <div class="card-body">
+      <table class="br-table">
+        <thead><tr>
+          <th>#</th><th>الفرع</th><th>الإيراد (SAR)</th><th>الطلبات</th><th>متوسط الطلب</th><th>الخصم</th>
+        </tr></thead>
+        <tbody>${rows.map(([b,s],i) => `<tr>
+          <td><span class="br-rank ${rankClass[i]||'r6'}">${i+1}</span></td>
+          <td><div>${b}</div>
+              <div class="br-bar-bg"><div class="br-bar" style="width:${Math.round(s.revenue/maxRev*100)}%"></div></div>
+          </td>
+          <td><strong>${SAR(s.revenue)}</strong></td>
+          <td>${s.orders}</td>
+          <td>${SAR(s.avg)}</td>
+          <td style="color:${s.discount>0?'#dc2626':'#6b7280'}">${SAR(s.discount)}</td>
+        </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function renderProducts(products, title, isBottom=false) {
+  return `<div class="card">
+    <div class="card-head">
+      <span class="card-title">${title}</span>
+      <span class="card-tag">آخر 7 أيام</span>
+    </div>
+    <div class="card-body">
+      ${products.map((p,i) => `<div class="prod-row">
+        <span class="prod-num ${isBottom?'bot':''}">${i+1}</span>
+        <span class="prod-name" title="${p.name}">${p.name}</span>
+        <span class="prod-qty">${Math.round(p.qty)} وحدة</span>
+        <span class="prod-rev">${SAR(p.revenue)}</span>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+function renderDOW(dow) {
+  const maxRev = Math.max(...dow.map(d=>d.revenue),1);
+  return `<div class="card">
+    <div class="card-head">
+      <span class="card-title">📅 توزيع المبيعات حسب اليوم</span>
+      <span class="card-tag">آخر 30 يوم</span>
+    </div>
+    <div class="card-body" style="padding:.5rem 0">
+      ${dow.map(d => {
+        const pct = Math.max(Math.round(d.revenue/maxRev*100),3);
+        return `<div class="dow-row">
+          <span class="dow-day">${d.day_ar}</span>
+          <div class="dow-bar-bg">
+            <div class="dow-bar-fill" style="width:${pct}%">
+              <span class="dow-bar-val">${SAR(d.revenue)}</span>
+            </div>
+          </div>
+          <span class="dow-orders">${d.orders} طلب</span>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+function renderChannels(channels, label) {
+  const total = Object.values(channels).reduce((s,c)=>s+c.revenue,0) || 1;
+  return `<div class="card">
+    <div class="card-head">
+      <span class="card-title">📱 قنوات البيع — ${label}</span>
+      <span class="card-tag">${SAR(total)}</span>
+    </div>
+    <div class="card-body">
+      ${Object.entries(channels).map(([ch,s]) => {
+        const pct = (s.revenue/total*100).toFixed(1);
+        const color = CH_COLORS[ch] || '#9ca3af';
+        return `<div class="ch-row">
+          <span class="ch-name">${ch}</span>
+          <div class="ch-bar-bg"><div class="ch-bar" style="width:${pct}%;background:${color}"></div></div>
+          <span class="ch-pct">${pct}%</span>
+          <span class="ch-rev">${SAR(s.revenue)}</span>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+async function render() {
+  try {
+    const res = await fetch('data.json?t=' + Date.now());
+    if (!res.ok) throw new Error('data.json not found');
+    const d = await res.json();
+
+    // Header
+    const yestDate = new Date(d.meta.yesterday);
+    document.getElementById('hdr-date').textContent =
+      yestDate.toLocaleDateString('ar-SA', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    document.getElementById('hdr-updated').textContent = d.meta.last_updated;
+    document.getElementById('hdr-period').textContent =
+      `MTD: ${d.meta.mtd_start} → ${d.meta.yesterday}`;
+
+    const s = d.summary;
+    const yest = s.yesterday, mtd = s.mtd, week = s.week;
+
+    // Build HTML
+    let html = '';
+
+    // ── KPI Row 1: Yesterday ──────────────────────────────────────────────
+    html += `<div class="section-title">أمس — ${d.meta.yesterday}</div>
+    <div class="grid-4">
+      ${kpiCard('إيراد أمس', SAR(yest.revenue), 'مقارنة بأول أمس', badge(yest.vs_dob_pct), 'gold')}
+      ${kpiCard('عدد الطلبات', yest.orders.toLocaleString(), `متوسط ${SAR(yest.avg)} / طلب`, '', '')}
+      ${kpiCard('إجمالي الخصومات', SAR(yest.discount), `${((yest.discount/(yest.revenue+yest.discount)||0)*100).toFixed(1)}% من الإيراد`, '', 'red')}
+      ${kpiCard('مقارنة اليوم', PCT(yest.vs_dob_pct), 'اليوم السابق', badge(yest.vs_dob_pct), yest.vs_dob_pct>=0?'green':'red')}
+    </div>`;
+
+    // ── KPI Row 2: MTD + Week ─────────────────────────────────────────────
+    html += `<div class="section-title">الشهر الحالي والأسبوع</div>
+    <div class="grid-4">
+      ${kpiCard('مبيعات الشهر (MTD)', SAR(mtd.revenue), `${d.meta.mtd_start} → ${d.meta.yesterday}`, badge(mtd.vs_prev_pct,' مقارنة بالشهر الماضي'), 'gold')}
+      ${kpiCard('طلبات الشهر', mtd.orders.toLocaleString(), `متوسط ${SAR(mtd.avg)} / طلب`, '', '')}
+      ${kpiCard('مبيعات الأسبوع (7 أيام)', SAR(week.revenue), d.meta.week_start + ' ← ' + d.meta.yesterday, badge(week.vs_prev_pct,' مقارنة بالأسبوع الماضي'), '')}
+      ${kpiCard('طلبات الأسبوع', week.orders.toLocaleString(), `متوسط ${SAR(week.avg)} / طلب`, '', '')}
+    </div>`;
+
+    // ── Branches ──────────────────────────────────────────────────────────
+    html += `<div class="section-title">أداء الفروع</div>
+    <div class="grid-2">
+      ${renderBranchTable(d.branches.yesterday, 'أمس')}
+      ${renderBranchTable(d.branches.mtd, 'الشهر الحالي')}
+    </div>`;
+
+    // ── Products + DOW ────────────────────────────────────────────────────
+    html += `<div class="section-title">المنتجات والتوزيع الزمني</div>
+    <div class="grid-3">
+      ${renderProducts(d.top_products, '🏆 أفضل 5 منتجات')}
+      ${renderProducts(d.bot_products, '⚠️ أضعف 5 منتجات', true)}
+      ${renderDOW(d.dow)}
+    </div>`;
+
+    // ── Channels ──────────────────────────────────────────────────────────
+    html += `<div class="section-title">قنوات البيع والتطبيقات</div>
+    <div class="grid-2">
+      ${renderChannels(d.channels.yesterday, 'أمس')}
+      ${renderChannels(d.channels.mtd, 'الشهر الحالي')}
+    </div>`;
+
+    document.getElementById('app').innerHTML = html;
+
+  } catch(err) {
+    document.getElementById('app').innerHTML =
+      `<div class="error">⚠️ خطأ في تحميل البيانات: ${err.message}<br>
+       تأكد من تشغيل fetch.py وأن data.json موجود في الريبو.</div>`;
+  }
+}
+
+render();
+</script>
+</body>
+</html>
