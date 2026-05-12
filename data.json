@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-05-12 10:59",
+    "last_updated": "2026-05-12 11:41",
     "yesterday": "2026-05-11",
     "mtd_start": "2026-05-01",
     "week_start": "2026-05-05"
@@ -239,6 +239,140 @@
         "avg": 9.0,
         "discount": 0
       }
+    }
+  },
+  "branch_channels": {
+    "week": {
+      "Ajaweed": {
+        "direct_rev": 24565.4,
+        "direct_ord": 357,
+        "delivery_rev": 19359.17,
+        "delivery_ord": 210,
+        "delivery_pct": 44.1
+      },
+      "Safa": {
+        "direct_rev": 24701.28,
+        "direct_ord": 282,
+        "delivery_rev": 17936.85,
+        "delivery_ord": 182,
+        "delivery_pct": 42.1
+      },
+      "Defaa": {
+        "direct_rev": 15006.46,
+        "direct_ord": 206,
+        "delivery_rev": 11674.84,
+        "delivery_ord": 161,
+        "delivery_pct": 43.8
+      },
+      "Marwah": {
+        "direct_rev": 26355.26,
+        "direct_ord": 332,
+        "delivery_rev": 18897.6,
+        "delivery_ord": 199,
+        "delivery_pct": 41.8
+      },
+      "Waziriyah": {
+        "direct_rev": 12306.9,
+        "direct_ord": 182,
+        "delivery_rev": 10089.4,
+        "delivery_ord": 118,
+        "delivery_pct": 45.0
+      },
+      "Hamadaniyah": {
+        "direct_rev": 24131.6,
+        "direct_ord": 318,
+        "delivery_rev": 14214.65,
+        "delivery_ord": 153,
+        "delivery_pct": 37.1
+      }
+    },
+    "mtd": {
+      "Ajaweed": {
+        "direct_rev": 36637.76,
+        "direct_ord": 534,
+        "delivery_rev": 29959.67,
+        "delivery_ord": 321,
+        "delivery_pct": 45.0
+      },
+      "Safa": {
+        "direct_rev": 32065.38,
+        "direct_ord": 395,
+        "delivery_rev": 26037.22,
+        "delivery_ord": 260,
+        "delivery_pct": 44.8
+      },
+      "Defaa": {
+        "direct_rev": 24524.53,
+        "direct_ord": 334,
+        "delivery_rev": 21056.03,
+        "delivery_ord": 266,
+        "delivery_pct": 46.2
+      },
+      "Marwah": {
+        "direct_rev": 39670.59,
+        "direct_ord": 515,
+        "delivery_rev": 27414.7,
+        "delivery_ord": 289,
+        "delivery_pct": 40.9
+      },
+      "Waziriyah": {
+        "direct_rev": 19915.25,
+        "direct_ord": 309,
+        "delivery_rev": 16945.8,
+        "delivery_ord": 188,
+        "delivery_pct": 46.0
+      },
+      "Hamadaniyah": {
+        "direct_rev": 38836.1,
+        "direct_ord": 503,
+        "delivery_rev": 22103.8,
+        "delivery_ord": 238,
+        "delivery_pct": 36.3
+      }
+    }
+  },
+  "branch_wow": {
+    "Marwah": {
+      "this_week": 45252.86,
+      "prev_week": 43087.03,
+      "growth_pct": 5.0,
+      "orders_this": 531,
+      "avg_this": 85.2
+    },
+    "Ajaweed": {
+      "this_week": 43924.57,
+      "prev_week": 46130.78,
+      "growth_pct": -4.8,
+      "orders_this": 567,
+      "avg_this": 77.5
+    },
+    "Safa": {
+      "this_week": 42638.13,
+      "prev_week": 33827.57,
+      "growth_pct": 26.0,
+      "orders_this": 464,
+      "avg_this": 91.9
+    },
+    "Hamadaniyah": {
+      "this_week": 38346.25,
+      "prev_week": 43729.9,
+      "growth_pct": -12.3,
+      "orders_this": 471,
+      "avg_this": 81.4
+    },
+    "Defaa": {
+      "this_week": 26681.3,
+      "prev_week": 34412.63,
+      "growth_pct": -22.5,
+      "orders_this": 367,
+      "avg_this": 72.7
+    },
+    "Waziriyah": {
+      "this_week": 22396.3,
+      "prev_week": 25906.65,
+      "growth_pct": -13.5,
+      "orders_this": 300,
+      "avg_this": 74.7
     }
   },
   "dow": [
