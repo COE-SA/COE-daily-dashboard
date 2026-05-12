@@ -1,0 +1,38 @@
+name: Daily Data Refresh
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # 06:00 KSA (UTC+3) every day
+  workflow_dispatch:        # manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests
+
+      - name: Fetch Odoo data
+        env:
+          ODOO_URL:     ${{ secrets.ODOO_URL }}
+          ODOO_DB:      ${{ secrets.ODOO_DB }}
+          ODOO_USER:    ${{ secrets.ODOO_USER }}
+          ODOO_API_KEY: ${{ secrets.ODOO_API_KEY }}
+          OUTPUT_FILE:  data.json
+        run: python fetch.py
+
+      - name: Commit & push data.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --staged --quiet || git commit -m "تحديث يومي $(date +'%Y-%m-%d')"
+          git push
