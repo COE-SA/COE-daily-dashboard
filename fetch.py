@@ -24,6 +24,16 @@ BRANCH_SHORT = {
     'Jed - Al Safa (FR) (Safa)':              'Safa',
 }
 
+# Stable ID-based mapping (reliable even if config names change)
+BRANCH_ID_MAP = {
+    4: 'Hamadaniyyah',
+    5: 'Marwah',
+    6: 'Ajaweed',
+    7: 'Defaa',
+    8: 'Wazeeriyah',
+    9: 'Safa',
+}
+
 # All 9 delivery apps with commission rates (fee_rate, payment_fee, delivery_sar)
 APP_MAP = {
     'hunger station': ('HungerStation', 0.16, 0.025, 12),
@@ -93,8 +103,14 @@ def get_orders(uid, d_from, d_to):
                fields=['config_id','partner_id','amount_total','date_order'],
                limit=10000)
 
-def short_branch(full_name):
-    return BRANCH_SHORT.get(full_name, full_name.split('(')[-1].strip(')').strip())
+def short_branch(config_id_field):
+    """config_id_field is [id, name] tuple from Odoo"""
+    if isinstance(config_id_field, (list, tuple)) and len(config_id_field) >= 2:
+        cid, name = config_id_field[0], config_id_field[1]
+        if cid in BRANCH_ID_MAP:
+            return BRANCH_ID_MAP[cid]
+        return BRANCH_SHORT.get(name, name.split('(')[-1].strip(')').strip())
+    return str(config_id_field)
 
 def detect_channel(partner_name):
     if not partner_name: return WALK_IN
@@ -114,7 +130,7 @@ def agg(orders):
 def by_branch(orders):
     d = {}
     for o in orders:
-        b = short_branch(o['config_id'][1]) if o.get('config_id') else 'Other'
+        b = short_branch(o['config_id']) if o.get('config_id') else 'Other'
         d.setdefault(b,[]).append(o)
     return {b: agg(lst) for b,lst in d.items()}
 
@@ -135,7 +151,7 @@ def by_branch_channel(orders):
     """For each branch: delivery_pct, direct revenue & orders"""
     d = {}
     for o in orders:
-        b = short_branch(o['config_id'][1]) if o.get('config_id') else 'Other'
+        b = short_branch(o['config_id']) if o.get('config_id') else 'Other'
         ch = detect_channel(o['partner_id'][1] if o.get('partner_id') else '')
         is_delivery = ch != WALK_IN
         if b not in d:
