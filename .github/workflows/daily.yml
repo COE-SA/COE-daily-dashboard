@@ -2,8 +2,9 @@ name: Daily Data Refresh
 
 on:
   schedule:
-    - cron: '0 3 * * *'   # 06:00 KSA (UTC+3) every day
-  workflow_dispatch:        # manual trigger
+    - cron: '15 3 * * *'   # 06:15 KSA - primary (avoid top-of-hour overload)
+    - cron: '15 5 * * *'   # 08:15 KSA - backup if primary skipped
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -22,17 +23,17 @@ jobs:
 
       - name: Fetch Odoo data
         env:
-          ODOO_URL:     ${{ secrets.ODOO_URL }}
-          ODOO_DB:      ${{ secrets.ODOO_DB }}
-          ODOO_USER:    ${{ secrets.ODOO_USER }}
+          ODOO_URL: ${{ secrets.ODOO_URL }}
+          ODOO_DB: ${{ secrets.ODOO_DB }}
+          ODOO_USER: ${{ secrets.ODOO_USER }}
           ODOO_API_KEY: ${{ secrets.ODOO_API_KEY }}
-          OUTPUT_FILE:  data.json
+          OUTPUT_FILE: data.json
         run: python fetch.py
 
       - name: Commit & push data.json
         run: |
-          git config user.name  "github-actions[bot]"
+          git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git diff --staged --quiet || git commit -m "تحديث يومي $(date +'%Y-%m-%d')"
+          git diff --staged --quiet || git commit -m "تحديث يومي $(date +'%Y-%m-%d %H:%M KSA')"
           git push
