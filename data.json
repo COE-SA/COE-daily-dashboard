@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-05-18 10:57",
+    "last_updated": "2026-05-18 17:46",
     "yesterday": "2026-05-17",
     "dob": "2026-05-16",
     "mtd_start": "2026-05-01",
@@ -260,15 +260,15 @@
     },
     "mtd": {
       "ووك إن": {
-        "revenue": 297672.44,
-        "orders": 4011,
-        "avg": 74.2,
+        "revenue": 298142.44,
+        "orders": 4007,
+        "avg": 74.4,
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 116282.67,
-        "orders": 1310,
-        "avg": 88.8,
+        "revenue": 115758.67,
+        "orders": 1313,
+        "avg": 88.2,
         "discount": 0
       },
       "Keeta": {
@@ -278,9 +278,9 @@
         "discount": 0
       },
       "Ninja": {
-        "revenue": 31105.79,
-        "orders": 364,
-        "avg": 85.5,
+        "revenue": 31159.79,
+        "orders": 365,
+        "avg": 85.4,
         "discount": 0
       },
       "Taker": {
@@ -375,11 +375,11 @@
         "delivery_pct": 45.6
       },
       "Ajaweed": {
-        "direct_rev": 21770.5,
-        "direct_ord": 348,
-        "delivery_rev": 21955.12,
-        "delivery_ord": 255,
-        "delivery_pct": 50.2
+        "direct_rev": 22240.5,
+        "direct_ord": 344,
+        "delivery_rev": 21485.12,
+        "delivery_ord": 259,
+        "delivery_pct": 49.1
       },
       "Marwah": {
         "direct_rev": 27050.25,
