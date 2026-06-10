@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-06-10 10:16",
+    "last_updated": "2026-06-10 12:01",
     "yesterday": "2026-06-09",
     "dob": "2026-06-08",
     "mtd_start": "2026-06-01",
@@ -260,15 +260,15 @@
     },
     "mtd": {
       "ووك إن": {
-        "revenue": 149650.17,
-        "orders": 1896,
-        "avg": 78.9,
+        "revenue": 149636.17,
+        "orders": 1895,
+        "avg": 79.0,
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 69201.57,
-        "orders": 792,
-        "avg": 87.4,
+        "revenue": 69215.57,
+        "orders": 793,
+        "avg": 87.3,
         "discount": 0
       },
       "Keeta": {
