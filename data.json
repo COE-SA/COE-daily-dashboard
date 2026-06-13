@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-06-13 10:05",
+    "last_updated": "2026-06-13 11:32",
     "yesterday": "2026-06-12",
     "dob": "2026-06-11",
     "mtd_start": "2026-06-01",
@@ -204,9 +204,9 @@
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 10432.4,
-        "orders": 113,
-        "avg": 92.3,
+        "revenue": 10294.4,
+        "orders": 112,
+        "avg": 91.9,
         "discount": 0
       },
       "Keeta": {
@@ -216,9 +216,9 @@
         "discount": 0
       },
       "Ninja": {
-        "revenue": 3502.9,
-        "orders": 36,
-        "avg": 97.3,
+        "revenue": 3640.9,
+        "orders": 37,
+        "avg": 98.4,
         "discount": 0
       },
       "Taker": {
@@ -266,8 +266,8 @@
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 101031.67,
-        "orders": 1158,
+        "revenue": 100893.67,
+        "orders": 1157,
         "avg": 87.2,
         "discount": 0
       },
@@ -278,9 +278,9 @@
         "discount": 0
       },
       "Ninja": {
-        "revenue": 32566.59,
-        "orders": 387,
-        "avg": 84.2,
+        "revenue": 32704.59,
+        "orders": 388,
+        "avg": 84.3,
         "discount": 0
       },
       "Taker": {
