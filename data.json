@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-06-17 11:35",
+    "last_updated": "2026-06-17 13:06",
     "yesterday": "2026-06-16",
     "dob": "2026-06-15",
     "mtd_start": "2026-06-01",
@@ -260,8 +260,8 @@
     },
     "mtd": {
       "ووك إن": {
-        "revenue": 296528.72,
-        "orders": 3784,
+        "revenue": 296489.72,
+        "orders": 3783,
         "avg": 78.4,
         "discount": 0
       },
@@ -284,9 +284,9 @@
         "discount": 0
       },
       "Taker": {
-        "revenue": 27273.85,
-        "orders": 232,
-        "avg": 117.6,
+        "revenue": 27312.85,
+        "orders": 233,
+        "avg": 117.2,
         "discount": 0
       },
       "Jahez": {
@@ -396,10 +396,10 @@
         "delivery_pct": 58.2
       },
       "Marwah": {
-        "direct_rev": 26678.75,
-        "direct_ord": 339,
-        "delivery_rev": 22414.3,
-        "delivery_ord": 257,
+        "direct_rev": 26639.75,
+        "direct_ord": 338,
+        "delivery_rev": 22453.3,
+        "delivery_ord": 258,
         "delivery_pct": 45.7
       },
       "Hamadaniyyah": {
