@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-07-15 08:40",
+    "last_updated": "2026-07-15 10:24",
     "yesterday": "2026-07-14",
     "dob": "2026-07-13",
     "mtd_start": "2026-07-01",
@@ -198,9 +198,9 @@
   "channels": {
     "yesterday": {
       "ووك إن": {
-        "revenue": 14877.25,
-        "orders": 220,
-        "avg": 67.6,
+        "revenue": 15051.25,
+        "orders": 218,
+        "avg": 69.0,
         "discount": 0
       },
       "HungerStation": {
@@ -228,15 +228,15 @@
         "discount": 0
       },
       "Jahez": {
-        "revenue": 577.0,
-        "orders": 10,
-        "avg": 57.7,
+        "revenue": 532.0,
+        "orders": 11,
+        "avg": 48.4,
         "discount": 0
       },
       "TheChefz": {
-        "revenue": 551.0,
-        "orders": 6,
-        "avg": 91.8,
+        "revenue": 422.0,
+        "orders": 7,
+        "avg": 60.3,
         "discount": 0
       },
       "Mrsool": {
@@ -260,9 +260,9 @@
     },
     "mtd": {
       "ووك إن": {
-        "revenue": 295954.1,
-        "orders": 3633,
-        "avg": 81.5,
+        "revenue": 296128.1,
+        "orders": 3631,
+        "avg": 81.6,
         "discount": 0
       },
       "HungerStation": {
@@ -290,15 +290,15 @@
         "discount": 0
       },
       "Jahez": {
-        "revenue": 12909.0,
-        "orders": 155,
-        "avg": 83.3,
+        "revenue": 12864.0,
+        "orders": 156,
+        "avg": 82.5,
         "discount": 0
       },
       "TheChefz": {
-        "revenue": 10179.0,
-        "orders": 92,
-        "avg": 110.6,
+        "revenue": 10050.0,
+        "orders": 93,
+        "avg": 108.1,
         "discount": 0
       },
       "Mrsool": {
@@ -352,18 +352,18 @@
         "delivery_pct": 61.4
       },
       "Safa": {
-        "direct_rev": 2151.0,
-        "direct_ord": 35,
-        "delivery_rev": 1892.0,
-        "delivery_ord": 23,
-        "delivery_pct": 46.8
+        "direct_rev": 2196.0,
+        "direct_ord": 34,
+        "delivery_rev": 1847.0,
+        "delivery_ord": 24,
+        "delivery_pct": 45.7
       },
       "Defaa": {
-        "direct_rev": 2064.75,
-        "direct_ord": 26,
-        "delivery_rev": 1454.0,
-        "delivery_ord": 14,
-        "delivery_pct": 41.3
+        "direct_rev": 2193.75,
+        "direct_ord": 25,
+        "delivery_rev": 1325.0,
+        "delivery_ord": 15,
+        "delivery_pct": 37.7
       }
     },
     "week": {
@@ -396,18 +396,18 @@
         "delivery_pct": 59.4
       },
       "Safa": {
-        "direct_rev": 19072.37,
-        "direct_ord": 238,
-        "delivery_rev": 17259.9,
-        "delivery_ord": 185,
-        "delivery_pct": 47.5
+        "direct_rev": 19117.37,
+        "direct_ord": 237,
+        "delivery_rev": 17214.9,
+        "delivery_ord": 186,
+        "delivery_pct": 47.4
       },
       "Defaa": {
-        "direct_rev": 20940.12,
-        "direct_ord": 252,
-        "delivery_rev": 18480.85,
-        "delivery_ord": 194,
-        "delivery_pct": 46.9
+        "direct_rev": 21069.12,
+        "direct_ord": 251,
+        "delivery_rev": 18351.85,
+        "delivery_ord": 195,
+        "delivery_pct": 46.6
       }
     }
   },
