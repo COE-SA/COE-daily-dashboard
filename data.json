@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-07-27 09:40",
+    "last_updated": "2026-07-27 11:48",
     "yesterday": "2026-07-26",
     "dob": "2026-07-25",
     "mtd_start": "2026-07-01",
@@ -204,15 +204,15 @@
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 5748.3,
-        "orders": 73,
-        "avg": 78.7,
+        "revenue": 5597.3,
+        "orders": 71,
+        "avg": 78.8,
         "discount": 0
       },
       "Keeta": {
-        "revenue": 2354.0,
-        "orders": 26,
-        "avg": 90.5,
+        "revenue": 2415.0,
+        "orders": 27,
+        "avg": 89.4,
         "discount": 0
       },
       "Ninja": {
@@ -228,9 +228,9 @@
         "discount": 0
       },
       "TheChefz": {
-        "revenue": 369.0,
-        "orders": 5,
-        "avg": 73.8,
+        "revenue": 459.0,
+        "orders": 6,
+        "avg": 76.5,
         "discount": 0
       },
       "Mrsool": {
@@ -266,14 +266,14 @@
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 212821.6,
-        "orders": 2375,
+        "revenue": 212670.6,
+        "orders": 2373,
         "avg": 89.6,
         "discount": 0
       },
       "Keeta": {
-        "revenue": 76966.26,
-        "orders": 822,
+        "revenue": 77027.26,
+        "orders": 823,
         "avg": 93.6,
         "discount": 0
       },
@@ -296,9 +296,9 @@
         "discount": 0
       },
       "TheChefz": {
-        "revenue": 15543.0,
-        "orders": 143,
-        "avg": 108.7,
+        "revenue": 15633.0,
+        "orders": 144,
+        "avg": 108.6,
         "discount": 0
       },
       "Mrsool": {
