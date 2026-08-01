@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-08-01 09:07",
+    "last_updated": "2026-08-01 10:37",
     "yesterday": "2026-07-31",
     "dob": "2026-07-30",
     "mtd_start": "2026-08-01",
@@ -161,15 +161,15 @@
   "channels": {
     "yesterday": {
       "ووك إن": {
-        "revenue": 20188.6,
-        "orders": 246,
-        "avg": 82.1,
+        "revenue": 20233.6,
+        "orders": 245,
+        "avg": 82.6,
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 7090.4,
-        "orders": 82,
-        "avg": 86.5,
+        "revenue": 7045.4,
+        "orders": 83,
+        "avg": 84.9,
         "discount": 0
       },
       "Keeta": {
@@ -287,11 +287,11 @@
   "branch_channels": {
     "yesterday": {
       "Ajaweed": {
-        "direct_rev": 3249.5,
-        "direct_ord": 45,
-        "delivery_rev": 3271.0,
-        "delivery_ord": 32,
-        "delivery_pct": 50.2
+        "direct_rev": 3294.5,
+        "direct_ord": 44,
+        "delivery_rev": 3226.0,
+        "delivery_ord": 33,
+        "delivery_pct": 49.5
       },
       "Wazeeriyah": {
         "direct_rev": 1769.0,
@@ -331,11 +331,11 @@
     },
     "week": {
       "Ajaweed": {
-        "direct_rev": 24899.1,
-        "direct_ord": 303,
-        "delivery_rev": 23609.0,
-        "delivery_ord": 246,
-        "delivery_pct": 48.7
+        "direct_rev": 24944.1,
+        "direct_ord": 302,
+        "delivery_rev": 23564.0,
+        "delivery_ord": 247,
+        "delivery_pct": 48.6
       },
       "Wazeeriyah": {
         "direct_rev": 7991.0,
