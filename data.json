@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-08-05 08:59",
+    "last_updated": "2026-08-05 10:49",
     "yesterday": "2026-08-04",
     "dob": "2026-08-03",
     "mtd_start": "2026-08-01",
@@ -204,15 +204,15 @@
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 4070.0,
-        "orders": 50,
-        "avg": 81.4,
+        "revenue": 4001.0,
+        "orders": 49,
+        "avg": 81.7,
         "discount": 0
       },
       "Keeta": {
-        "revenue": 1694.9,
-        "orders": 21,
-        "avg": 80.7,
+        "revenue": 1763.9,
+        "orders": 22,
+        "avg": 80.2,
         "discount": 0
       },
       "Ninja": {
@@ -260,21 +260,21 @@
     },
     "mtd": {
       "ووك إن": {
-        "revenue": 56635.96,
-        "orders": 739,
-        "avg": 76.6,
+        "revenue": 56935.96,
+        "orders": 737,
+        "avg": 77.3,
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 23939.8,
-        "orders": 288,
-        "avg": 83.1,
+        "revenue": 23570.8,
+        "orders": 289,
+        "avg": 81.6,
         "discount": 0
       },
       "Keeta": {
-        "revenue": 10349.8,
-        "orders": 122,
-        "avg": 84.8,
+        "revenue": 10418.8,
+        "orders": 123,
+        "avg": 84.7,
         "discount": 0
       },
       "Ninja": {
@@ -368,11 +368,11 @@
     },
     "week": {
       "Wazeeriyah": {
-        "direct_rev": 10314.35,
-        "direct_ord": 142,
-        "delivery_rev": 9869.15,
-        "delivery_ord": 109,
-        "delivery_pct": 48.9
+        "direct_rev": 10489.35,
+        "direct_ord": 141,
+        "delivery_rev": 9694.15,
+        "delivery_ord": 110,
+        "delivery_pct": 48.0
       },
       "Ajaweed": {
         "direct_rev": 23678.6,
@@ -396,11 +396,11 @@
         "delivery_pct": 40.7
       },
       "Hamadaniyyah": {
-        "direct_rev": 25339.6,
-        "direct_ord": 294,
-        "delivery_rev": 19742.0,
-        "delivery_ord": 213,
-        "delivery_pct": 43.8
+        "direct_rev": 25464.6,
+        "direct_ord": 293,
+        "delivery_rev": 19617.0,
+        "delivery_ord": 214,
+        "delivery_pct": 43.5
       },
       "Defaa": {
         "direct_rev": 12599.54,
