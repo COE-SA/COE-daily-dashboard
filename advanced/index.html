@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التحليلات المتقدمة | بوصلة التميز</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f7fb; --bg-2: #eef2f8; --card: #ffffff; --card-2: #fafbfe;
+  --text: #0f172a; --muted: #64748b; --border: #e2e8f0; --border-2: #cbd5e1;
+  --navy: #0f2044; --gold: #b8730a; --green: #15803d; --red: #b91c1c;
+  --blue: #1d4ed8; --purple: #7c3aed; --orange: #c2410c; --teal: #0f766e;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
+  --shadow: 0 4px 12px rgba(15,32,68,.08);
+  --shadow-lg: 0 12px 32px rgba(15,32,68,.12);
+  --radius: 14px;
+  --gradient: linear-gradient(135deg, #0f2044 0%, #1e3a5f 50%, #b8730a 100%);
+}
+[data-theme="dark"] {
+  --bg: #0a0f1e; --bg-2: #131a2e; --card: #1a2238; --card-2: #232b44;
+  --text: #e2e8f0; --muted: #94a3b8; --border: #2a3654; --border-2: #3d4a6b;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+  --shadow: 0 4px 12px rgba(0,0,0,.4);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,.6);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; transition: background .25s, color .25s, border-color .25s; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  min-height: 100vh; padding: 20px;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(184,115,10,.04) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(29,78,216,.04) 0px, transparent 50%);
+}
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(at 0% 0%, rgba(184,115,10,.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(29,78,216,.08) 0px, transparent 50%);
+}
+
+/* Header */
+.header {
+  background: var(--gradient);
+  color: white;
+  border-radius: var(--radius);
+  padding: 18px 24px;
+  margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: var(--shadow-lg);
+  flex-wrap: wrap; gap: 12px;
+}
+.header h1 {
+  font-size: 1.4rem; font-weight: 900;
+  display: flex; align-items: center; gap: 10px;
+}
+.header h1 .logo-emoji { font-size: 1.6rem; }
+.header-sub { font-size: .8rem; opacity: .8; margin-top: 2px; }
+.controls { display: flex; gap: 8px; align-items: center; }
+.live-indicator {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.12);
+  padding: 4px 12px; border-radius: 99px;
+  font-size: .8rem; font-weight: 600;
+}
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 #22c55e;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34,197,94,.7); }
+  70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+.last-updated {
+  background: rgba(255,255,255,.12);
+  padding: 4px 12px; border-radius: 99px;
+  font-size: .75rem; opacity: .9;
+}
+.theme-toggle {
+  background: rgba(255,255,255,.15);
+  border: 0; color: white;
+  width: 36px; height: 36px; border-radius: 50%;
+  cursor: pointer; font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { background: rgba(255,255,255,.25); }
+
+/* Alerts banner */
+.alerts {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: none;
+  box-shadow: var(--shadow);
+}
+.alerts.show { display: block; }
+.alerts-title { font-size: .9rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.alert {
+  padding: 10px 14px; border-radius: 8px;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 8px; font-size: .82rem;
+  animation: slideIn .3s ease-out;
+}
+@keyframes slideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.alert:last-child { margin-bottom: 0; }
+.alert.critical { background: rgba(185,28,28,.1); color: var(--red); border-left: 3px solid var(--red); }
+.alert.warning { background: rgba(194,65,12,.1); color: var(--orange); border-left: 3px solid var(--orange); }
+.alert.success { background: rgba(21,128,61,.1); color: var(--green); border-left: 3px solid var(--green); }
+.alert-icon { font-size: 1.1rem; }
+
+/* KPI grid */
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; margin-bottom: 20px;
+}
+.kpi-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s, box-shadow .2s;
+}
+.kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.kpi-card::before {
+  content: ''; position: absolute;
+  top: 0; right: 0; width: 4px; height: 100%;
+  background: var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.kpi-card.green::before { background: var(--green); }
+.kpi-card.blue::before { background: var(--blue); }
+.kpi-card.purple::before { background: var(--purple); }
+.kpi-card.red::before { background: var(--red); }
+.kpi-label {
+  font-size: .75rem; color: var(--muted);
+  font-weight: 600; text-transform: uppercase;
+  letter-spacing: .5px; margin-bottom: 6px;
+}
+.kpi-value {
+  font-size: 1.55rem; font-weight: 900;
+  color: var(--text); line-height: 1.1;
+  margin-bottom: 8px;
+}
+.kpi-value small { font-size: .7rem; color: var(--muted); font-weight: 600; }
+.kpi-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: .72rem; color: var(--muted);
+}
+.badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: .7rem; font-weight: 700;
+  padding: 2px 8px; border-radius: 99px;
+}
+.badge.up { background: rgba(21,128,61,.12); color: var(--green); }
+.badge.down { background: rgba(185,28,28,.12); color: var(--red); }
+.badge.flat { background: rgba(100,116,139,.12); color: var(--muted); }
+.sparkline { width: 100%; height: 28px; margin-top: 4px; }
+
+/* Section */
+.section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+.section-title {
+  font-size: 1rem; font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title .emoji { font-size: 1.1rem; }
+.section-title .count {
+  margin-right: auto;
+  font-size: .7rem; color: var(--muted);
+  background: var(--bg-2); padding: 2px 10px; border-radius: 99px;
+}
+
+/* Branch grid */
+.branch-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.branch-card {
+  background: var(--card-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  position: relative;
+  transition: all .2s;
+  cursor: pointer;
+}
+.branch-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+.branch-rank {
+  position: absolute; top: 8px; left: 8px;
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; font-weight: 700; color: white;
+  background: var(--muted);
+}
+.branch-rank.r1 { background: var(--gold); }
+.branch-rank.r2 { background: #94a3b8; }
+.branch-rank.r3 { background: #92400e; }
+.branch-name { font-size: .9rem; font-weight: 700; margin-bottom: 6px; }
+.branch-revenue { font-size: 1.2rem; font-weight: 900; margin-bottom: 4px; }
+.branch-meta {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  font-size: .72rem; color: var(--muted);
+  margin-top: 6px; padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+.branch-meta span { display: flex; align-items: center; gap: 3px; }
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, var(--card-2) 0%, var(--bg-2) 50%, var(--card-2) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+  min-height: 12px;
+}
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* Comparison */
+.compare-bar {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 12px;
+}
+.compare-label { width: 90px; font-size: .82rem; font-weight: 600; text-align: right; }
+.compare-track {
+  flex: 1; height: 24px; background: var(--bg-2);
+  border-radius: 6px; overflow: hidden; position: relative;
+}
+.compare-fill {
+  height: 100%; background: var(--gold);
+  display: flex; align-items: center; padding: 0 10px;
+  color: white; font-size: .75rem; font-weight: 700;
+  transition: width .8s ease-out;
+}
+.compare-fill.green { background: var(--green); }
+.compare-fill.blue { background: var(--blue); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+  body { padding: 12px; }
+  .header h1 { font-size: 1.1rem; }
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 16px;
+  font-size: .75rem;
+  color: var(--muted);
+}
+.footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1><span class="logo-emoji">📊</span> التحليلات المتقدمة</h1>
+    <div class="header-sub">شركة بوصلة التميز | فروع منش بيكري</div>
+  </div>
+  <div class="controls">
+    <span class="live-indicator"><span class="live-dot"></span> مباشر</span>
+    <span class="last-updated" id="last-updated">—</span>
+    <button class="theme-toggle" id="themeToggle" title="تبديل الوضع">🌙</button>
+  </div>
+</div>
+
+<div id="alerts" class="alerts">
+  <div class="alerts-title">⚠️ تنبيهات ذكية</div>
+  <div id="alerts-list"></div>
+</div>
+
+<main id="main">
+  <!-- Skeleton placeholders -->
+  <div class="kpi-grid" id="kpiGrid">
+    <div class="kpi-card"><div class="kpi-label skeleton"></div><div class="kpi-value skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
+    <div class="kpi-card"><div class="kpi-label skeleton"></div><div class="kpi-value skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
+    <div class="kpi-card"><div class="kpi-label skeleton"></div><div class="kpi-value skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
+    <div class="kpi-card"><div class="kpi-label skeleton"></div><div class="kpi-value skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
+  </div>
+</main>
+
+<div class="footer">
+  آخر تحديث تلقائي خلال <span id="nextRefresh">60</span> ثانية |
+  <a href="../">← العودة للداشبورد الأساسي</a>
+</div>
+
+<script>
+/* ===== Utilities ===== */
+const SAR = n => 'SAR ' + Number(n||0).toLocaleString('en', { maximumFractionDigits: 0 });
+const N = n => Number(n||0).toLocaleString('en');
+const PCT = v => {
+  if (v == null || isNaN(v)) return '<span class="badge flat">—</span>';
+  const c = v > 0 ? 'up' : v < 0 ? 'down' : 'flat';
+  const a = v > 0 ? '▲' : v < 0 ? '▼' : '—';
+  return `<span class="badge ${c}">${a} ${Math.abs(v).toFixed(1)}%</span>`;
+};
+
+/* ===== Sparkline generator (SVG) ===== */
+function sparkline(values, color = '#b8730a') {
+  if (!values || values.length < 2) return '';
+  const max = Math.max(...values);
+  const min = Math.min(...values);
+  const range = max - min || 1;
+  const w = 100, h = 30, n = values.length;
+  const stepX = w / (n - 1);
+  const points = values.map((v, i) => {
+    const x = i * stepX;
+    const y = h - ((v - min) / range) * h;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  const last = values[values.length - 1];
+  const lastY = h - ((last - min) / range) * h;
+  return `
+    <svg class="sparkline" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+      <polyline points="${points}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="${w}" cy="${lastY.toFixed(1)}" r="2" fill="${color}"/>
+    </svg>`;
+}
+
+/* ===== Theme toggle ===== */
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+themeToggle.addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+});
+
+/* ===== Anomaly detection ===== */
+function detectAnomalies(d) {
+  const alerts = [];
+  const branches = d.branches?.mtd || {};
+  const branchList = Object.entries(branches);
+  if (branchList.length < 2) return alerts;
+
+  // Compute network avg
+  const totalR = branchList.reduce((s,[,v]) => s + v.revenue, 0);
+  const totalO = branchList.reduce((s,[,v]) => s + v.orders, 0);
+  const avgR = totalR / branchList.length;
+  const avgA = totalO ? totalR / totalO : 0;
+
+  // Find outliers
+  branchList.forEach(([name, v]) => {
+    const vsAvg = (v.revenue / avgR - 1) * 100;
+    const lowAvg = v.avg < avgA * 0.85;
+    if (vsAvg < -25) {
+      alerts.push({ type: 'critical', icon: '🔴', text: `<b>${name}</b> أقل 25% من المتوسط (${vsAvg.toFixed(0)}%)` });
+    } else if (vsAvg < -15) {
+      alerts.push({ type: 'warning', icon: '⚠️', text: `<b>${name}</b> أقل من المتوقع (${vsAvg.toFixed(0)}%)` });
+    } else if (vsAvg > 15) {
+      alerts.push({ type: 'success', icon: '🌟', text: `<b>${name}</b> أعلى من المتوسط (${vsAvg.toFixed(0)}%)` });
+    }
+    if (lowAvg) {
+      alerts.push({ type: 'warning', icon: '💸', text: `متوسط الطلب في <b>${name}</b> منخفض: ${SAR(v.avg)} (متوسط الشبكة: ${SAR(avgA)})` });
+    }
+  });
+
+  // Check WoW
+  const wow = d.branch_wow || {};
+  Object.entries(wow).forEach(([name, v]) => {
+    if (v.growth_pct < -20) {
+      alerts.push({ type: 'critical', icon: '📉', text: `<b>${name}</b> انخفض ${Math.abs(v.growth_pct).toFixed(0)}% أسبوعياً` });
+    }
+  });
+
+  // Check delivery dependency
+  const bc = d.branch_channels?.yesterday || {};
+  Object.entries(bc).forEach(([name, v]) => {
+    if (v.delivery_pct > 60) {
+      alerts.push({ type: 'warning', icon: '📱', text: `فرع <b>${name}</b> يعتمد ${v.delivery_pct.toFixed(0)}% على التطبيقات (مخاطر عمولة)` });
+    }
+  });
+
+  return alerts;
+}
+
+/* ===== Render ===== */
+function render(d) {
+  // Update timestamp
+  const ts = d.meta?.last_updated || '—';
+  document.getElementById('last-updated').textContent = `آخر تحديث: ${ts}`;
+
+  // KPIs
+  const y = d.summary?.yesterday || {};
+  const w = d.summary?.week || {};
+  const m = d.summary?.mtd || {};
+  const dow = d.dow_analysis?.this_week || {};
+  const dowRevs = [...(dow.weekdays || []), ...(dow.weekends || [])].map(x => x.revenue);
+  const dowMax = Math.max(...dowRevs, 1);
+  const yestRevs = dowRevs.slice(0, 4); // rough sparkline
+  const sparkData = yestRevs.length >= 2 ? yestRevs : [10, 15, 13, 18, 16, 22, 25];
+
+  const kpis = [
+    { label: 'إيراد أمس', value: y.revenue, sub: `${N(y.orders)} طلب · متوسط ${SAR(y.avg)}`, badge: y.vs_dob_pct, color: 'gold', spark: sparkData },
+    { label: 'هذا الأسبوع', value: w.revenue, sub: `${N(w.orders)} طلب`, badge: w.vs_prev_pct, color: 'blue', spark: sparkData.slice().reverse() },
+    { label: 'هذا الشهر MTD', value: m.revenue, sub: `${N(m.orders)} طلب`, badge: m.vs_prev_pct, color: 'green', spark: sparkData.concat([y.revenue]).slice(-7) },
+    { label: 'متوسط الطلب', value: y.avg, sub: `شبكة هذا الأسبوع ${SAR(w.avg)}`, badge: w.avg > y.avg ? (w.avg/y.avg-1)*100 : null, color: 'purple', spark: sparkData },
+  ];
+  document.getElementById('kpiGrid').innerHTML = kpis.map(k => `
+    <div class="kpi-card ${k.color}">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-value">${k.value != null ? SAR(k.value) : '—'}</div>
+      ${sparkline(k.spark, getComputedStyle(document.querySelector('.kpi-card.' + k.color)).getPropertyValue('--' + k.color).trim() || '#b8730a')}
+      <div class="kpi-meta"><span>${k.sub}</span>${PCT(k.badge)}</div>
+    </div>`).join('');
+
+  // Branches
+  const branches = d.branches?.mtd || {};
+  const sorted = Object.entries(branches).sort((a,b) => b[1].revenue - a[1].revenue);
+  const maxR = Math.max(...sorted.map(([,v]) => v.revenue));
+  const branchesHTML = sorted.map(([name, v], i) => {
+    const wow = d.branch_wow?.[name];
+    const bc = d.branch_channels?.yesterday?.[name];
+    const rank = i === 0 ? 'r1' : i === 1 ? 'r2' : i === 2 ? 'r3' : '';
+    return `
+      <div class="branch-card">
+        <span class="branch-rank ${rank}">${i+1}</span>
+        <div class="branch-name">${name}</div>
+        <div class="branch-revenue">${SAR(v.revenue)}</div>
+        <div class="branch-meta">
+          <span>📦 ${N(v.orders)}</span>
+          <span>💰 ${SAR(v.avg)}</span>
+          ${wow ? PCT(wow.growth_pct) : ''}
+          ${bc ? `<span>🚚 ${bc.delivery_pct.toFixed(0)}%</span>` : ''}
+        </div>
+      </div>`;
+  }).join('');
+
+  // Channels comparison
+  const channels = d.channels?.yesterday || {};
+  const chEntries = Object.entries(channels).sort((a,b) => b[1].revenue - a[1].revenue);
+  const totalRev = chEntries.reduce((s,[,v]) => s + v.revenue, 0);
+  const channelsHTML = chEntries.map(([name, v]) => {
+    const pct = (v.revenue / totalRev * 100);
+    return `
+      <div class="compare-bar">
+        <div class="compare-label">${name}</div>
+        <div class="compare-track"><div class="compare-fill" style="width:${pct}%">${pct.toFixed(1)}% · ${SAR(v.revenue)}</div></div>
+      </div>`;
+  }).join('');
+
+  // Main view
+  document.getElementById('main').innerHTML = `
+    <section class="section">
+      <div class="section-title">🏆 أداء الفروع (MTD) <span class="count">${sorted.length} فروع</span></div>
+      <div class="branch-grid">${branchesHTML}</div>
+    </section>
+    <section class="section">
+      <div class="section-title">📱 قنوات البيع — أمس <span class="count">${chEntries.length} قنوات</span></div>
+      ${channelsHTML}
+    </section>
+  `;
+
+  // Alerts
+  const alerts = detectAnomalies(d);
+  const alertBox = document.getElementById('alerts');
+  const alertList = document.getElementById('alerts-list');
+  if (alerts.length > 0) {
+    alertBox.classList.add('show');
+    alertList.innerHTML = alerts.slice(0, 5).map(a =>
+      `<div class="alert ${a.type}"><span class="alert-icon">${a.icon}</span><span>${a.text}</span></div>`
+    ).join('');
+  }
+}
+
+/* ===== Load & auto-refresh ===== */
+async function load() {
+  try {
+    const r = await fetch('../data.json?t=' + Date.now());
+    const d = await r.json();
+    render(d);
+  } catch (e) {
+    document.getElementById('main').innerHTML = '<div class="section"><div class="section-title">❌ خطأ في تحميل البيانات</div><p style="color:var(--muted);font-size:.85rem">تأكد أن data.json موجودة في المجلد الأصلي</p></div>';
+  }
+}
+
+let countdown = 60;
+setInterval(() => {
+  countdown--;
+  if (countdown <= 0) { load(); countdown = 60; }
+  const el = document.getElementById('nextRefresh');
+  if (el) el.textContent = countdown;
+}, 1000);
+
+load();
+</script>
+</body>
+</html>
