@@ -424,11 +424,12 @@ function render(d) {
     { label: 'هذا الشهر MTD', value: m.revenue, sub: `${N(m.orders)} طلب`, badge: m.vs_prev_pct, color: 'green', spark: sparkData.concat([y.revenue]).slice(-7) },
     { label: 'متوسط الطلب', value: y.avg, sub: `شبكة هذا الأسبوع ${SAR(w.avg)}`, badge: w.avg > y.avg ? (w.avg/y.avg-1)*100 : null, color: 'purple', spark: sparkData },
   ];
+  const colorMap = { gold: '#b8730a', green: '#15803d', blue: '#1d4ed8', purple: '#7c3aed' };
   document.getElementById('kpiGrid').innerHTML = kpis.map(k => `
     <div class="kpi-card ${k.color}">
       <div class="kpi-label">${k.label}</div>
       <div class="kpi-value">${k.value != null ? SAR(k.value) : '—'}</div>
-      ${sparkline(k.spark, getComputedStyle(document.querySelector('.kpi-card.' + k.color)).getPropertyValue('--' + k.color).trim() || '#b8730a')}
+      ${sparkline(k.spark, colorMap[k.color] || '#b8730a')}
       <div class="kpi-meta"><span>${k.sub}</span>${PCT(k.badge)}</div>
     </div>`).join('');
 
