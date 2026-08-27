@@ -107,6 +107,9 @@ tr:hover td{background:#f8fafc}
 .ch-fee{font-size:.7rem;color:var(--orange);margin-top:3px}
 .ch-bar{height:3px;border-radius:99px;margin-top:6px;background:var(--bg2)}
 .ch-bar-fill{height:100%;border-radius:99px}
+.ch-net{margin-top:6px;padding-top:6px;border-top:1px dashed var(--border)}
+.ch-net-val{font-size:.85rem;font-weight:900;color:var(--green);margin-top:2px}
+.ch-drift{font-size:.66rem;color:var(--red);margin-top:2px;line-height:1.4}
 
 /* ── DOW Section ── */
 .dow-group{border-radius:10px;padding:14px;margin-bottom:14px}
@@ -138,6 +141,9 @@ tr:hover td{background:#f8fafc}
 /* ── Legend ── */
 .legend{display:flex;gap:14px;font-size:.76rem;color:var(--muted);margin-bottom:10px}
 .leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+/* ── Note ── */
+.note{font-size:.76rem;color:var(--muted);line-height:1.6;margin-top:4px}
 
 /* ── Responsive ── */
 @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}}
@@ -201,7 +207,6 @@ tr:hover td{background:#f8fafc}
   </div>
   <div class="header-badge" id="last-updated">⏳ جاري التحميل...</div>
 </div>
-</div>
 
 <div id="loading" style="text-align:center;padding:60px;color:var(--muted)">⏳ جاري تحميل البيانات...</div>
 <div id="app" style="display:none">
@@ -254,6 +259,7 @@ tr:hover td{background:#f8fafc}
 
 <!-- ⑤ CHANNELS -->
 <div class="section-title">📱 قنوات البيع — أمس</div>
+<div id="net-compare"></div>
 <div id="channels-grid" class="channels-grid"></div>
 
 <!-- ⑥ DOW ANALYSIS -->
@@ -282,6 +288,31 @@ const PCT  = (v,cls) => { if(v==null) return '';
   const c=v>0?'up':v<0?'down':'flat', a=v>0?'▲':v<0?'▼':'—';
   return `<span class="badge ${c}">${a} ${Math.abs(v)}%</span>`; };
 const COLORS = ['#b8730a','#1d4ed8','#15803d','#7c3aed','#c2410c','#0f766e'];
+
+/* ─── نسب العمولة الفعلية ──────────────────────────────
+   مصدرها كشوف حساب المنصات، لا العقود. النسبة شاملة كل ما
+   تخصمه المنصة: عمولة الخدمة + رسوم الدفع + أي رسوم أخرى.
+   المنصات غير المدرجة هنا تُحسب بالنسبة المعلَنة في data.json،
+   ويظهر تنبيه بأن رقمها تقديري.
+   حدّث السطر كلما وصل كشف جديد.                          */
+const ACTUAL_FEES = {
+  'HungerStation': 0.311,   // كشف 1 يناير – 31 يوليو 2026
+  'Keeta':         0.254,   // كشف 1 يناير – 31 يوليو 2026
+};
+
+/* النسبة الفعلية للقناة — تُفضَّل على المعلَنة حين تتوفر */
+function effFee(ch, fees){
+  if(ACTUAL_FEES[ch] != null) return { rate: ACTUAL_FEES[ch], actual: true };
+  const f = (fees||{})[ch];
+  if(!f) return { rate: 0, actual: false };
+  return { rate: (f.fee||0) + (f.payment||0), actual: false };
+}
+
+/* النسبة المعلَنة كما وردت في data.json */
+function declaredFee(ch, fees){
+  const f = (fees||{})[ch];
+  return f ? (f.fee||0) + (f.payment||0) : null;
+}
 
 async function load(){
   try{
@@ -351,6 +382,21 @@ function renderRecs(d){
   if(tops[0]) recs.push({t:'opp',icon:'💡',title:`أفضل منتج: ${tops[0].name_en||tops[0].name}`,body:`حقق ${SAR(tops[0].revenue)} أمس بكمية ${N(tops[0].qty)} وحدة. يمكن تعزيز عرضه في التطبيقات.`});
   // Low performer
   if(bots[0]) recs.push({t:'opp',icon:'🔍',title:`منتج ضعيف الأداء: ${bots[0].name_en||bots[0].name}`,body:`إيراد ${SAR(bots[0].revenue)} فقط أمس. راجع الكمية المتاحة أو السعر.`});
+
+  /* انحراف العمولة الفعلية عن المعلَنة — يُدرج في المقدمة */
+  const feeCfg = d.meta?.app_fees||{};
+  const drift = Object.keys(ACTUAL_FEES).filter(ch=>{
+    const dec = declaredFee(ch, feeCfg);
+    return dec!=null && (ACTUAL_FEES[ch] - dec) > 0.02;
+  });
+  if(drift.length){
+    const lines = drift.map(ch=>{
+      const dec = declaredFee(ch, feeCfg)*100;
+      return `${ch}: ${dec.toFixed(0)}% معلَنة مقابل ${(ACTUAL_FEES[ch]*100).toFixed(1)}% فعلية`;
+    }).join(' — ');
+    recs.unshift({t:'pain',icon:'💸',title:'العمولة الفعلية تتجاوز المعلَنة',
+      body:`${lines}. راجع العقود وكشوف الحساب؛ الفرق يقلّل الهامش دون أن يظهر في تقارير المبيعات.`});
+  }
 
   const typeClass={strength:'strength',warning:'warning',pain:'pain',opp:'opp'};
   document.getElementById('rec-grid').innerHTML=recs.slice(0,6).map(r=>`
@@ -490,26 +536,92 @@ function renderEfficiency(br){
   }).join('') + `<div style="text-align:center;font-size:.74rem;color:var(--gold);margin-top:4px">⬦ متوسط الشبكة: ${SAR(fleet.toFixed(1))} / طلب</div>`;
 }
 
-/* ─── Channels (all 9 apps + Walk-In) ────────────── */
+/* ─── Channels — بالصافي بعد العمولة ─────────────── */
 function renderChannels(channels, fees){
   const WALK='ووك إن';
   const entries=Object.entries(channels);
   const total=entries.reduce((s,[,v])=>s+(v.revenue||0),0);
-  const chColors={[WALK]:'#0f766e','HungerStation':'#ef4444','Keeta':'#f97316','Ninja':'#6366f1',
-    'Jahez':'#0ea5e9','Mrsool':'#8b5cf6','Mr.Mandoob':'#ec4899','ToYou':'#22c55e',
-    'Taker':'#a16207','TheChefz':'#64748b'};
-  const feeLabel = k => { const f=fees[k]; return f?`عمولة ${Math.round(f.fee*100)}%`:''; };
+  const chColors={[WALK]:'#0f766e','HungerStation':'#ef4444','Keeta':'#f97316',
+    'Ninja':'#6366f1','Jahez':'#0ea5e9','Mrsool':'#8b5cf6','Mr.Mandoob':'#ec4899',
+    'ToYou':'#22c55e','Taker':'#a16207','TheChefz':'#64748b'};
+
   document.getElementById('channels-grid').innerHTML=entries.map(([ch,v])=>{
-    const color=chColors[ch]||'#64748b', sh=total?(v.revenue/total*100).toFixed(1):0;
+    const color=chColors[ch]||'#64748b';
+    const sh=total?(v.revenue/total*100).toFixed(1):0;
+    const isWalk = ch===WALK;
+    const {rate, actual} = isWalk ? {rate:0,actual:false} : effFee(ch, fees);
+    const commission = (v.revenue||0) * rate;
+    const net = (v.revenue||0) - commission;
+    const dec = declaredFee(ch, fees);
+    const gap = (actual && dec!=null) ? (rate - dec) : null;
+
     return `<div class="ch-card" style="border-top:3px solid ${color}">
       <div class="ch-name" style="color:${color}">${ch}</div>
       <div class="ch-value">${SAR(v.revenue)}</div>
       <div class="ch-sub">${N(v.orders)} طلب | متوسط ${SAR(v.avg)}</div>
-      ${ch!==WALK&&fees[ch]?`<div class="ch-fee">عمولة ${Math.round(fees[ch].fee*100)}% + ${Math.round(fees[ch].payment*100)}%</div>`:''}
+      ${!isWalk && rate>0 ? `
+        <div class="ch-net">
+          <div class="ch-fee">
+            عمولة ${(rate*100).toFixed(1)}%
+            ${actual?'<b title="محسوبة من كشف المنصة">فعلية</b>'
+                    :'<span style="color:var(--muted)" title="من العقد — لم يصل كشف بعد">معلَنة</span>'}
+            &minus; ${SAR(commission)}
+          </div>
+          <div class="ch-net-val">صافي ${SAR(net)}</div>
+          ${gap!=null && Math.abs(gap)>0.02 ? `
+            <div class="ch-drift">⚠ أعلى ${(gap*100).toFixed(1)} نقطة عن المعلَن (${(dec*100).toFixed(0)}%)</div>`:''}
+        </div>`:''}
       <div class="ch-bar"><div class="ch-bar-fill" style="width:${sh}%;background:${color}"></div></div>
       <div style="font-size:.68rem;color:var(--muted);margin-top:2px">${sh}% من الإيراد</div>
     </div>`;
   }).join('');
+
+  renderNetComparison(entries, fees, WALK);
+}
+
+/* ─── ووك إن مقابل التوصيل — بالصافي ──────────────── */
+function renderNetComparison(entries, fees, WALK){
+  let walkRev=0, delRev=0, delComm=0, estimatedRev=0;
+  entries.forEach(([ch,v])=>{
+    const rev=v.revenue||0;
+    if(ch===WALK){ walkRev+=rev; return; }
+    const {rate, actual}=effFee(ch, fees);
+    delRev+=rev; delComm+=rev*rate;
+    if(!actual && rev>0) estimatedRev+=rev;   // محسوب بنسبة معلَنة
+  });
+  const delNet=delRev-delComm;
+  const totalGross=walkRev+delRev, totalNet=walkRev+delNet;
+  const box=document.getElementById('net-compare');
+  if(!box || !totalGross) return;
+
+  const pctG=(delRev/totalGross*100).toFixed(1);
+  const pctN=totalNet?(delNet/totalNet*100).toFixed(1):0;
+
+  box.innerHTML=`
+    <div class="grid-3" style="margin-bottom:12px">
+      <div class="card kpi green" style="padding:14px">
+        <div class="kpi-label">ووك إن — بلا عمولة</div>
+        <div class="kpi-value">${SAR(walkRev)}</div>
+        <div class="kpi-compare">الصافي = الإجمالي</div>
+      </div>
+      <div class="card kpi gold" style="padding:14px">
+        <div class="kpi-label">التوصيل — إجمالي</div>
+        <div class="kpi-value">${SAR(delRev)}</div>
+        <div class="kpi-compare">${pctG}% من الإيراد الإجمالي</div>
+      </div>
+      <div class="card kpi purple" style="padding:14px">
+        <div class="kpi-label">التوصيل — صافي بعد العمولة</div>
+        <div class="kpi-value">${SAR(delNet)}</div>
+        <div class="kpi-compare">العمولة <b style="color:var(--red)">&minus;${SAR(delComm)}</b> · ${pctN}% من الصافي</div>
+      </div>
+    </div>
+    <div class="note">
+      التوصيل يمثّل <b>${pctG}%</b> من الإيراد الإجمالي، ولا يعطي سوى
+      <b>${pctN}%</b> من الصافي بعد العمولة.
+      ${estimatedRev>0?`<br><span style="color:var(--orange)">⚠ مبلغ ${SAR(estimatedRev)}
+      محسوب بالنسبة المعلَنة في العقد — كشوف تلك المنصات لم تصل بعد،
+      والعمولة الفعلية قد تكون أعلى.</span>`:''}
+    </div>`;
 }
 
 /* ─── DOW Analysis ────────────────────────────────── */
