@@ -494,11 +494,12 @@ function render(d) {
 /* ===== Load & auto-refresh ===== */
 async function load() {
   try {
-    const r = await fetch('../data.json?t=' + Date.now());
+    const r = await fetch('https://coe-sa.github.io/COE-daily-dashboard/data.json?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
     const d = await r.json();
     render(d);
   } catch (e) {
-    document.getElementById('main').innerHTML = '<div class="section"><div class="section-title">❌ خطأ في تحميل البيانات</div><p style="color:var(--muted);font-size:.85rem">تأكد أن data.json موجودة في المجلد الأصلي</p></div>';
+    document.getElementById('main').innerHTML = '<div class="section"><div class="section-title">❌ خطأ في تحميل البيانات</div><p style="color:var(--muted);font-size:.85rem">' + (e.message || e) + '<br><br>تأكد من: <code style="background:var(--bg-2);padding:2px 6px;border-radius:4px">https://coe-sa.github.io/COE-daily-dashboard/data.json</code> يرجع JSON صحيح</p></div>';
   }
 }
 
