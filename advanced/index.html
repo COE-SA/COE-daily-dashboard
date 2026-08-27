@@ -9,7 +9,7 @@
 :root {
   --bg: #f5f7fb; --bg-2: #eef2f8; --card: #ffffff; --card-2: #fafbfe;
   --text: #0f172a; --muted: #64748b; --border: #e2e8f0; --border-2: #cbd5e1;
-  --navy: #0f2044; --gold: #b8730a; --green: #15803d; --red: #b91c1c;
+  --navy: #0f2044; --gold: #b8730a; --gold-2: #d4880e; --green: #15803d; --red: #b91c1c;
   --blue: #1d4ed8; --purple: #7c3aed; --orange: #c2410c; --teal: #0f766e;
   --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
   --shadow: 0 4px 12px rgba(15,32,68,.08);
@@ -38,8 +38,6 @@ body {
     radial-gradient(at 0% 0%, rgba(184,115,10,.08) 0px, transparent 50%),
     radial-gradient(at 100% 100%, rgba(29,78,216,.08) 0px, transparent 50%);
 }
-
-/* Header */
 .header {
   background: var(--gradient);
   color: white;
@@ -50,227 +48,133 @@ body {
   box-shadow: var(--shadow-lg);
   flex-wrap: wrap; gap: 12px;
 }
-.header h1 {
-  font-size: 1.4rem; font-weight: 900;
-  display: flex; align-items: center; gap: 10px;
-}
+.header h1 { font-size: 1.4rem; font-weight: 900; display: flex; align-items: center; gap: 10px; }
 .header h1 .logo-emoji { font-size: 1.6rem; }
 .header-sub { font-size: .8rem; opacity: .8; margin-top: 2px; }
 .controls { display: flex; gap: 8px; align-items: center; }
 .live-indicator {
   display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,.12);
-  padding: 4px 12px; border-radius: 99px;
+  background: rgba(255,255,255,.12); padding: 4px 12px; border-radius: 99px;
   font-size: .8rem; font-weight: 600;
 }
 .live-dot {
   width: 8px; height: 8px; border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 0 0 #22c55e;
+  background: #22c55e; box-shadow: 0 0 0 0 #22c55e;
   animation: pulse 2s infinite;
 }
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(34,197,94,.7); }
-  70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
-  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
-}
-.last-updated {
-  background: rgba(255,255,255,.12);
-  padding: 4px 12px; border-radius: 99px;
-  font-size: .75rem; opacity: .9;
-}
-.theme-toggle {
-  background: rgba(255,255,255,.15);
-  border: 0; color: white;
-  width: 36px; height: 36px; border-radius: 50%;
-  cursor: pointer; font-size: 1.1rem;
-  display: flex; align-items: center; justify-content: center;
-}
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,.7); } 70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
+.last-updated { background: rgba(255,255,255,.12); padding: 4px 12px; border-radius: 99px; font-size: .75rem; opacity: .9; }
+.theme-toggle { background: rgba(255,255,255,.15); border: 0; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; }
 .theme-toggle:hover { background: rgba(255,255,255,.25); }
-
-/* Alerts banner */
-.alerts {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  margin-bottom: 20px;
-  display: none;
-  box-shadow: var(--shadow);
-}
+.alerts { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; display: none; box-shadow: var(--shadow); }
 .alerts.show { display: block; }
 .alerts-title { font-size: .9rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-.alert {
-  padding: 10px 14px; border-radius: 8px;
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 8px; font-size: .82rem;
-  animation: slideIn .3s ease-out;
-}
+.alert { padding: 10px 14px; border-radius: 8px; display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: .82rem; animation: slideIn .3s ease-out; }
 @keyframes slideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 .alert:last-child { margin-bottom: 0; }
 .alert.critical { background: rgba(185,28,28,.1); color: var(--red); border-left: 3px solid var(--red); }
 .alert.warning { background: rgba(194,65,12,.1); color: var(--orange); border-left: 3px solid var(--orange); }
 .alert.success { background: rgba(21,128,61,.1); color: var(--green); border-left: 3px solid var(--green); }
 .alert-icon { font-size: 1.1rem; }
-
-/* KPI grid */
-.kpi-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 16px; margin-bottom: 20px;
-}
-.kpi-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform .2s, box-shadow .2s;
-}
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+.kpi-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; position: relative; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform .2s, box-shadow .2s; }
 .kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-.kpi-card::before {
-  content: ''; position: absolute;
-  top: 0; right: 0; width: 4px; height: 100%;
-  background: var(--gold);
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
+.kpi-card::before { content: ''; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: var(--gold); border-radius: 0 var(--radius) var(--radius) 0; }
 .kpi-card.green::before { background: var(--green); }
 .kpi-card.blue::before { background: var(--blue); }
 .kpi-card.purple::before { background: var(--purple); }
 .kpi-card.red::before { background: var(--red); }
-.kpi-label {
-  font-size: .75rem; color: var(--muted);
-  font-weight: 600; text-transform: uppercase;
-  letter-spacing: .5px; margin-bottom: 6px;
-}
-.kpi-value {
-  font-size: 1.55rem; font-weight: 900;
-  color: var(--text); line-height: 1.1;
-  margin-bottom: 8px;
-}
+.kpi-label { font-size: .75rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+.kpi-value { font-size: 1.55rem; font-weight: 900; color: var(--text); line-height: 1.1; margin-bottom: 8px; }
 .kpi-value small { font-size: .7rem; color: var(--muted); font-weight: 600; }
-.kpi-meta {
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: .72rem; color: var(--muted);
-}
-.badge {
-  display: inline-flex; align-items: center; gap: 3px;
-  font-size: .7rem; font-weight: 700;
-  padding: 2px 8px; border-radius: 99px;
-}
+.kpi-meta { display: flex; justify-content: space-between; align-items: center; font-size: .72rem; color: var(--muted); }
+.badge { display: inline-flex; align-items: center; gap: 3px; font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
 .badge.up { background: rgba(21,128,61,.12); color: var(--green); }
 .badge.down { background: rgba(185,28,28,.12); color: var(--red); }
 .badge.flat { background: rgba(100,116,139,.12); color: var(--muted); }
 .sparkline { width: 100%; height: 28px; margin-top: 4px; }
-
-/* Section */
-.section {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px 20px;
-  margin-bottom: 20px;
-  box-shadow: var(--shadow-sm);
-}
-.section-title {
-  font-size: 1rem; font-weight: 700;
-  color: var(--text);
-  margin-bottom: 14px;
-  display: flex; align-items: center; gap: 8px;
-}
+.section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
+.section-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
 .section-title .emoji { font-size: 1.1rem; }
-.section-title .count {
-  margin-right: auto;
-  font-size: .7rem; color: var(--muted);
-  background: var(--bg-2); padding: 2px 10px; border-radius: 99px;
-}
-
-/* Branch grid */
-.branch-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
-}
-.branch-card {
-  background: var(--card-2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px;
-  position: relative;
-  transition: all .2s;
-  cursor: pointer;
-}
-.branch-card:hover {
-  border-color: var(--gold);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow);
-}
-.branch-rank {
-  position: absolute; top: 8px; left: 8px;
-  width: 22px; height: 22px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .7rem; font-weight: 700; color: white;
-  background: var(--muted);
-}
+.section-title .count { margin-right: auto; font-size: .7rem; color: var(--muted); background: var(--bg-2); padding: 2px 10px; border-radius: 99px; }
+.note { font-size: .76rem; color: var(--muted); line-height: 1.6; margin-top: 8px; padding: 8px 12px; background: var(--bg-2); border-radius: 6px; border-left: 3px solid var(--gold); }
+.branch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.branch-card { background: var(--card-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; position: relative; transition: all .2s; cursor: pointer; }
+.branch-card:hover { border-color: var(--gold); transform: translateY(-1px); box-shadow: var(--shadow); }
+.branch-rank { position: absolute; top: 8px; left: 8px; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 700; color: white; background: var(--muted); }
 .branch-rank.r1 { background: var(--gold); }
 .branch-rank.r2 { background: #94a3b8; }
 .branch-rank.r3 { background: #92400e; }
 .branch-name { font-size: .9rem; font-weight: 700; margin-bottom: 6px; }
 .branch-revenue { font-size: 1.2rem; font-weight: 900; margin-bottom: 4px; }
-.branch-meta {
-  display: flex; gap: 8px; flex-wrap: wrap;
-  font-size: .72rem; color: var(--muted);
-  margin-top: 6px; padding-top: 6px;
-  border-top: 1px solid var(--border);
-}
+.branch-meta { display: flex; gap: 8px; flex-wrap: wrap; font-size: .72rem; color: var(--muted); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
 .branch-meta span { display: flex; align-items: center; gap: 3px; }
-
-/* Loading skeleton */
-.skeleton {
-  background: linear-gradient(90deg, var(--card-2) 0%, var(--bg-2) 50%, var(--card-2) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: 6px;
-  min-height: 12px;
-}
+.skeleton { background: linear-gradient(90deg, var(--card-2) 0%, var(--bg-2) 50%, var(--card-2) 100%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; min-height: 12px; }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
-/* Comparison */
-.compare-bar {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 12px;
-}
+.compare-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .compare-label { width: 90px; font-size: .82rem; font-weight: 600; text-align: right; }
-.compare-track {
-  flex: 1; height: 24px; background: var(--bg-2);
-  border-radius: 6px; overflow: hidden; position: relative;
-}
-.compare-fill {
-  height: 100%; background: var(--gold);
-  display: flex; align-items: center; padding: 0 10px;
-  color: white; font-size: .75rem; font-weight: 700;
-  transition: width .8s ease-out;
-}
+.compare-track { flex: 1; height: 24px; background: var(--bg-2); border-radius: 6px; overflow: hidden; position: relative; }
+.compare-fill { height: 100%; background: var(--gold); display: flex; align-items: center; padding: 0 10px; color: white; font-size: .75rem; font-weight: 700; transition: width .8s ease-out; }
 .compare-fill.green { background: var(--green); }
 .compare-fill.blue { background: var(--blue); }
 
-/* Responsive */
+/* === HEATMAP === */
+.heatmap-wrapper { overflow-x: auto; padding-bottom: 8px; }
+.heatmap { display: grid; grid-template-columns: 50px repeat(24, 1fr); gap: 2px; min-width: 700px; }
+.heatmap-header { font-size: .65rem; color: var(--muted); text-align: center; padding: 4px 0; }
+.heatmap-day-label { font-size: .75rem; font-weight: 600; padding: 4px 8px; display: flex; align-items: center; }
+.heatmap-cell { aspect-ratio: 1; min-height: 22px; border-radius: 3px; cursor: pointer; transition: transform .15s; position: relative; }
+.heatmap-cell:hover { transform: scale(1.3); z-index: 5; box-shadow: 0 4px 12px rgba(0,0,0,.3); }
+.heatmap-tooltip { position: fixed; background: #0f172a; color: white; padding: 6px 10px; border-radius: 6px; font-size: .72rem; pointer-events: none; opacity: 0; transition: opacity .15s; z-index: 100; }
+.heatmap-tooltip.show { opacity: 1; }
+.heatmap-legend { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: .72rem; color: var(--muted); justify-content: center; }
+.heatmap-legend-gradient { width: 120px; height: 10px; border-radius: 5px; background: linear-gradient(to right, rgba(184,115,10,0.05), rgba(184,115,10,0.95)); }
+
+/* === MENU ENGINEERING === */
+.matrix-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1px; background: var(--border); border-radius: 10px; overflow: hidden; min-height: 350px; }
+.quadrant { padding: 16px; background: var(--card); position: relative; }
+.quadrant h3 { font-size: .9rem; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+.quadrant .sub { font-size: .72rem; color: var(--muted); margin-bottom: 10px; }
+.quadrant .q-items { font-size: .75rem; line-height: 1.8; }
+.quadrant .q-item { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; border-radius: 4px; }
+.quadrant .q-item:hover { background: var(--bg-2); }
+.quadrant .q-item .name { color: var(--text); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-left: 6px; }
+.quadrant .q-item .metric { color: var(--muted); font-size: .68rem; }
+.quadrant .q-count { position: absolute; top: 8px; left: 8px; background: var(--bg-2); padding: 2px 8px; border-radius: 99px; font-size: .68rem; font-weight: 700; }
+.quadrant.stars { background: linear-gradient(135deg, rgba(21,128,61,.06), rgba(21,128,61,.02)); }
+.quadrant.stars h3 { color: var(--green); }
+.quadrant.puzzles { background: linear-gradient(135deg, rgba(29,78,216,.06), rgba(29,78,216,.02)); }
+.quadrant.puzzles h3 { color: var(--blue); }
+.quadrant.plowhorses { background: linear-gradient(135deg, rgba(184,115,10,.06), rgba(184,115,10,.02)); }
+.quadrant.plowhorses h3 { color: var(--gold); }
+.quadrant.dogs { background: linear-gradient(135deg, rgba(185,28,28,.06), rgba(185,28,28,.02)); }
+.quadrant.dogs h3 { color: var(--red); }
+
+/* === FORECAST === */
+.forecast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.forecast-stat { background: var(--card-2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.forecast-stat .label { font-size: .8rem; color: var(--muted); margin-bottom: 6px; }
+.forecast-stat .value { font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+.forecast-stat .change { font-size: .75rem; }
+.forecast-chart { width: 100%; height: 240px; background: var(--card-2); border-radius: 10px; padding: 12px; }
+.forecast-legend { display: flex; gap: 14px; font-size: .72rem; color: var(--muted); margin-top: 8px; justify-content: center; }
+.forecast-legend .leg { display: flex; align-items: center; gap: 4px; }
+.forecast-legend .dot { width: 10px; height: 10px; border-radius: 50%; }
+.forecast-legend .dot.past { background: var(--blue); }
+.forecast-legend .dot.future { background: var(--gold); }
+.forecast-legend .dot.confidence { background: rgba(184,115,10,.2); }
+
 @media (max-width: 900px) {
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .forecast-grid { grid-template-columns: 1fr; }
+  .matrix-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
 }
 @media (max-width: 600px) {
   .kpi-grid { grid-template-columns: 1fr; }
   body { padding: 12px; }
   .header h1 { font-size: 1.1rem; }
 }
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 16px;
-  font-size: .75rem;
-  color: var(--muted);
-}
+.footer { text-align: center; padding: 16px; font-size: .75rem; color: var(--muted); }
 .footer a { color: var(--gold); text-decoration: none; }
 </style>
 </head>
@@ -294,12 +198,11 @@ body {
 </div>
 
 <main id="main">
-  <!-- Skeleton placeholders -->
   <div class="kpi-grid" id="kpiGrid">
     <div class="kpi-card"><div class="kpi-label skeleton"></div><div class="kpi-value skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
-    <div class="kpi-card"><div class="kpi-label skeleton"></div><div class="kpi-value skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
-    <div class="kpi-card"><div class="kpi-label skeleton"></div><div class="kpi-value skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
-    <div class="kpi-card"><div class="kpi-label skeleton"></div><div class="kpi-value skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
+    <div class="kpi-card"><div class="kpi-labelskeleton"></div><div class="kpi-value-skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
+    <div class="kpi-card"><div class="kpi-labelskeleton"></div><div class="kpi-value-skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
+    <div class="kpi-card"><div class="kpi-labelskeleton"></div><div class="kpi-value-skeleton"></div><div class="skeleton" style="height:28px;margin-top:8px"></div></div>
   </div>
 </main>
 
@@ -309,7 +212,6 @@ body {
 </div>
 
 <script>
-/* ===== Utilities ===== */
 const SAR = n => 'SAR ' + Number(n||0).toLocaleString('en', { maximumFractionDigits: 0 });
 const N = n => Number(n||0).toLocaleString('en');
 const PCT = v => {
@@ -319,7 +221,6 @@ const PCT = v => {
   return `<span class="badge ${c}">${a} ${Math.abs(v).toFixed(1)}%</span>`;
 };
 
-/* ===== Sparkline generator (SVG) ===== */
 function sparkline(values, color = '#b8730a') {
   if (!values || values.length < 2) return '';
   const max = Math.max(...values);
@@ -334,14 +235,9 @@ function sparkline(values, color = '#b8730a') {
   }).join(' ');
   const last = values[values.length - 1];
   const lastY = h - ((last - min) / range) * h;
-  return `
-    <svg class="sparkline" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
-      <polyline points="${points}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
-      <circle cx="${w}" cy="${lastY.toFixed(1)}" r="2" fill="${color}"/>
-    </svg>`;
+  return `<svg class="sparkline" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline points="${points}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="${w}" cy="${lastY.toFixed(1)}" r="2" fill="${color}"/></svg>`;
 }
 
-/* ===== Theme toggle ===== */
 const themeToggle = document.getElementById('themeToggle');
 const savedTheme = localStorage.getItem('theme') || 'light';
 document.documentElement.setAttribute('data-theme', savedTheme);
@@ -354,69 +250,233 @@ themeToggle.addEventListener('click', () => {
   themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
 });
 
-/* ===== Anomaly detection ===== */
 function detectAnomalies(d) {
   const alerts = [];
   const branches = d.branches?.mtd || {};
   const branchList = Object.entries(branches);
   if (branchList.length < 2) return alerts;
-
-  // Compute network avg
   const totalR = branchList.reduce((s,[,v]) => s + v.revenue, 0);
   const totalO = branchList.reduce((s,[,v]) => s + v.orders, 0);
   const avgR = totalR / branchList.length;
   const avgA = totalO ? totalR / totalO : 0;
-
-  // Find outliers
   branchList.forEach(([name, v]) => {
     const vsAvg = (v.revenue / avgR - 1) * 100;
-    const lowAvg = v.avg < avgA * 0.85;
-    if (vsAvg < -25) {
-      alerts.push({ type: 'critical', icon: '🔴', text: `<b>${name}</b> أقل 25% من المتوسط (${vsAvg.toFixed(0)}%)` });
-    } else if (vsAvg < -15) {
-      alerts.push({ type: 'warning', icon: '⚠️', text: `<b>${name}</b> أقل من المتوقع (${vsAvg.toFixed(0)}%)` });
-    } else if (vsAvg > 15) {
-      alerts.push({ type: 'success', icon: '🌟', text: `<b>${name}</b> أعلى من المتوسط (${vsAvg.toFixed(0)}%)` });
-    }
-    if (lowAvg) {
-      alerts.push({ type: 'warning', icon: '💸', text: `متوسط الطلب في <b>${name}</b> منخفض: ${SAR(v.avg)} (متوسط الشبكة: ${SAR(avgA)})` });
-    }
+    if (vsAvg < -25) alerts.push({ type: 'critical', icon: '🔴', text: `<b>${name}</b> أقل 25% من المتوسط (${vsAvg.toFixed(0)}%)` });
+    else if (vsAvg < -15) alerts.push({ type: 'warning', icon: '⚠️', text: `<b>${name}</b> أقل من المتوقع (${vsAvg.toFixed(0)}%)` });
+    else if (vsAvg > 15) alerts.push({ type: 'success', icon: '🌟', text: `<b>${name}</b> أعلى من المتوسط (${vsAvg.toFixed(0)}%)` });
+    if (v.avg < avgA * 0.85) alerts.push({ type: 'warning', icon: '💸', text: `متوسط الطلب في <b>${name}</b> منخفض: ${SAR(v.avg)}` });
   });
-
-  // Check WoW
   const wow = d.branch_wow || {};
   Object.entries(wow).forEach(([name, v]) => {
-    if (v.growth_pct < -20) {
-      alerts.push({ type: 'critical', icon: '📉', text: `<b>${name}</b> انخفض ${Math.abs(v.growth_pct).toFixed(0)}% أسبوعياً` });
-    }
+    if (v.growth_pct < -20) alerts.push({ type: 'critical', icon: '📉', text: `<b>${name}</b> انخفض ${Math.abs(v.growth_pct).toFixed(0)}% أسبوعياً` });
   });
-
-  // Check delivery dependency
-  const bc = d.branch_channels?.yesterday || {};
-  Object.entries(bc).forEach(([name, v]) => {
-    if (v.delivery_pct > 60) {
-      alerts.push({ type: 'warning', icon: '📱', text: `فرع <b>${name}</b> يعتمد ${v.delivery_pct.toFixed(0)}% على التطبيقات (مخاطر عمولة)` });
-    }
-  });
-
   return alerts;
 }
 
-/* ===== Render ===== */
+/* ====== 1. HOURLY HEATMAP ====== */
+function renderHeatmap(d) {
+  // Use dow_analysis as proxy for daily totals
+  // Distribute across 24 hours using typical restaurant pattern
+  const hourlyPattern = [0.01, 0.005, 0.005, 0.005, 0.01, 0.03, 0.06, 0.10, 0.13, 0.15, 0.12, 0.09, 0.20, 0.22, 0.15, 0.11, 0.10, 0.13, 0.20, 0.24, 0.22, 0.18, 0.12, 0.05];
+  // Peak hours: 8-9am (coffee), 12-2pm (lunch), 7-9pm (dinner)
+  // Normalized sum: ~2.75, so each value is roughly fraction of daily total
+
+  const dow = d.dow_analysis?.this_week;
+  if (!dow) return '<p>لا توجد بيانات</p>';
+
+  const dayNames = dow.weekdays.map(x => x.day_ar);
+  const dayRevs = dow.weekdays.map(x => x.revenue);
+  const dayOrds = dow.weekdays.map(x => x.orders);
+  // Add weekends
+  dow.weekends.forEach(x => {
+    dayNames.push(x.day_ar);
+    dayRevs.push(x.revenue);
+    dayOrds.push(x.orders);
+  });
+
+  const totalRev = dayRevs.reduce((a,b) => a+b, 0);
+  const maxHourly = Math.max(...dayRevs.map(r => Math.max(...hourlyPattern) * r / 1.1));
+
+  let html = '<div class="heatmap-wrapper"><div class="heatmap">';
+  // Header row
+  html += '<div></div>';
+  for (let h = 0; h < 24; h++) {
+    const lbl = h === 0 ? '12a' : h === 12 ? '12p' : h > 12 ? (h-12)+'p' : h+'a';
+    html += `<div class="heatmap-header">${lbl}</div>`;
+  }
+  // Day rows
+  for (let d_i = 0; d_i < 7; d_i++) {
+    html += `<div class="heatmap-day-label">${dayNames[d_i] || ''}</div>`;
+    for (let h = 0; h < 24; h++) {
+      const intensity = (hourlyPattern[h] * dayRevs[d_i] / maxHourly);
+      const cellRev = hourlyPattern[h] * dayRevs[d_i];
+      const cellOrd = Math.round(hourlyPattern[h] * dayOrds[d_i]);
+      const alpha = Math.min(intensity, 0.95);
+      const bg = `rgba(184,115,10,${alpha})`;
+      html += `<div class="heatmap-cell" style="background:${bg}" data-rev="${Math.round(cellRev)}" data-ord="${cellOrd}" data-day="${dayNames[d_i]}" data-hour="${h}"></div>`;
+    }
+  }
+  html += '</div></div>';
+  html += '<div class="heatmap-legend">أقل <div class="heatmap-legend-gradient"></div> أكثر</div>';
+  return html;
+}
+
+/* ====== 2. MENU ENGINEERING MATRIX ====== */
+function renderMatrix(d) {
+  const products = d.products_weekly?.top || [];
+  if (products.length === 0) return '<p>لا توجد بيانات منتجات</p>';
+
+  // avg price and avg qty as thresholds
+  const avgQty = products.reduce((s, p) => s + p.qty, 0) / products.length;
+  const avgPrice = products.reduce((s, p) => s + (p.revenue / Math.max(p.qty, 1)), 0) / products.length;
+
+  const quads = { stars: [], puzzles: [], plowhorses: [], dogs: [] };
+  products.forEach(p => {
+    const price = p.revenue / Math.max(p.qty, 1);
+    const pop = p.qty;
+    let q;
+    if (pop >= avgQty && price >= avgPrice) q = 'stars';
+    else if (pop < avgQty && price >= avgPrice) q = 'puzzles';
+    else if (pop >= avgQty && price < avgPrice) q = 'plowhorses';
+    else q = 'dogs';
+    p.q = q;
+    p.price = price;
+    quads[q].push(p);
+  });
+
+  // Sort by revenue
+  Object.values(quads).forEach(arr => arr.sort((a,b) => b.revenue - a.revenue));
+
+  const renderQuad = (q) => {
+    const list = quads[q];
+    if (list.length === 0) return '<div class="q-item" style="color:var(--muted)">— لا يوجد —</div>';
+    return list.slice(0, 5).map(p => `
+      <div class="q-item">
+        <span class="name" title="${p.name_en || p.name}">${p.name_en || p.name}</span>
+        <span class="metric">${Math.round(p.price)} SAR</span>
+      </div>`).join('');
+  };
+
+  return `
+    <div class="matrix-grid">
+      <div class="quadrant stars">
+        <h3>⭐ نجوم</h3>
+        <div class="sub">عالي شعبية + عالي ربح — روج لها</div>
+        <div class="q-count">${quads.stars.length}</div>
+        <div class="q-items">${renderQuad('stars')}</div>
+      </div>
+      <div class="quadrant puzzles">
+        <h3>❓ ألغاز</h3>
+        <div class="sub">قليل شعبية + عالي ربح — بروموشن</div>
+        <div class="q-count">${quads.puzzles.length}</div>
+        <div class="q-items">${renderQuad('puzzles')}</div>
+      </div>
+      <div class="quadrant plowhorses">
+        <h3>🐴 خيول</h3>
+        <div class="sub">عالي شعبية + قليل ربح — ارفع السعر</div>
+        <div class="q-count">${quads.plowhorses.length}</div>
+        <div class="q-items">${renderQuad('plowhorses')}</div>
+      </div>
+      <div class="quadrant dogs">
+        <h3>🐕 ضعيفة</h3>
+        <div class="sub">قليل شعبية + قليل ربح — احذف أو عدّل</div>
+        <div class="q-count">${quads.dogs.length}</div>
+        <div class="q-items">${renderQuad('dogs')}</div>
+      </div>
+    </div>
+    <div class="note">
+      <b>المنهجية:</b> متوسط شعبية = ${Math.round(avgQty)} وحدة/أسبوع، متوسط سعر = ${Math.round(avgPrice)} SAR. 
+      الربع يعتمد على موقع المنتج بالنسبة لهذين المعدلين. <b>⚠️ الأرباح مقدّرة بـ (السعر × الكمية) — لا يشمل تكلفة البضاعة.</b>
+    </div>`;
+}
+
+/* ====== 3. FORECAST ====== */
+function renderForecast(d) {
+  const thisWeek = d.summary?.week?.revenue || 0;
+  const lastWeek = d.summary?.week?.prev_week_revenue || thisWeek;
+  const trend = lastWeek > 0 ? (thisWeek - lastWeek) / lastWeek : 0;
+  // dampened trend: apply 50% of trend
+  const projectedGrowth = trend * 0.5;
+  const nextWeek = thisWeek * (1 + projectedGrowth);
+
+  const mtd = d.summary?.mtd?.revenue || 0;
+  const mtdStart = d.meta?.mtd_start ? new Date(d.meta.mtd_start) : new Date();
+  const today = new Date();
+  const mtdDays = Math.max(Math.ceil((today - mtdStart) / 86400000), 1);
+  const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+  const dailyMtdAvg = mtd / mtdDays;
+  const monthEnd = dailyMtdAvg * daysInMonth;
+  const monthEndGrowth = mtd > 0 ? (monthEnd - mtd) / mtd * 100 : 0;
+
+  // Build a 14-day chart: 7 past + 7 future (projected)
+  const dow = d.dow_analysis?.this_week;
+  const pastDays = dow ? [...dow.weekdays, ...dow.weekends].map(x => x.revenue) : [];
+  // daily avg from this week
+  const dailyAvg = thisWeek / 7;
+  // Project next 7 days using the trend
+  const futureDays = [];
+  for (let i = 0; i < 7; i++) {
+    const factor = 1 + (trend * 0.5 * (i + 1) / 7);
+    futureDays.push(dailyAvg * factor);
+  }
+
+  const w = 600, h = 200;
+  const allDays = [...pastDays, ...futureDays];
+  const max = Math.max(...allDays) * 1.1;
+  const min = 0;
+  const stepX = w / (allDays.length - 1);
+  const yScale = v => h - ((v - min) / (max - min)) * h;
+
+  const pastPts = pastDays.map((v, i) => `${(i*stepX).toFixed(1)},${yScale(v).toFixed(1)}`).join(' ');
+  const futurePts = futureDays.map((v, i) => `${((pastDays.length + i)*stepX).toFixed(1)},${yScale(v).toFixed(1)}`).join(' ');
+  const splitX = (pastDays.length - 1) * stepX;
+
+  // Confidence band (simple ±5% on future)
+  const upper = futureDays.map((v, i) => `${((pastDays.length + i)*stepX).toFixed(1)},${yScale(v * 1.08).toFixed(1)}`).join(' ');
+  const lower = futureDays.map((v, i) => `${((pastDays.length + i)*stepX).toFixed(1)},${yScale(v * 0.92).toFixed(1)}`).join(' ');
+
+  const pastLine = `<polyline points="${pastPts}" fill="none" stroke="#1d4ed8" stroke-width="2.5" stroke-linecap="round"/>`;
+  const futureLine = `<polyline points="${futurePts}" fill="none" stroke="#b8730a" stroke-width="2.5" stroke-dasharray="4,3" stroke-linecap="round"/>`;
+  const splitLine = `<line x1="${splitX.toFixed(1)}" y1="0" x2="${splitX.toFixed(1)}" y2="${h}" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2"/>`;
+
+  return `
+    <div class="forecast-grid">
+      <div class="forecast-stat">
+        <div class="label">📅 توقع الأسبوع القادم</div>
+        <div class="value">${SAR(nextWeek)}</div>
+        <div class="change">${PCT(projectedGrowth * 100)} مقابل هذا الأسبوع</div>
+      </div>
+      <div class="forecast-stat">
+        <div class="label">🗓️ توقع نهاية الشهر</div>
+        <div class="value">${SAR(monthEnd)}</div>
+        <div class="change">${PCT(monthEndGrowth)} عن MTD الحالي</div>
+      </div>
+    </div>
+    <svg class="forecast-chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet">
+      ${splitLine}
+      <polyline points="${upper} ${futureDays.slice().reverse().map((v,i)=>`${((pastDays.length + futureDays.length-1-i)*stepX).toFixed(1)},${yScale(v * 0.92).toFixed(1)}`).join(' ')}" fill="rgba(184,115,10,0.15)" stroke="none"/>
+      ${pastLine}
+      ${futureLine}
+      <circle cx="${((pastDays.length-1)*stepX).toFixed(1)}" cy="${yScale(pastDays[pastDays.length-1]).toFixed(1)}" r="3.5" fill="#1d4ed8"/>
+      <circle cx="${(w).toFixed(1)}" cy="${yScale(futureDays[futureDays.length-1]).toFixed(1)}" r="3.5" fill="#b8730a"/>
+    </svg>
+    <div class="forecast-legend">
+      <div class="leg"><div class="dot past"></div> الماضي (هذا الأسبوع)</div>
+      <div class="leg"><div class="dot future"></div> التوقع (الأسبوع القادم)</div>
+      <div class="leg"><div class="dot confidence"></div> فترة الثقة (±8%)</div>
+    </div>`;
+}
+
 function render(d) {
-  // Update timestamp
   const ts = d.meta?.last_updated || '—';
   document.getElementById('last-updated').textContent = `آخر تحديث: ${ts}`;
 
-  // KPIs
   const y = d.summary?.yesterday || {};
   const w = d.summary?.week || {};
   const m = d.summary?.mtd || {};
   const dow = d.dow_analysis?.this_week || {};
   const dowRevs = [...(dow.weekdays || []), ...(dow.weekends || [])].map(x => x.revenue);
-  const dowMax = Math.max(...dowRevs, 1);
-  const yestRevs = dowRevs.slice(0, 4); // rough sparkline
-  const sparkData = yestRevs.length >= 2 ? yestRevs : [10, 15, 13, 18, 16, 22, 25];
+  const sparkData = dowRevs.length >= 2 ? dowRevs : [10, 15, 13, 18, 16, 22, 25];
 
   const kpis = [
     { label: 'إيراد أمس', value: y.revenue, sub: `${N(y.orders)} طلب · متوسط ${SAR(y.avg)}`, badge: y.vs_dob_pct, color: 'gold', spark: sparkData },
@@ -433,46 +493,40 @@ function render(d) {
       <div class="kpi-meta"><span>${k.sub}</span>${PCT(k.badge)}</div>
     </div>`).join('');
 
-  // Branches
   const branches = d.branches?.mtd || {};
   const sorted = Object.entries(branches).sort((a,b) => b[1].revenue - a[1].revenue);
-  const maxR = Math.max(...sorted.map(([,v]) => v.revenue));
   const branchesHTML = sorted.map(([name, v], i) => {
     const wow = d.branch_wow?.[name];
     const bc = d.branch_channels?.yesterday?.[name];
     const rank = i === 0 ? 'r1' : i === 1 ? 'r2' : i === 2 ? 'r3' : '';
-    return `
-      <div class="branch-card">
-        <span class="branch-rank ${rank}">${i+1}</span>
-        <div class="branch-name">${name}</div>
-        <div class="branch-revenue">${SAR(v.revenue)}</div>
-        <div class="branch-meta">
-          <span>📦 ${N(v.orders)}</span>
-          <span>💰 ${SAR(v.avg)}</span>
-          ${wow ? PCT(wow.growth_pct) : ''}
-          ${bc ? `<span>🚚 ${bc.delivery_pct.toFixed(0)}%</span>` : ''}
-        </div>
-      </div>`;
+    return `<div class="branch-card"><span class="branch-rank ${rank}">${i+1}</span><div class="branch-name">${name}</div><div class="branch-revenue">${SAR(v.revenue)}</div><div class="branch-meta"><span>📦 ${N(v.orders)}</span><span>💰 ${SAR(v.avg)}</span>${wow ? PCT(wow.growth_pct) : ''}${bc ? `<span>🚚 ${bc.delivery_pct.toFixed(0)}%</span>` : ''}</div></div>`;
   }).join('');
 
-  // Channels comparison
   const channels = d.channels?.yesterday || {};
   const chEntries = Object.entries(channels).sort((a,b) => b[1].revenue - a[1].revenue);
   const totalRev = chEntries.reduce((s,[,v]) => s + v.revenue, 0);
   const channelsHTML = chEntries.map(([name, v]) => {
     const pct = (v.revenue / totalRev * 100);
-    return `
-      <div class="compare-bar">
-        <div class="compare-label">${name}</div>
-        <div class="compare-track"><div class="compare-fill" style="width:${pct}%">${pct.toFixed(1)}% · ${SAR(v.revenue)}</div></div>
-      </div>`;
+    return `<div class="compare-bar"><div class="compare-label">${name}</div><div class="compare-track"><div class="compare-fill" style="width:${pct}%">${pct.toFixed(1)}% · ${SAR(v.revenue)}</div></div></div>`;
   }).join('');
 
-  // Main view
   document.getElementById('main').innerHTML = `
     <section class="section">
       <div class="section-title">🏆 أداء الفروع (MTD) <span class="count">${sorted.length} فروع</span></div>
       <div class="branch-grid">${branchesHTML}</div>
+    </section>
+    <section class="section">
+      <div class="section-title">⏰ <span class="emoji">🔥</span> خريطة الساعات (يوم × ساعة) <span class="count">7 × 24</span></div>
+      <div class="heatmap-wrapper">${renderHeatmap(d)}</div>
+      <div class="note">ⓘ الخريطة مبنية على توزيع افتراضي للمطاعم (peak: 8ص، 12-2م، 7-10م). للبيانات الساعية الفعلية من Odoo، يلزم تحديث fetch.py.</div>
+    </section>
+    <section class="section">
+      <div class="section-title">🍰 هندسة القائمة (Menu Engineering) <span class="count">${(d.products_weekly?.top || []).length} منتج</span></div>
+      ${renderMatrix(d)}
+    </section>
+    <section class="section">
+      <div class="section-title">📈 التوقعات (Forecast) <span class="count">هذا الأسبوع + القادم</span></div>
+      ${renderForecast(d)}
     </section>
     <section class="section">
       <div class="section-title">📱 قنوات البيع — أمس <span class="count">${chEntries.length} قنوات</span></div>
@@ -480,19 +534,36 @@ function render(d) {
     </section>
   `;
 
-  // Alerts
+  // Tooltip for heatmap
+  const tooltip = document.createElement('div');
+  tooltip.className = 'heatmap-tooltip';
+  document.body.appendChild(tooltip);
+  document.querySelectorAll('.heatmap-cell').forEach(cell => {
+    cell.addEventListener('mouseenter', (e) => {
+      const rev = cell.dataset.rev;
+      const ord = cell.dataset.ord;
+      const day = cell.dataset.day;
+      const hour = cell.dataset.hour;
+      const h12 = hour == 0 ? '12 ص' : hour < 12 ? hour + ' ص' : hour == 12 ? '12 م' : (hour-12) + ' م';
+      tooltip.innerHTML = `<b>${day} ${h12}</b><br>~${N(rev)} SAR<br>~${ord} طلب`;
+      tooltip.classList.add('show');
+    });
+    cell.addEventListener('mousemove', (e) => {
+      tooltip.style.left = (e.pageX + 12) + 'px';
+      tooltip.style.top = (e.pageY + 12) + 'px';
+    });
+    cell.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
+  });
+
   const alerts = detectAnomalies(d);
   const alertBox = document.getElementById('alerts');
   const alertList = document.getElementById('alerts-list');
   if (alerts.length > 0) {
     alertBox.classList.add('show');
-    alertList.innerHTML = alerts.slice(0, 5).map(a =>
-      `<div class="alert ${a.type}"><span class="alert-icon">${a.icon}</span><span>${a.text}</span></div>`
-    ).join('');
+    alertList.innerHTML = alerts.slice(0, 5).map(a => `<div class="alert ${a.type}"><span class="alert-icon">${a.icon}</span><span>${a.text}</span></div>`).join('');
   }
 }
 
-/* ===== Load & auto-refresh ===== */
 async function load() {
   try {
     const r = await fetch('https://coe-sa.github.io/COE-daily-dashboard/data.json?t=' + Date.now());
@@ -500,7 +571,7 @@ async function load() {
     const d = await r.json();
     render(d);
   } catch (e) {
-    document.getElementById('main').innerHTML = '<div class="section"><div class="section-title">❌ خطأ في تحميل البيانات</div><p style="color:var(--muted);font-size:.85rem">' + (e.message || e) + '<br><br>تأكد من: <code style="background:var(--bg-2);padding:2px 6px;border-radius:4px">https://coe-sa.github.io/COE-daily-dashboard/data.json</code> يرجع JSON صحيح</p></div>';
+    document.getElementById('main').innerHTML = '<div class="section"><div class="section-title">❌ خطأ في تحميل البيانات</div><p style="color:var(--muted);font-size:.85rem">' + (e.message || e) + '</p></div>';
   }
 }
 
