@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-08-29 13:01",
+    "last_updated": "2026-08-29 14:40",
     "yesterday": "2026-08-28",
     "dob": "2026-08-27",
     "mtd_start": "2026-08-01",
@@ -260,8 +260,8 @@
     },
     "mtd": {
       "ووك إن": {
-        "revenue": 385704.26,
-        "orders": 5023,
+        "revenue": 385842.26,
+        "orders": 5022,
         "avg": 76.8,
         "discount": 0
       },
@@ -272,9 +272,9 @@
         "discount": 0
       },
       "Keeta": {
-        "revenue": 63725.27,
-        "orders": 703,
-        "avg": 90.6,
+        "revenue": 63587.27,
+        "orders": 704,
+        "avg": 90.3,
         "discount": 0
       },
       "Taker": {
@@ -389,11 +389,11 @@
         "delivery_pct": 43.0
       },
       "Wazeeriyah": {
-        "direct_rev": 7083.0,
-        "direct_ord": 109,
-        "delivery_rev": 7148.65,
-        "delivery_ord": 76,
-        "delivery_pct": 50.2
+        "direct_rev": 7221.0,
+        "direct_ord": 108,
+        "delivery_rev": 7010.65,
+        "delivery_ord": 77,
+        "delivery_pct": 49.3
       },
       "Ajaweed": {
         "direct_rev": 18244.72,
