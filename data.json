@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-09-06 10:52",
+    "last_updated": "2026-09-06 12:28",
     "yesterday": "2026-09-05",
     "dob": "2026-09-04",
     "mtd_start": "2026-09-01",
@@ -204,9 +204,9 @@
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 6262.8,
-        "orders": 76,
-        "avg": 82.4,
+        "revenue": 6208.8,
+        "orders": 75,
+        "avg": 82.8,
         "discount": 0
       },
       "Keeta": {
@@ -234,9 +234,9 @@
         "discount": 0
       },
       "Mrsool": {
-        "revenue": 59.0,
-        "orders": 1,
-        "avg": 59.0,
+        "revenue": 113.0,
+        "orders": 2,
+        "avg": 56.5,
         "discount": 0
       },
       "Mr.Mandoob": {
@@ -266,8 +266,8 @@
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 32838.8,
-        "orders": 382,
+        "revenue": 32784.8,
+        "orders": 381,
         "avg": 86.0,
         "discount": 0
       },
@@ -302,9 +302,9 @@
         "discount": 0
       },
       "Mrsool": {
-        "revenue": 253.0,
-        "orders": 3,
-        "avg": 84.3,
+        "revenue": 307.0,
+        "orders": 4,
+        "avg": 76.8,
         "discount": 0
       },
       "Mr.Mandoob": {
