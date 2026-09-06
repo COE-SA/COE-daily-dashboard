@@ -1,10 +1,10 @@
 {
   "meta": {
-    "last_updated": "2026-09-05 12:07",
-    "yesterday": "2026-09-04",
-    "dob": "2026-09-03",
+    "last_updated": "2026-09-06 10:52",
+    "yesterday": "2026-09-05",
+    "dob": "2026-09-04",
     "mtd_start": "2026-09-01",
-    "week_start": "2026-08-29",
+    "week_start": "2026-08-30",
     "app_fees": {
       "HungerStation": {
         "fee": 0.16,
@@ -55,142 +55,142 @@
   },
   "summary": {
     "yesterday": {
-      "revenue": 33391.85,
-      "orders": 372,
-      "avg": 89.8,
+      "revenue": 23323.3,
+      "orders": 304,
+      "avg": 76.7,
       "discount": 0,
-      "dob_revenue": 36597.64,
-      "vs_dob_pct": -8.8
+      "dob_revenue": 33391.85,
+      "vs_dob_pct": -30.2
     },
     "mtd": {
-      "revenue": 118861.94,
-      "orders": 1374,
-      "avg": 86.5,
+      "revenue": 142185.24,
+      "orders": 1678,
+      "avg": 84.7,
       "discount": 0,
-      "vs_prev_pct": 10.2,
-      "prev_mtd_revenue": 107857.31
+      "vs_prev_pct": 7.4,
+      "prev_mtd_revenue": 132444.76
     },
     "week": {
-      "revenue": 175480.5,
-      "orders": 2162,
-      "avg": 81.2,
+      "revenue": 178329.95,
+      "orders": 2179,
+      "avg": 81.8,
       "discount": 0,
-      "prev_week_revenue": 173643.38,
-      "vs_prev_pct": 1.1
+      "prev_week_revenue": 172712.03,
+      "vs_prev_pct": 3.3
     }
   },
   "branches": {
     "yesterday": {
-      "Hamadaniyyah": {
-        "revenue": 8806.9,
-        "orders": 90,
-        "avg": 97.9,
+      "Marwah": {
+        "revenue": 5814.1,
+        "orders": 74,
+        "avg": 78.6,
         "discount": 0
       },
       "Ajaweed": {
-        "revenue": 8537.4,
-        "orders": 98,
-        "avg": 87.1,
+        "revenue": 4601.6,
+        "orders": 60,
+        "avg": 76.7,
         "discount": 0
       },
-      "Marwah": {
-        "revenue": 6307.85,
-        "orders": 69,
-        "avg": 91.4,
+      "Hamadaniyyah": {
+        "revenue": 4392.5,
+        "orders": 57,
+        "avg": 77.1,
         "discount": 0
       },
       "Safa": {
-        "revenue": 4541.0,
-        "orders": 49,
-        "avg": 92.7,
+        "revenue": 3558.5,
+        "orders": 53,
+        "avg": 67.1,
         "discount": 0
       },
       "Defaa": {
-        "revenue": 3312.7,
-        "orders": 38,
-        "avg": 87.2,
+        "revenue": 3373.9,
+        "orders": 33,
+        "avg": 102.2,
         "discount": 0
       },
       "Wazeeriyah": {
-        "revenue": 1886.0,
-        "orders": 28,
-        "avg": 67.4,
+        "revenue": 1582.7,
+        "orders": 27,
+        "avg": 58.6,
         "discount": 0
       }
     },
     "mtd": {
       "Ajaweed": {
-        "revenue": 27392.8,
-        "orders": 313,
-        "avg": 87.5,
+        "revenue": 31994.4,
+        "orders": 373,
+        "avg": 85.8,
         "discount": 0
       },
       "Hamadaniyyah": {
-        "revenue": 25825.0,
-        "orders": 291,
-        "avg": 88.7,
+        "revenue": 30217.5,
+        "orders": 348,
+        "avg": 86.8,
         "discount": 0
       },
       "Marwah": {
-        "revenue": 23378.13,
-        "orders": 262,
-        "avg": 89.2,
+        "revenue": 29192.23,
+        "orders": 336,
+        "avg": 86.9,
         "discount": 0
       },
       "Safa": {
-        "revenue": 18294.65,
-        "orders": 196,
-        "avg": 93.3,
+        "revenue": 21853.15,
+        "orders": 249,
+        "avg": 87.8,
         "discount": 0
       },
       "Defaa": {
-        "revenue": 14592.51,
-        "orders": 183,
-        "avg": 79.7,
+        "revenue": 17966.41,
+        "orders": 216,
+        "avg": 83.2,
         "discount": 0
       },
       "Wazeeriyah": {
-        "revenue": 9378.85,
-        "orders": 129,
-        "avg": 72.7,
+        "revenue": 10961.55,
+        "orders": 156,
+        "avg": 70.3,
         "discount": 0
       }
     },
     "week": {
-      "Hamadaniyyah": {
-        "revenue": 37658.45,
-        "orders": 458,
-        "avg": 82.2,
+      "Ajaweed": {
+        "revenue": 38093.45,
+        "orders": 470,
+        "avg": 81.0,
         "discount": 0
       },
-      "Ajaweed": {
-        "revenue": 37114.75,
-        "orders": 460,
-        "avg": 80.7,
+      "Hamadaniyyah": {
+        "revenue": 37988.7,
+        "orders": 453,
+        "avg": 83.9,
         "discount": 0
       },
       "Marwah": {
-        "revenue": 34423.76,
-        "orders": 414,
-        "avg": 83.1,
+        "revenue": 35582.76,
+        "orders": 431,
+        "avg": 82.6,
         "discount": 0
       },
       "Safa": {
-        "revenue": 28906.1,
-        "orders": 322,
-        "avg": 89.8,
+        "revenue": 28899.6,
+        "orders": 332,
+        "avg": 87.0,
         "discount": 0
       },
       "Defaa": {
-        "revenue": 23313.09,
-        "orders": 299,
-        "avg": 78.0,
+        "revenue": 23214.89,
+        "orders": 284,
+        "avg": 81.7,
         "discount": 0
       },
       "Wazeeriyah": {
-        "revenue": 14064.35,
+        "revenue": 14550.55,
         "orders": 209,
-        "avg": 67.3,
+        "avg": 69.6,
         "discount": 0
       }
     }
@@ -198,51 +198,45 @@
   "channels": {
     "yesterday": {
       "ووك إن": {
-        "revenue": 19001.95,
-        "orders": 228,
-        "avg": 83.3,
+        "revenue": 12744.6,
+        "orders": 169,
+        "avg": 75.4,
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 6787.3,
-        "orders": 70,
-        "avg": 97.0,
+        "revenue": 6262.8,
+        "orders": 76,
+        "avg": 82.4,
         "discount": 0
       },
       "Keeta": {
-        "revenue": 3195.4,
-        "orders": 35,
-        "avg": 91.3,
+        "revenue": 1659.1,
+        "orders": 23,
+        "avg": 72.1,
         "discount": 0
       },
       "Ninja": {
-        "revenue": 1561.0,
-        "orders": 16,
-        "avg": 97.6,
+        "revenue": 1549.3,
+        "orders": 22,
+        "avg": 70.4,
         "discount": 0
       },
       "Taker": {
-        "revenue": 1550.2,
-        "orders": 10,
-        "avg": 155.0,
+        "revenue": 719.5,
+        "orders": 8,
+        "avg": 89.9,
         "discount": 0
       },
       "Jahez": {
-        "revenue": 847.0,
-        "orders": 10,
-        "avg": 84.7,
-        "discount": 0
-      },
-      "TheChefz": {
-        "revenue": 324.0,
-        "orders": 2,
-        "avg": 162.0,
+        "revenue": 329.0,
+        "orders": 5,
+        "avg": 65.8,
         "discount": 0
       },
       "Mrsool": {
-        "revenue": 125.0,
+        "revenue": 59.0,
         "orders": 1,
-        "avg": 125.0,
+        "avg": 59.0,
         "discount": 0
       },
       "Mr.Mandoob": {
@@ -256,43 +250,49 @@
         "orders": 0,
         "avg": 0,
         "discount": 0
+      },
+      "TheChefz": {
+        "revenue": 0,
+        "orders": 0,
+        "avg": 0,
+        "discount": 0
       }
     },
     "mtd": {
       "ووك إن": {
-        "revenue": 67501.49,
-        "orders": 804,
-        "avg": 84.0,
+        "revenue": 80295.09,
+        "orders": 972,
+        "avg": 82.6,
         "discount": 0
       },
       "HungerStation": {
-        "revenue": 26625.0,
-        "orders": 305,
-        "avg": 87.3,
+        "revenue": 32838.8,
+        "orders": 382,
+        "avg": 86.0,
         "discount": 0
       },
       "Keeta": {
-        "revenue": 11025.8,
-        "orders": 125,
-        "avg": 88.2,
+        "revenue": 12684.9,
+        "orders": 148,
+        "avg": 85.7,
         "discount": 0
       },
       "Ninja": {
-        "revenue": 6236.95,
-        "orders": 72,
-        "avg": 86.6,
+        "revenue": 7786.25,
+        "orders": 94,
+        "avg": 82.8,
         "discount": 0
       },
       "Taker": {
-        "revenue": 4828.7,
-        "orders": 39,
-        "avg": 123.8,
+        "revenue": 5548.2,
+        "orders": 47,
+        "avg": 118.0,
         "discount": 0
       },
       "Jahez": {
-        "revenue": 1303.0,
-        "orders": 17,
-        "avg": 76.6,
+        "revenue": 1632.0,
+        "orders": 22,
+        "avg": 74.2,
         "discount": 0
       },
       "TheChefz": {
@@ -302,9 +302,9 @@
         "discount": 0
       },
       "Mrsool": {
-        "revenue": 194.0,
-        "orders": 2,
-        "avg": 97.0,
+        "revenue": 253.0,
+        "orders": 3,
+        "avg": 84.3,
         "discount": 0
       },
       "Mr.Mandoob": {
@@ -324,135 +324,135 @@
   "branch_channels": {
     "yesterday": {
       "Ajaweed": {
-        "direct_rev": 4677.6,
-        "direct_ord": 57,
-        "delivery_rev": 3859.8,
-        "delivery_ord": 41,
-        "delivery_pct": 45.2
-      },
-      "Safa": {
-        "direct_rev": 2745.0,
-        "direct_ord": 33,
-        "delivery_rev": 1796.0,
-        "delivery_ord": 16,
-        "delivery_pct": 39.6
+        "direct_rev": 2353.0,
+        "direct_ord": 34,
+        "delivery_rev": 2248.6,
+        "delivery_ord": 26,
+        "delivery_pct": 48.9
       },
       "Marwah": {
-        "direct_rev": 4053.35,
-        "direct_ord": 47,
-        "delivery_rev": 2254.5,
-        "delivery_ord": 22,
-        "delivery_pct": 35.7
+        "direct_rev": 3046.1,
+        "direct_ord": 37,
+        "delivery_rev": 2768.0,
+        "delivery_ord": 37,
+        "delivery_pct": 47.6
+      },
+      "Safa": {
+        "direct_rev": 2178.5,
+        "direct_ord": 35,
+        "delivery_rev": 1380.0,
+        "delivery_ord": 18,
+        "delivery_pct": 38.8
       },
       "Wazeeriyah": {
-        "direct_rev": 992.0,
-        "direct_ord": 17,
-        "delivery_rev": 894.0,
-        "delivery_ord": 11,
-        "delivery_pct": 47.4
-      },
-      "Defaa": {
-        "direct_rev": 1504.5,
-        "direct_ord": 19,
-        "delivery_rev": 1808.2,
-        "delivery_ord": 19,
-        "delivery_pct": 54.6
+        "direct_rev": 452.0,
+        "direct_ord": 10,
+        "delivery_rev": 1130.7,
+        "delivery_ord": 17,
+        "delivery_pct": 71.4
       },
       "Hamadaniyyah": {
-        "direct_rev": 5029.5,
-        "direct_ord": 55,
-        "delivery_rev": 3777.4,
-        "delivery_ord": 35,
-        "delivery_pct": 42.9
+        "direct_rev": 2623.0,
+        "direct_ord": 36,
+        "delivery_rev": 1769.5,
+        "delivery_ord": 21,
+        "delivery_pct": 40.3
+      },
+      "Defaa": {
+        "direct_rev": 2092.0,
+        "direct_ord": 17,
+        "delivery_rev": 1281.9,
+        "delivery_ord": 16,
+        "delivery_pct": 38.0
       }
     },
     "week": {
       "Ajaweed": {
-        "direct_rev": 21407.4,
-        "direct_ord": 276,
-        "delivery_rev": 15707.35,
-        "delivery_ord": 184,
-        "delivery_pct": 42.3
-      },
-      "Safa": {
-        "direct_rev": 16698.1,
-        "direct_ord": 182,
-        "delivery_rev": 12208.0,
-        "delivery_ord": 140,
-        "delivery_pct": 42.2
+        "direct_rev": 22207.4,
+        "direct_ord": 278,
+        "delivery_rev": 15886.05,
+        "delivery_ord": 192,
+        "delivery_pct": 41.7
       },
       "Marwah": {
-        "direct_rev": 18920.76,
-        "direct_ord": 249,
-        "delivery_rev": 15503.0,
-        "delivery_ord": 165,
-        "delivery_pct": 45.0
+        "direct_rev": 19376.76,
+        "direct_ord": 251,
+        "delivery_rev": 16206.0,
+        "delivery_ord": 180,
+        "delivery_pct": 45.5
+      },
+      "Safa": {
+        "direct_rev": 16742.6,
+        "direct_ord": 192,
+        "delivery_rev": 12157.0,
+        "delivery_ord": 140,
+        "delivery_pct": 42.1
       },
       "Wazeeriyah": {
-        "direct_rev": 7385.85,
-        "direct_ord": 123,
-        "delivery_rev": 6678.5,
-        "delivery_ord": 86,
-        "delivery_pct": 47.5
-      },
-      "Defaa": {
-        "direct_rev": 12728.29,
-        "direct_ord": 175,
-        "delivery_rev": 10584.8,
-        "delivery_ord": 124,
-        "delivery_pct": 45.4
+        "direct_rev": 7241.35,
+        "direct_ord": 114,
+        "delivery_rev": 7309.2,
+        "delivery_ord": 95,
+        "delivery_pct": 50.2
       },
       "Hamadaniyyah": {
-        "direct_rev": 20705.25,
-        "direct_ord": 273,
-        "delivery_rev": 16953.2,
-        "delivery_ord": 185,
-        "delivery_pct": 45.0
+        "direct_rev": 21372.0,
+        "direct_ord": 271,
+        "delivery_rev": 16616.7,
+        "delivery_ord": 182,
+        "delivery_pct": 43.7
+      },
+      "Defaa": {
+        "direct_rev": 12956.19,
+        "direct_ord": 166,
+        "delivery_rev": 10258.7,
+        "delivery_ord": 118,
+        "delivery_pct": 44.2
       }
     }
   },
   "branch_wow": {
-    "Hamadaniyyah": {
-      "this_week": 37658.45,
-      "prev_week": 33719.35,
-      "growth_pct": 11.7,
-      "orders_this": 458,
-      "avg_this": 82.2
-    },
     "Ajaweed": {
-      "this_week": 37114.75,
-      "prev_week": 34632.52,
-      "growth_pct": 7.2,
-      "orders_this": 460,
-      "avg_this": 80.7
+      "this_week": 38093.45,
+      "prev_week": 34552.37,
+      "growth_pct": 10.2,
+      "orders_this": 470,
+      "avg_this": 81.0
+    },
+    "Hamadaniyyah": {
+      "this_week": 37988.7,
+      "prev_week": 32567.6,
+      "growth_pct": 16.6,
+      "orders_this": 453,
+      "avg_this": 83.9
     },
     "Marwah": {
-      "this_week": 34423.76,
-      "prev_week": 34268.8,
-      "growth_pct": 0.5,
-      "orders_this": 414,
-      "avg_this": 83.1
+      "this_week": 35582.76,
+      "prev_week": 35040.9,
+      "growth_pct": 1.5,
+      "orders_this": 431,
+      "avg_this": 82.6
     },
     "Safa": {
-      "this_week": 28906.1,
-      "prev_week": 30792.75,
-      "growth_pct": -6.1,
-      "orders_this": 322,
-      "avg_this": 89.8
+      "this_week": 28899.6,
+      "prev_week": 30311.6,
+      "growth_pct": -4.7,
+      "orders_this": 332,
+      "avg_this": 87.0
     },
     "Defaa": {
-      "this_week": 23313.09,
-      "prev_week": 25998.31,
-      "growth_pct": -10.3,
-      "orders_this": 299,
-      "avg_this": 78.0
+      "this_week": 23214.89,
+      "prev_week": 25986.66,
+      "growth_pct": -10.7,
+      "orders_this": 284,
+      "avg_this": 81.7
     },
     "Wazeeriyah": {
-      "this_week": 14064.35,
-      "prev_week": 14231.65,
-      "growth_pct": -1.2,
+      "this_week": 14550.55,
+      "prev_week": 14252.9,
+      "growth_pct": 2.1,
       "orders_this": 209,
-      "avg_this": 67.3
+      "avg_this": 69.6
     }
   },
   "dow_analysis": {
@@ -461,9 +461,9 @@
         {
           "day": "Sun",
           "day_ar": "الأحد",
-          "revenue": 17499.26,
-          "orders": 237,
-          "avg": 73.8,
+          "revenue": 17963.26,
+          "orders": 250,
+          "avg": 71.9,
           "discount": 0
         },
         {
@@ -511,21 +511,21 @@
         {
           "day": "Sat",
           "day_ar": "السبت",
-          "revenue": 20641.6,
-          "orders": 287,
-          "avg": 71.9,
+          "revenue": 23027.05,
+          "orders": 291,
+          "avg": 79.1,
           "discount": 0
         }
       ],
       "weekday_total": {
-        "revenue": 83972.76,
-        "orders": 1076,
-        "avg": 78.0
+        "revenue": 84436.76,
+        "orders": 1089,
+        "avg": 77.5
       },
       "weekend_total": {
-        "revenue": 91507.74,
-        "orders": 1086,
-        "avg": 84.3
+        "revenue": 93893.19,
+        "orders": 1090,
+        "avg": 86.1
       }
     },
     "prev_week": {
@@ -533,9 +533,9 @@
         {
           "day": "Sun",
           "day_ar": "الأحد",
-          "revenue": 17303.75,
-          "orders": 222,
-          "avg": 77.9,
+          "revenue": 17451.25,
+          "orders": 223,
+          "avg": 78.3,
           "discount": 0
         },
         {
@@ -583,107 +583,107 @@
         {
           "day": "Sat",
           "day_ar": "السبت",
-          "revenue": 22096.6,
-          "orders": 287,
-          "avg": 77.0,
+          "revenue": 21017.75,
+          "orders": 298,
+          "avg": 70.5,
           "discount": 0
         }
       ],
       "weekday_total": {
-        "revenue": 81192.62,
-        "orders": 981,
+        "revenue": 81340.12,
+        "orders": 982,
         "avg": 82.8
       },
       "weekend_total": {
-        "revenue": 92450.76,
-        "orders": 1104,
-        "avg": 83.7
+        "revenue": 91371.91,
+        "orders": 1115,
+        "avg": 81.9
       }
     }
   },
   "products_daily": {
     "top": [
       {
-        "id": 1723,
-        "name": "[110218] ردفلفت كيك/Red Velvet Cake - Large",
-        "qty": 18.0,
-        "revenue": 2942.0,
-        "code": "110218",
-        "name_en": "[110218] ردفلفت كيك/Red Velvet Cake - Large"
-      },
-      {
-        "id": 1725,
-        "name": "[110219] ردفلفت كيك/ Red Velvet Cake - Medium",
-        "qty": 20.0,
-        "revenue": 2280.0,
-        "code": "110219",
-        "name_en": "[110219] ردفلفت كيك/ Red Velvet Cake - Medium"
+        "id": 1699,
+        "name": "[110222] تشوكليت كيك /Chocolate Cake - Large",
+        "qty": 9.0,
+        "revenue": 1601.0,
+        "code": "110222",
+        "name_en": "[110222] تشوكليت كيك /Chocolate Cake - Large"
       },
       {
         "id": 1934,
         "name": "[111101] Occasion/ كيك مناسبات",
-        "qty": 2145.1,
-        "revenue": 2145.1,
+        "qty": 1468.1,
+        "revenue": 1468.1,
         "code": "111101",
         "name_en": "[111101] Occasion/ كيك مناسبات"
       },
       {
+        "id": 1712,
+        "name": "[110220] دريم كيك كبير/Dream Cake -  Large",
+        "qty": 8.0,
+        "revenue": 1384.0,
+        "code": "110220",
+        "name_en": "[110220] دريم كيك كبير/Dream Cake -  Large"
+      },
+      {
         "id": 1714,
         "name": "[110280] كيكة دريم/Dream Cake-  Medium",
-        "qty": 14.0,
-        "revenue": 1630.0,
+        "qty": 9.0,
+        "revenue": 1045.0,
         "code": "110280",
         "name_en": "[110280] كيكة دريم/Dream Cake-  Medium"
       },
       {
-        "id": 2363,
-        "name": "[114140] NEW Ribbon Cake  - white - Medium|كيكة الفيونكة - وسط - ابيض",
-        "qty": 10.0,
-        "revenue": 1600.0,
-        "code": "114140",
-        "name_en": "[114140] NEW Ribbon Cake  - white - Medium"
+        "id": 1725,
+        "name": "[110219] ردفلفت كيك/ Red Velvet Cake - Medium",
+        "qty": 8.0,
+        "revenue": 900.0,
+        "code": "110219",
+        "name_en": "[110219] ردفلفت كيك/ Red Velvet Cake - Medium"
       }
     ],
     "bot": [
       {
         "id": 2500,
         "name": "[300564] Large Sleeve (300456)",
-        "qty": 3.0,
+        "qty": 2.0,
         "revenue": 0.0,
         "code": "300564",
         "name_en": "[300564] Large Sleeve (300456)"
       },
       {
-        "id": 2501,
-        "name": "[300563] Small Sleeve (300455)",
-        "qty": 2.0,
-        "revenue": 0.0,
-        "code": "300563",
-        "name_en": "[300563] Small Sleeve (300455)"
-      },
-      {
-        "id": 1919,
-        "name": "[121030] شمعة رقم9/Number 9 Silver / Gold",
-        "qty": 2.0,
-        "revenue": 10.0,
-        "code": "121030",
-        "name_en": "[121030] شمعة رقم9/Number 9 Silver / Gold"
-      },
-      {
-        "id": 2153,
-        "name": "[121299] شمعة قلب/Heart Candle",
+        "id": 1910,
+        "name": "[121021] شمعة رقم0/Number 0 Silver / Gold",
         "qty": 1.0,
-        "revenue": 10.0,
-        "code": "121299",
-        "name_en": "[121299] شمعة قلب/Heart Candle"
+        "revenue": 5.0,
+        "code": "121021",
+        "name_en": "[121021] شمعة رقم0/Number 0 Silver / Gold"
       },
       {
-        "id": 2159,
-        "name": "[121298] Star Candleشمعة نجوم/",
+        "id": 1861,
+        "name": "[121213] شمعة وردي/Candles pink 6pcs",
         "qty": 1.0,
-        "revenue": 10.0,
-        "code": "121298",
-        "name_en": "[121298] Star Candleشمعة نجوم/"
+        "revenue": 6.0,
+        "code": "121213",
+        "name_en": "[121213] شمعة وردي/Candles pink 6pcs"
+      },
+      {
+        "id": 1913,
+        "name": "[121024] شمعة رقم 3Number 3 Silver / Gold",
+        "qty": 1.0,
+        "revenue": 6.0,
+        "code": "121024",
+        "name_en": "[121024] شمعة رقم 3Number 3 Silver / Gold"
+      },
+      {
+        "id": 1918,
+        "name": "[121029] /8شمعة رقمNumber 8 Silver / Gold",
+        "qty": 1.0,
+        "revenue": 6.0,
+        "code": "121029",
+        "name_en": "[121029] /8شمعة رقمNumber 8 Silver / Gold"
       }
     ]
   },
@@ -692,49 +692,49 @@
       {
         "id": 1934,
         "name": "[111101] Occasion/ كيك مناسبات",
-        "qty": 15646.3,
-        "revenue": 15646.25,
+        "qty": 15417.3,
+        "revenue": 15417.25,
         "code": "111101",
         "name_en": "[111101] Occasion/ كيك مناسبات"
       },
       {
         "id": 1725,
         "name": "[110219] ردفلفت كيك/ Red Velvet Cake - Medium",
-        "qty": 100.0,
-        "revenue": 11380.0,
+        "qty": 98.0,
+        "revenue": 11130.0,
         "code": "110219",
         "name_en": "[110219] ردفلفت كيك/ Red Velvet Cake - Medium"
       },
       {
         "id": 1714,
         "name": "[110280] كيكة دريم/Dream Cake-  Medium",
-        "qty": 73.0,
-        "revenue": 8405.0,
+        "qty": 75.0,
+        "revenue": 8655.0,
         "code": "110280",
         "name_en": "[110280] كيكة دريم/Dream Cake-  Medium"
       },
       {
         "id": 1723,
         "name": "[110218] ردفلفت كيك/Red Velvet Cake - Large",
-        "qty": 46.0,
-        "revenue": 7490.0,
+        "qty": 44.0,
+        "revenue": 7156.0,
         "code": "110218",
         "name_en": "[110218] ردفلفت كيك/Red Velvet Cake - Large"
       },
       {
-        "id": 1701,
-        "name": "[110223] تشوكليت كيك/Chocolate Cake - Medium",
-        "qty": 62.0,
-        "revenue": 7150.0,
-        "code": "110223",
-        "name_en": "[110223] تشوكليت كيك/Chocolate Cake - Medium"
+        "id": 1699,
+        "name": "[110222] تشوكليت كيك /Chocolate Cake - Large",
+        "qty": 40.0,
+        "revenue": 7064.0,
+        "code": "110222",
+        "name_en": "[110222] تشوكليت كيك /Chocolate Cake - Large"
       }
     ],
     "bot": [
       {
         "id": 2501,
         "name": "[300563] Small Sleeve (300455)",
-        "qty": 12.0,
+        "qty": 9.0,
         "revenue": 0.0,
         "code": "300563",
         "name_en": "[300563] Small Sleeve (300455)"
@@ -742,10 +742,18 @@
       {
         "id": 2500,
         "name": "[300564] Large Sleeve (300456)",
-        "qty": 34.0,
+        "qty": 21.0,
         "revenue": 0.0,
         "code": "300564",
         "name_en": "[300564] Large Sleeve (300456)"
+      },
+      {
+        "id": 2158,
+        "name": "[121292] شمعة صغيرة/Spiral Candle Gold / Silver",
+        "qty": 1.0,
+        "revenue": 6.0,
+        "code": "121292",
+        "name_en": "[121292] شمعة صغيرة/Spiral Candle Gold / Silver"
       },
       {
         "id": 2159,
@@ -756,20 +764,12 @@
         "name_en": "[121298] Star Candleشمعة نجوم/"
       },
       {
-        "id": 2152,
-        "name": "[121293] تغريسة حروف/HBD topper",
+        "id": 2154,
+        "name": "[121296] تغريسة الحب/I Love You Red",
         "qty": 1.0,
         "revenue": 10.0,
-        "code": "121293",
-        "name_en": "[121293] تغريسة حروف/HBD topper"
-      },
-      {
-        "id": 1840,
-        "name": "[122162] حلوى كوب كاندي/Paw patrol Collectable Sweets 7g",
-        "qty": 1.0,
-        "revenue": 12.0,
-        "code": "122162",
-        "name_en": "[122162] حلوى كوب كاندي/Paw patrol Collectable Sweets 7g"
+        "code": "121296",
+        "name_en": "[121296] تغريسة الحب/I Love You Red"
       }
     ]
   }
