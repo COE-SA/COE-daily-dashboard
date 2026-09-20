@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-09-20 11:32",
+    "last_updated": "2026-09-20 12:50",
     "yesterday": "2026-09-19",
     "dob": "2026-09-18",
     "mtd_start": "2026-09-01",
@@ -246,15 +246,15 @@
         "discount": 0
       },
       "TheChefz": {
-        "revenue": 259.0,
-        "orders": 3,
-        "avg": 86.3,
+        "revenue": 200.0,
+        "orders": 2,
+        "avg": 100.0,
         "discount": 0
       },
       "Jahez": {
-        "revenue": 125.0,
-        "orders": 1,
-        "avg": 125.0,
+        "revenue": 184.0,
+        "orders": 2,
+        "avg": 92.0,
         "discount": 0
       },
       "Mrsool": {
@@ -308,15 +308,15 @@
         "discount": 0
       },
       "Jahez": {
-        "revenue": 5875.0,
-        "orders": 66,
-        "avg": 89.0,
+        "revenue": 5934.0,
+        "orders": 67,
+        "avg": 88.6,
         "discount": 0
       },
       "TheChefz": {
-        "revenue": 3421.0,
-        "orders": 30,
-        "avg": 114.0,
+        "revenue": 3362.0,
+        "orders": 29,
+        "avg": 115.9,
         "discount": 0
       },
       "Mrsool": {
