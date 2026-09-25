@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-09-25 11:47",
+    "last_updated": "2026-09-25 13:13",
     "yesterday": "2026-09-24",
     "dob": "2026-09-23",
     "mtd_start": "2026-09-01",
@@ -99,7 +99,7 @@
         "avg": 98.1,
         "discount": 0
       },
-      "not used": {
+      "Almohammaday": {
         "revenue": 9516.43,
         "orders": 96,
         "avg": 99.1,
@@ -155,7 +155,7 @@
         "avg": 85.0,
         "discount": 0
       },
-      "not used": {
+      "Almohammaday": {
         "revenue": 90140.63,
         "orders": 886,
         "avg": 101.7,
@@ -181,7 +181,7 @@
         "avg": 90.9,
         "discount": 0
       },
-      "not used": {
+      "Almohammaday": {
         "revenue": 56031.23,
         "orders": 540,
         "avg": 103.8,
@@ -383,7 +383,7 @@
         "delivery_ord": 23,
         "delivery_pct": 58.2
       },
-      "not used": {
+      "Almohammaday": {
         "direct_rev": 4573.13,
         "direct_ord": 55,
         "delivery_rev": 4943.3,
@@ -434,7 +434,7 @@
         "delivery_ord": 121,
         "delivery_pct": 57.5
       },
-      "not used": {
+      "Almohammaday": {
         "direct_rev": 36334.43,
         "direct_ord": 371,
         "delivery_rev": 19696.8,
@@ -458,7 +458,7 @@
       "orders_this": 742,
       "avg_this": 90.9
     },
-    "not used": {
+    "Almohammaday": {
       "this_week": 56031.23,
       "prev_week": 31250.8,
       "growth_pct": 79.3,
