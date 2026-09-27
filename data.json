@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-09-27 12:13",
+    "last_updated": "2026-09-27 13:34",
     "yesterday": "2026-09-26",
     "dob": "2026-09-25",
     "mtd_start": "2026-09-01",
@@ -278,8 +278,8 @@
     },
     "mtd": {
       "ووك إن": {
-        "revenue": 432038.1,
-        "orders": 5471,
+        "revenue": 432163.1,
+        "orders": 5470,
         "avg": 79.0,
         "discount": 0
       },
@@ -302,9 +302,9 @@
         "discount": 0
       },
       "Taker": {
-        "revenue": 41264.6,
-        "orders": 378,
-        "avg": 109.2,
+        "revenue": 41139.6,
+        "orders": 379,
+        "avg": 108.5,
         "discount": 0
       },
       "Jahez": {
@@ -435,11 +435,11 @@
         "delivery_pct": 51.1
       },
       "Almohammaday": {
-        "direct_rev": 36208.93,
-        "direct_ord": 373,
-        "delivery_rev": 23131.3,
-        "delivery_ord": 199,
-        "delivery_pct": 39.0
+        "direct_rev": 36333.93,
+        "direct_ord": 372,
+        "delivery_rev": 23006.3,
+        "delivery_ord": 200,
+        "delivery_pct": 38.8
       }
     }
   },
