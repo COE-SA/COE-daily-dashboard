@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-10-02 12:43",
+    "last_updated": "2026-10-02 14:08",
     "yesterday": "2026-10-01",
     "dob": "2026-09-30",
     "mtd_start": "2026-10-01",
@@ -99,7 +99,7 @@
         "avg": 73.9,
         "discount": 0
       },
-      "not used": {
+      "Almohammaday": {
         "revenue": 6936.5,
         "orders": 76,
         "avg": 91.3,
@@ -143,7 +143,7 @@
         "avg": 73.9,
         "discount": 0
       },
-      "not used": {
+      "Almohammaday": {
         "revenue": 6936.5,
         "orders": 76,
         "avg": 91.3,
@@ -169,7 +169,7 @@
       }
     },
     "week": {
-      "not used": {
+      "Almohammaday": {
         "revenue": 48520.9,
         "orders": 448,
         "avg": 108.3,
@@ -341,7 +341,7 @@
   },
   "branch_channels": {
     "yesterday": {
-      "not used": {
+      "Almohammaday": {
         "direct_rev": 4540.5,
         "direct_ord": 53,
         "delivery_rev": 2396.0,
@@ -392,7 +392,7 @@
       }
     },
     "week": {
-      "not used": {
+      "Almohammaday": {
         "direct_rev": 32103.0,
         "direct_ord": 287,
         "delivery_rev": 16417.9,
@@ -444,7 +444,7 @@
     }
   },
   "branch_wow": {
-    "not used": {
+    "Almohammaday": {
       "this_week": 48520.9,
       "prev_week": 56031.23,
       "growth_pct": -13.4,
