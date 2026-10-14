@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-10-14 11:40",
+    "last_updated": "2026-10-14 13:16",
     "yesterday": "2026-10-13",
     "dob": "2026-10-12",
     "mtd_start": "2026-10-01",
@@ -216,9 +216,9 @@
   "channels": {
     "yesterday": {
       "ووك إن": {
-        "revenue": 16041.31,
-        "orders": 177,
-        "avg": 90.6,
+        "revenue": 15857.81,
+        "orders": 176,
+        "avg": 90.1,
         "discount": 0
       },
       "HungerStation": {
@@ -240,9 +240,9 @@
         "discount": 0
       },
       "Taker": {
-        "revenue": 691.5,
-        "orders": 8,
-        "avg": 86.4,
+        "revenue": 875.0,
+        "orders": 9,
+        "avg": 97.2,
         "discount": 0
       },
       "TheChefz": {
@@ -278,9 +278,9 @@
     },
     "mtd": {
       "ووك إن": {
-        "revenue": 210698.87,
-        "orders": 2781,
-        "avg": 75.8,
+        "revenue": 210515.37,
+        "orders": 2780,
+        "avg": 75.7,
         "discount": 0
       },
       "HungerStation": {
@@ -302,9 +302,9 @@
         "discount": 0
       },
       "Taker": {
-        "revenue": 16695.65,
-        "orders": 143,
-        "avg": 116.8,
+        "revenue": 16879.15,
+        "orders": 144,
+        "avg": 117.2,
         "discount": 0
       },
       "Jahez": {
@@ -370,11 +370,11 @@
         "delivery_pct": 55.2
       },
       "Marwah": {
-        "direct_rev": 1666.5,
-        "direct_ord": 25,
-        "delivery_rev": 972.0,
-        "delivery_ord": 13,
-        "delivery_pct": 36.8
+        "direct_rev": 1483.0,
+        "direct_ord": 24,
+        "delivery_rev": 1155.5,
+        "delivery_ord": 14,
+        "delivery_pct": 43.8
       },
       "Hamadaniyyah": {
         "direct_rev": 2302.5,
@@ -421,11 +421,11 @@
         "delivery_pct": 60.2
       },
       "Marwah": {
-        "direct_rev": 16892.7,
-        "direct_ord": 253,
-        "delivery_rev": 14134.2,
-        "delivery_ord": 150,
-        "delivery_pct": 45.6
+        "direct_rev": 16709.2,
+        "direct_ord": 252,
+        "delivery_rev": 14317.7,
+        "delivery_ord": 151,
+        "delivery_pct": 46.1
       },
       "Hamadaniyyah": {
         "direct_rev": 20462.25,
