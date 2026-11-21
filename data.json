@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-11-21 13:57",
+    "last_updated": "2026-11-21 16:29",
     "yesterday": "2026-11-20",
     "dob": "2026-11-19",
     "mtd_start": "2026-11-01",
@@ -216,9 +216,9 @@
   "channels": {
     "yesterday": {
       "ووك إن": {
-        "revenue": 20172.2,
-        "orders": 263,
-        "avg": 76.7,
+        "revenue": 20049.2,
+        "orders": 262,
+        "avg": 76.5,
         "discount": 0
       },
       "HungerStation": {
@@ -234,9 +234,9 @@
         "discount": 0
       },
       "Taker": {
-        "revenue": 1769.0,
-        "orders": 13,
-        "avg": 136.1,
+        "revenue": 1892.0,
+        "orders": 14,
+        "avg": 135.1,
         "discount": 0
       },
       "Ninja": {
@@ -278,8 +278,8 @@
     },
     "mtd": {
       "ووك إن": {
-        "revenue": 348850.79,
-        "orders": 4729,
+        "revenue": 348727.79,
+        "orders": 4728,
         "avg": 73.8,
         "discount": 0
       },
@@ -302,9 +302,9 @@
         "discount": 0
       },
       "Taker": {
-        "revenue": 22076.0,
-        "orders": 198,
-        "avg": 111.5,
+        "revenue": 22199.0,
+        "orders": 199,
+        "avg": 111.6,
         "discount": 0
       },
       "Jahez": {
@@ -349,11 +349,11 @@
         "delivery_pct": 48.6
       },
       "Marwah": {
-        "direct_rev": 3337.85,
-        "direct_ord": 44,
-        "delivery_rev": 3064.5,
-        "delivery_ord": 30,
-        "delivery_pct": 47.9
+        "direct_rev": 3214.85,
+        "direct_ord": 43,
+        "delivery_rev": 3187.5,
+        "delivery_ord": 31,
+        "delivery_pct": 49.8
       },
       "Ajaweed": {
         "direct_rev": 4175.5,
@@ -400,11 +400,11 @@
         "delivery_pct": 48.3
       },
       "Marwah": {
-        "direct_rev": 20974.4,
-        "direct_ord": 281,
-        "delivery_rev": 15358.5,
-        "delivery_ord": 175,
-        "delivery_pct": 42.3
+        "direct_rev": 20851.4,
+        "direct_ord": 280,
+        "delivery_rev": 15481.5,
+        "delivery_ord": 176,
+        "delivery_pct": 42.6
       },
       "Ajaweed": {
         "direct_rev": 19216.5,
